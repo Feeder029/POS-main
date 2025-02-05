@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subtractBtn.addEventListener('click', () => {
                 if (parseInt(inputField.value) > 0) {
                     inputField.value = parseInt(inputField.value) - 1;
-                    console.log(`Subtracted: ${itemName} | New Quantity: ${inputField.value}`);
+                    console.log(`Subtracted: ${itemName} | New Quantity: ${inputField.value} ${itemPrice}`);
 
                     if (parseInt(inputField.value) === 0) {
                         window.parent.postMessage({
