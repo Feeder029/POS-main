@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Listen for the 'Confirm' button click event
 document.getElementById('confirm-order').addEventListener('click', function() {
+
     const totalPriceElem = document.getElementById('total-price');
     const paymentElem = document.getElementById('payment');
 
@@ -205,4 +206,101 @@ async function InsertProduct(product, price) {
     }
 }
 
+document.getElementById('confirm-order').addEventListener('click', function() {
+    const cartItems = document.getElementById('cart-items').children;
+    let orders = [];
 
+    // Collect cart data
+    Array.from(cartItems).forEach(item => {
+        let name = item.dataset.name;
+        let quantity = parseInt(item.dataset.quantity);
+
+        if (name && quantity) {
+            orders.push({ pname: name, change: -quantity }); // Deduct from stock
+        }
+    });
+
+    if (orders.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    // Send data to the API
+    fetch('api.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orders)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert("Error: " + data.error);
+        } else {
+            alert("Order confirmed! Stock updated.");
+
+            // Clear the cart after confirmation
+            document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
+            document.getElementById('total-price').innerText = '₱0.00';
+
+            window.frames[0].postMessage({ type: 'order-confirmed' }, '*');
+
+            ProductDisplay();
+        }
+    })
+    .catch(error => console.error('Error:', error));
+
+   
+});
+
+
+function insertInfo(Amount, DateTime) {
+    fetch('fetchapi.php', {
+        method: 'POST', // Use POST method for inserting data
+        headers: {
+            'Content-Type': 'application/json' // Send data as JSON
+        },
+        body: JSON.stringify({ // Convert JS object to JSON
+            TotalAmount: Amount,
+            Date: DateTime
+        })
+    })
+    .then(response => response.json()) // Parse the JSON response
+    .then(data => console.log(data.message)) // Handle success message
+    .catch(error => console.error('Error:', error)); // Handle error
+}
+
+async function InsertProduct(product, price) {
+    let tof = false;
+
+    try {
+        const response = await fetch('posapi.php');
+        const data = await response.json();
+
+        // Check if product already exists
+        data.forEach(item => {
+            if (product === item.ProductName) {
+                tof = true;
+            }
+        });
+
+        if (tof === false) { 
+            // Product doesn't exist, insert it
+            const insertResponse = await fetch('fetchapi.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ProductName: product,
+                    Price: price
+                })
+            });
+            const insertData = await insertResponse.json();
+            console.log(insertData.message); // Log the success message
+        } else {
+            console.log('Product already exists');
+        }
+    } catch (error) {
+        console.error('Error:', error); // Handle errors
+    }
+}
