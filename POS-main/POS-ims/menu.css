@@ -1,0 +1,166 @@
+body{
+    background-color:rgb(218, 217, 217);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+html{
+    overflow-x: hidden;
+    
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0 40px 0 -260px;
+    display: flex;
+    align-items: center;
+    height: 30%;
+    
+    flex-direction: column;
+}
+
+#search{
+    width: 9in;
+    height: 0.5in;
+    font-size: 25px;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.bot-nav{
+    position: relative;
+    width: 9in;
+    margin-top: 0px;    
+    display: inline-block;
+}
+
+.bot-nav h3{
+    font-size: 30px;
+    padding-left: 10px;
+}
+
+.category-container{
+    background-color: #2d2e29;
+    margin-top: 15px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-items: center;
+}
+
+.category-container ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.category-container li {
+    display: flex;
+    align-items: center;
+}
+
+.category-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid white;
+    background-color: #2d2e29;
+    cursor: pointer;
+    border-radius: 20px;
+    color: white;
+}
+
+.category-container button:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.category-container h3{
+    color: white;
+    font-size: 30px;
+    padding-right: 300px;
+}
+
+.menu-container {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 67%;
+    margin-left: -300px;
+    height: 100%;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(25% - 23px);
+    height: 200px;
+    padding: 15px;
+    background-color: #2d2e29;
+    border-radius: 20px;
+    box-shadow: 0px 10px 16px rgba(123, 123, 123, 0.6);
+    margin-bottom: 50px; 
+    flex-direction: column;
+}
+
+.menu-image {
+    width: 120px;
+    z-index: 20;
+    height: 120px;
+    margin: -60px 20px 30px -53px;
+    background-color: rgb(168, 168, 168);
+    border-radius: 60px;
+}
+
+.menu-detail {
+    color: white;
+    flex-grow: 1;
+    margin-top: -10px;
+    padding: 0 15px;
+}
+
+.menu-btn {
+    display: flex;
+    align-items: center;
+}
+
+.menu-btn button {
+    padding: 5px 10px;
+    font-size: 18px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+#add{
+    background-color: rgb(123, 193, 54);
+}
+
+#subtract{
+    background-color: rgb(180, 61, 61);
+}
+
+.menu-btn input {
+    width: 40px;
+    text-align: center;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mainDashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>DASHBOARD</title>
+</head>
+<body>
+    <!-- <nav id="navbar">
+        <ul>
+            <li>WEWE</li>
+            <li>ASDASD</li>
+            <li>CAXAs</li>
+        </ul>
+    </nav> -->
+    
+
+    <div class="side-panel">
+        <div class="logo">
+            <h2>LOGO</h2>
+        </div>
+        <ul>
+            <!-- <li><a href="dashboard.html" target="iframe-dashboard"><i class='bx bxs-dashboard'></i>&nbsp;Dashboard</a></li> -->
+            <li><a href="http://localhost/POS-main/POS-ims/menu.php" target="iframe-dashboard"><i class='bx bxs-food-menu'></i>&nbsp;Menu</a></li>
+            <!-- <li><a href="menu.html" target="iframe-dashboard"><i class='bx bxs-food-menu'></i>&nbsp;Menu</a></li> -->
+            <!-- <li><a href="orders.html" target="iframe-dashboard"><i class='bx bx-list-ul' ></i>&nbsp;Orders</a></li>
+            <li><a href="checkout.html" target="iframe-dashboard"><i class='bx bxs-check-square' ></i>&nbsp;Checkout</a></li> -->
+            <li><a href="products.html" target="iframe-dashboard"><i class='bx bxs-component' ></i>&nbsp;Products</a></li>
+            <li><a href="members.html" target="iframe-dashboard"><i class='bx bxs-user-circle'></i>&nbsp;Members</a></li>
+            <!-- <li><a href="settings.html" target="iframe-dashboard"><i class='bx bxs-cog' ></i>&nbsp;Settings</a></li> -->
+            <li id="logout"><a href="" target="iframe-dashboard">Log Out</a></li>
+        </ul>
+    </div>
+
+    <div class="float-panel">
+        <h3>CART</h3>
+        <div class="cart-container">
+            <ul id="cart-items">
+                <li>No items in cart</li>
+            </ul>
+            <p><strong>Total:</strong> <span id="total-price">$0.00</span></p>
+        </div>
+        <div class="bot-float">
+            <button id="clear-order">Clear Order</button>
+            <button id="confirm-order">Confirm Order</button>
+        </div>
+    </div>
+
+    <div class="iframe-container">
+        <iframe id="iframe-dashboard" name="iframe-dashboard" ></iframe>  
+    </div>
+
+    <script src="mainDashboard.js"></script>
+</body>
+</html>

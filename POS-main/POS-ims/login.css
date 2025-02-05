@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.container{
+    background-color: azure;
+    text-align: center;
+    position: relative;
+    width: 300px;
+    height: 130px;
+    margin: auto;
+    padding-top: 30px;
+    border-radius: 10px;
+    display: flex;
+    top: 250px;
+
+}
+
+input{
+    bottom: 10px;
+    margin-bottom: 5px;
+}
+
+h2{
+    padding-top: 10px;
+    padding-left: 13px;
+}
