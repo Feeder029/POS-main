@@ -227,7 +227,9 @@ document.getElementById('confirm-order').addEventListener('click', function() {
                 const now = new Date();
                 const formattedTime = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
                 insertInfo(totalPrice,formattedTime);
-                InsertProduct("Product 0",102.33)
+                Array.from(cartItems).forEach(item => {
+                    InsertProduct(item.dataset.name,parseInt(item.dataset.price))
+                });
 
                 alert("Order confirmed! Stock updated.");
 
