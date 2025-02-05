@@ -13,12 +13,12 @@
         <div class="bot-nav">            
             <div class="category-container">
                 <h3>Categories</h3>
-                <ul>
+                <!-- <ul>
                     <li><button>All</button></li>
                     <li><button>cat1</button></li>
                     <li><button>cat2</button></li>
                     <li><button>cat3</button></li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </nav>
