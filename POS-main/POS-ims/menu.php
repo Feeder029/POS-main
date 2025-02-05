@@ -1,24 +1,4 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=pos_db", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // echo "Connected successfully"; // You can remove this line once you verify the connection
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-
-$sql = "SELECT prodName AS ProductName, prodPrice AS ProductPrice FROM producttable";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-
-// Fetch all products from the database
-$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
 <!DOCTYPE html>
 <html lang="en">

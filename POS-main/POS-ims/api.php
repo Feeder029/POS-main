@@ -46,11 +46,11 @@
 
 <?php
 header('Content-Type: application/json');
-$conn = new mysqli('localhost', 'root', '', 'pos_db');
-$result = $conn->query("SELECT prodName AS ProductName, prodPrice AS ProductPrice FROM producttable");
+// $conn = new mysqli('localhost', 'root', '', 'pos_db');
+// $result = $conn->query("SELECT prodName AS ProductName, prodPrice AS ProductPrice FROM producttable");
 
-// $conn = new mysqli('localhost', 'root', '', 'ims_db');
-// $result = $conn->query("SELECT `pname` AS ProductName, `base_price` AS ProductPrice FROM `ims_product`");
+$conn = new mysqli('localhost', 'root', '', 'ims_db');
+$result = $conn->query("SELECT `pname` AS ProductName, `base_price` AS ProductPrice FROM `ims_product`");
 
 $products = [];
 while ($row = $result->fetch_assoc()) {
