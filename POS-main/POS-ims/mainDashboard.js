@@ -135,8 +135,74 @@ document.addEventListener("DOMContentLoaded", function () {
 // Listen for the 'Confirm' button click event
 document.getElementById('confirm-order').addEventListener('click', function() {
     const totalPriceElem = document.getElementById('total-price');
-    const totalPrice = totalPriceElem.innerText.replace('$', '').trim(); // Get the total price without the dollar sign
+    const paymentElem = document.getElementById('payment');
 
-    // Display an alert with the total price
-    alert(`Your total order price is: ₱${totalPrice}`);
+    const totalPrice = parseFloat(totalPriceElem.innerText.replace('₱', '').trim());
+    const payment = parseFloat(paymentElem.value.trim());
+
+    if (payment >= totalPrice) { // Correct comparison of numbers
+        const change = payment - totalPrice;
+        alert(`Your total order price is: ₱${totalPrice}\nYour payment: ₱${payment}\nChange: ₱${change}`);
+        const now = new Date();
+         const formattedTime = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+        insertInfo(totalPrice,formattedTime);
+        InsertProduct("Product 0",102.33)
+    } else {
+        alert(`The payment is not enough.`);
+    }
 });
+
+
+function insertInfo(Amount, DateTime) {
+    fetch('fetchapi.php', {
+        method: 'POST', // Use POST method for inserting data
+        headers: {
+            'Content-Type': 'application/json' // Send data as JSON
+        },
+        body: JSON.stringify({ // Convert JS object to JSON
+            TotalAmount: Amount,
+            Date: DateTime
+        })
+    })
+    .then(response => response.json()) // Parse the JSON response
+    .then(data => console.log(data.message)) // Handle success message
+    .catch(error => console.error('Error:', error)); // Handle error
+}
+
+async function InsertProduct(product, price) {
+    let tof = false;
+
+    try {
+        const response = await fetch('posapi.php');
+        const data = await response.json();
+
+        // Check if product already exists
+        data.forEach(item => {
+            if (product === item.ProductName) {
+                tof = true;
+            }
+        });
+
+        if (tof === false) { 
+            // Product doesn't exist, insert it
+            const insertResponse = await fetch('fetchapi.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ProductName: product,
+                    Price: price
+                })
+            });
+            const insertData = await insertResponse.json();
+            console.log(insertData.message); // Log the success message
+        } else {
+            console.log('Product already exists');
+        }
+    } catch (error) {
+        console.error('Error:', error); // Handle errors
+    }
+}
+
+
