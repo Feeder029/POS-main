@@ -46,6 +46,41 @@
             <button id="clear-order">Clear Order</button>
             <button id="confirm-order">Confirm Order</button>
         </div>
+        <div>
+            <H6> PAYMENT: </H6>
+            <input type="text" class="total" id="payment">
+            <div class="numbtns">
+                <button class="num" id="1"> 1 </button>
+                <button class="num" id="2"> 2 </button>
+                <button class="num" id="3"> 3 </button>
+            </div>
+            <div class="numbtns">
+                <button class="num" id="4"> 4 </button>
+                <button class="num" id="5"> 5 </button>
+                <button class="num" id="6"> 6 </button>            
+            </div>
+            <div class="numbtns">
+                <button class="num" id="7"> 7 </button>
+                <button class="num" id="8"> 8 </button>
+                <button class="num" id="9"> 9 </button>               
+            </div>
+            <div class="numbtns">
+                <button id="0"> 0 </button>
+                <button id="Per"> . </button>  
+                <button id="AC"> AC </button>                                        
+            </div>
+            <div>
+                <h7>PAYMENT METHOD</h7> 
+                <br>
+            
+                <input type="radio" id="cash" name="paymentmethod" value="cash" checked>
+                <label for="cash">Cash</label>
+                <input type="radio" id="Card" name="paymentmethod" value="Card">
+                <label for="Card">Credit</label>
+                <input type="radio" id="online" name="paymentmethod" value="online">
+                <label for="online">Online</label>
+            </div>
+        </div>
     </div>
 
     <div class="iframe-container">
@@ -53,5 +88,7 @@
     </div>
 
     <script src="mainDashboard.js"></script>
+    <script src="numpad.js"></script>
+
 </body>
 </html>
