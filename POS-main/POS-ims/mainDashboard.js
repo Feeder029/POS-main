@@ -132,27 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Listen for the 'Confirm' button click event
-document.getElementById('confirm-order').addEventListener('click', function() {
-
-    const totalPriceElem = document.getElementById('total-price');
-    const paymentElem = document.getElementById('payment');
-
-    const totalPrice = parseFloat(totalPriceElem.innerText.replace('₱', '').trim());
-    const payment = parseFloat(paymentElem.value.trim());
-
-    if (payment >= totalPrice) { // Correct comparison of numbers
-        const change = payment - totalPrice;
-        alert(`Your total order price is: ₱${totalPrice}\nYour payment: ₱${payment}\nChange: ₱${change}`);
-        const now = new Date();
-         const formattedTime = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
-        insertInfo(totalPrice,formattedTime);
-        InsertProduct("Product 0",102.33)
-    } else {
-        alert(`The payment is not enough.`);
-    }
-});
-
 
 function insertInfo(Amount, DateTime) {
     fetch('fetchapi.php', {
@@ -236,15 +215,32 @@ document.getElementById('confirm-order').addEventListener('click', function() {
         if (data.error) {
             alert("Error: " + data.error);
         } else {
-            alert("Order confirmed! Stock updated.");
+            const totalPriceElem = document.getElementById('total-price');
+            const paymentElem = document.getElementById('payment');
 
-            // Clear the cart after confirmation
-            document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
-            document.getElementById('total-price').innerText = '₱0.00';
+            const totalPrice = parseFloat(totalPriceElem.innerText.replace('₱', '').trim());
+            const payment = parseFloat(paymentElem.value.trim());
 
-            window.frames[0].postMessage({ type: 'order-confirmed' }, '*');
+            if (payment >= totalPrice) { // Correct comparison of numbers
+                const change = payment - totalPrice;
+                alert(`Your total order price is: ₱${totalPrice}\nYour payment: ₱${payment}\nChange: ₱${change}`);
+                const now = new Date();
+                const formattedTime = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+                insertInfo(totalPrice,formattedTime);
+                InsertProduct("Product 0",102.33)
 
-            ProductDisplay();
+                alert("Order confirmed! Stock updated.");
+
+                // Clear the cart after confirmation
+                document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
+                document.getElementById('total-price').innerText = '₱0.00';
+
+                window.frames[0].postMessage({ type: 'order-confirmed' }, '*');
+
+                ProductDisplay();
+            } else {
+                alert(`The payment is not enough.`);
+            }        
         }
     })
     .catch(error => console.error('Error:', error));
