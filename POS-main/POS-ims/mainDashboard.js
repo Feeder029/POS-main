@@ -220,51 +220,64 @@ document.getElementById('confirm-order').addEventListener('click', function() {
 
             const totalPrice = parseFloat(totalPriceElem.innerText.replace('₱', '').trim());
             const payment = parseFloat(paymentElem.value.trim());
+            const selectedPayment = document.querySelector('input[name="paymentmethod"]:checked').value;
 
             if (payment >= totalPrice) { // Correct comparison of numbers
                 const change = payment - totalPrice;
                 alert(`Your total order price is: ₱${totalPrice}\nYour payment: ₱${payment}\nChange: ₱${change}`);
                 const now = new Date();
                 const formattedTime = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
-                insertInfo(totalPrice,formattedTime);
-                Array.from(cartItems).forEach(item => {
-                    InsertProduct(item.dataset.name,parseInt(item.dataset.price))
+
+                // Insert the sale info and get the SalesID
+                insertInfo(totalPrice, formattedTime).then(salesID => {
+                    // Now use the SalesID for InsertPayment
+                    InsertPayment(salesID, selectedPayment, payment, change);
+
+                    Array.from(cartItems).forEach(item => {
+                        const price = parseInt(item.dataset.price) * parseInt(item.dataset.quantity);
+                        InsertProduct(item.dataset.name, parseInt(item.dataset.price));
+                        InsertOrder(salesID, parseInt(item.dataset.quantity), price, item.dataset.name);
+                    });
+
+                    alert("Order confirmed! Stock updated.");
+
+                    // Clear the cart after confirmation
+                    document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
+                    document.getElementById('total-price').innerText = '₱0.00';
+
+                    window.frames[0].postMessage({ type: 'order-confirmed' }, '*');
+
+                    ProductDisplay();
                 });
-
-                alert("Order confirmed! Stock updated.");
-
-                // Clear the cart after confirmation
-                document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
-                document.getElementById('total-price').innerText = '₱0.00';
-
-                window.frames[0].postMessage({ type: 'order-confirmed' }, '*');
-
-                ProductDisplay();
             } else {
                 alert(`The payment is not enough.`);
             }        
         }
     })
     .catch(error => console.error('Error:', error));
-
-   
 });
 
 
 function insertInfo(Amount, DateTime) {
-    fetch('fetchapi.php', {
-        method: 'POST', // Use POST method for inserting data
+    return fetch('fetchapi.php', {
+        method: 'POST',
         headers: {
-            'Content-Type': 'application/json' // Send data as JSON
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ // Convert JS object to JSON
+        body: JSON.stringify({
             TotalAmount: Amount,
             Date: DateTime
         })
     })
-    .then(response => response.json()) // Parse the JSON response
-    .then(data => console.log(data.message)) // Handle success message
-    .catch(error => console.error('Error:', error)); // Handle error
+    .then(response => response.json())
+    .then(data => {
+        if (data.sales && data.sales.SalesID) {
+            return data.sales.SalesID; // Return the SalesID
+        } else {
+            throw new Error('Failed to retrieve SalesID');
+        }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 async function InsertProduct(product, price) {
@@ -301,4 +314,54 @@ async function InsertProduct(product, price) {
     } catch (error) {
         console.error('Error:', error); // Handle errors
     }
+}
+
+function InsertPayment(SID,PMID,AP,CG){
+    fetch('fetchapi.php', {
+        method: 'POST', // Use POST method for inserting data
+        headers: {
+            'Content-Type': 'application/json' // Send data as JSON
+        },
+        body: JSON.stringify({ // Convert JS object to JSON
+            SalesID: SID,
+            PaymentMethodID: PMID,
+            AmountPaid: AP,
+            ChangeGiven: CG
+        })
+    })
+    .then(response => response.json()) // Parse the JSON response
+    .then(data => console.log(data.message)) // Handle success message
+    .catch(error => console.error('Error:', error)); // Handle error
+}
+
+function InsertOrder(SID,Q,UP,Name){
+
+    let PID = 1;
+
+    fetch('posapi.php')
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(item => {
+            if (Name === item.ProductName) {
+                PID = item.ProductID;
+            }
+        }); 
+    })
+
+
+    fetch('fetchapi.php', {
+        method: 'POST', // Use POST method for inserting data
+        headers: {
+            'Content-Type': 'application/json' // Send data as JSON
+        },
+        body: JSON.stringify({ // Convert JS object to JSON
+            ProductID: PID,
+            SalesID: SID,
+            Quantity: Q,
+            UnitPrice: UP
+        })
+    })
+    .then(response => response.json()) // Parse the JSON response
+    .then(data => console.log(data.message)) // Handle success message
+    .catch(error => console.error('Error:', error)); // Handle error
 }
