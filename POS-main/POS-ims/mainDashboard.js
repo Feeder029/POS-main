@@ -291,7 +291,7 @@ async function InsertProduct(product, price) {
         data.forEach(item => {
             if (product === item.ProductName) {
                 tof = true;
-            }
+            } 
         });
 
         if (tof === false) { 
@@ -334,22 +334,24 @@ function InsertPayment(SID,PMID,AP,CG){
     .catch(error => console.error('Error:', error)); // Handle error
 }
 
-function InsertOrder(SID,Q,UP,Name){
-
+async function InsertOrder(SID, Q, UP, Name) {
     let PID = 1;
 
-    fetch('posapi.php')
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(item => {
-            if (Name === item.ProductName) {
-                PID = item.ProductID;
-            }
-        }); 
-    })
+    // Wait for the first fetch to complete and get the data
+    const response = await fetch('posapi.php');
+    const data = await response.json();
 
+    // Find the matching ProductID
+    data.forEach(item => {
+        if (Name === item.ProductName) {
+            PID = item.ProductID;
+        }
+    });
 
-    fetch('fetchapi.php', {
+    console.log(`Product ID found: ${PID}`); // Debugging to check if PID is updated
+
+    // Now that PID is correctly set, proceed with the second fetch
+    const orderResponse = await fetch('fetchapi.php', {
         method: 'POST', // Use POST method for inserting data
         headers: {
             'Content-Type': 'application/json' // Send data as JSON
@@ -360,8 +362,8 @@ function InsertOrder(SID,Q,UP,Name){
             Quantity: Q,
             UnitPrice: UP
         })
-    })
-    .then(response => response.json()) // Parse the JSON response
-    .then(data => console.log(data.message)) // Handle success message
-    .catch(error => console.error('Error:', error)); // Handle error
+    });
+
+    const orderData = await orderResponse.json(); // Parse the JSON response
+    console.log(orderData.message); // Handle success message
 }

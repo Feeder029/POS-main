@@ -14,7 +14,7 @@ numButtons.forEach(button => {
 
 // Add event listener for the 0 button
 document.getElementById('0').addEventListener('click', () => {
-    paymentInput.value += '0';
+    paymentInput.value += '';
 });
 
 // Add event listener for the decimal button
