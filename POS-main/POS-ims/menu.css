@@ -1,5 +1,5 @@
 body{
-    background-color:rgb(218, 217, 217);
+    background-color:rgb(217, 217, 217);
     overflow-x: hidden;
     margin: 0;
     padding: 20px;
@@ -29,7 +29,6 @@ html{
     display: flex;
     align-items: center;
     height: 30%;
-    
     flex-direction: column;
 }
 

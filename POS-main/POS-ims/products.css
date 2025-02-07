@@ -7,16 +7,15 @@
 
 #navbar{
     background-color: #2d2e29;
-    width: 70%;
+    width: 80%;
     height: 80px;
     border-radius: 10px;
-    margin: 10px 20px 10px 80px;
+    margin: 30px 20px 10px 50px;
     text-align: end;
 }
 
 #navbar button{
     width: 100px;
-    height: 20px;
     margin: 30px ;
 }
 
@@ -28,21 +27,29 @@
     position: absolute;
 }
 th{
-    border: 1px solid black;
-    background-color: #3b3b3b;
-    color: aliceblue;
+    background-color: #eeeeee;
+    color: black;
     font-size: medium;
     font-weight: 200;
-    border-radius: 3px;
     padding: 3px;
 }
 td{
-    
-    border-bottom: 1px solid rgb(168, 168, 168);
     border-radius: 3px;
     gap: 0;
-    
 }
 table{
-    margin-left:80px ;
+    margin-left:50px ;
+    width: 80%;
+}
+.section1{
+width: 80%;
+
+}
+.section2{
+    width: 20%;
+
+    
+}
+body{
+    display: flex;
 }

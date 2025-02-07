@@ -1,5 +1,5 @@
 body{
-    background-color:#EEEEEE;
+    background-color:rgb(217, 217, 217);
     overflow-x: hidden;
 }
 
@@ -24,7 +24,7 @@ html{
     text-decoration: none;
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: white;
     width: 100%;
     padding: 5px;
@@ -35,9 +35,9 @@ html{
 }
 
 .side-panel li:hover a, li:hover i {
-    color: #2d2e29;
-}
+    color: #414141;
 
+}
 
 .side-panel li{
     list-style:none;
@@ -46,17 +46,17 @@ html{
     transition: transform 0.2s ease;
     border-radius: 15px;
     margin: 10px 20px;
+       
 }
 
 .side-panel li:hover{
-    border: 1px solid white;
-    background-color: white;
+    background-color: #EEEEEE;
     border-radius: 15px;
 }
 
 #logout {
     margin-top: 250px;  
-    background-color: white;
+    background-color: #EEEEEE;
 }
 
 #logout a{
