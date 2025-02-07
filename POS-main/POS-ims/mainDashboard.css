@@ -147,6 +147,7 @@ html{
     position: relative;
     padding: 15px;
     color: black;
+    display: none;
 }
 .cart-container {
     margin-top: 20px;

@@ -106,6 +106,18 @@ window.addEventListener('message', function(event) {
     }
 });
 
+document.getElementById("toggleMenu").addEventListener("click", function(event) {
+    let panel = document.querySelector(".float-panel");
+    panel.style.display = "block"; // Show the panel
+});
+
+// Use querySelectorAll to target all elements with the class "otheroptions"
+document.querySelectorAll(".otheroptions").forEach(function(element) {
+    element.addEventListener("click", function(event) {
+        let panel = document.querySelector(".float-panel");
+        panel.style.display = "none"; // Hide the panel
+    });
+});
 
 // User role and logout handling...
 document.addEventListener("DOMContentLoaded", function () {
