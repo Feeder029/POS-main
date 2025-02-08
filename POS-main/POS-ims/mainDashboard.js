@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", function () {
+        // Automatically click the "Menu" link
+        document.getElementById("toggleMenu").click();
+    });
+
 document.getElementById('clear-order').addEventListener('click', function() {
     document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
     document.getElementById('total-price').innerText = '$0.00';
@@ -216,7 +221,7 @@ document.getElementById('confirm-order').addEventListener('click', function() {
         return;
     }
 
-    // Send data to the API
+    // Send order data to API
     fetch('api.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -227,47 +232,55 @@ document.getElementById('confirm-order').addEventListener('click', function() {
         if (data.error) {
             alert("Error: " + data.error);
         } else {
-            const totalPriceElem = document.getElementById('total-price');
-            const paymentElem = document.getElementById('payment');
+            const floatPanel = document.querySelector(".float-panel");
+            floatPanel.classList.add("active"); // Expand panel
 
-            const totalPrice = parseFloat(totalPriceElem.innerText.replace('₱', '').trim());
-            const payment = parseFloat(paymentElem.value.trim());
-            const selectedPayment = document.querySelector('input[name="paymentmethod"]:checked').value;
+            // Wait for the expansion animation before displaying payment options
+            setTimeout(() => {
+                document.querySelector(".payment-container").style.display = "block";
 
-            if (payment >= totalPrice) { // Correct comparison of numbers
-                const change = payment - totalPrice;
-                alert(`Your total order price is: ₱${totalPrice}\nYour payment: ₱${payment}\nChange: ₱${change}`);
-                const now = new Date();
-                const formattedTime = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+                const totalPriceElem = document.getElementById('total-price');
+                const paymentElem = document.getElementById('payment');
 
-                // Insert the sale info and get the SalesID
-                insertInfo(totalPrice, formattedTime).then(salesID => {
-                    // Now use the SalesID for InsertPayment
-                    InsertPayment(salesID, selectedPayment, payment, change);
+                const totalPrice = parseFloat(totalPriceElem.innerText.replace('₱', '').trim());
+                const payment = parseFloat(paymentElem.value.trim());
+                const selectedPayment = document.querySelector('input[name="paymentmethod"]:checked').value;
 
-                    Array.from(cartItems).forEach(item => {
-                        const price = parseInt(item.dataset.price) * parseInt(item.dataset.quantity);
-                        InsertProduct(item.dataset.name, parseInt(item.dataset.price));
-                        InsertOrder(salesID, parseInt(item.dataset.quantity), price, item.dataset.name);
+                if (payment >= totalPrice) {
+                    const change = payment - totalPrice;
+                    alert(`Your total order price is: ₱${totalPrice}\nYour payment: ₱${payment}\nChange: ₱${change}`);
+
+                    const now = new Date();
+                    const formattedTime = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+
+                    insertInfo(totalPrice, formattedTime).then(salesID => {
+                        InsertPayment(salesID, selectedPayment, payment, change);
+
+                        Array.from(cartItems).forEach(item => {
+                            const price = parseInt(item.dataset.price) * parseInt(item.dataset.quantity);
+                            InsertProduct(item.dataset.name, parseInt(item.dataset.price));
+                            InsertOrder(salesID, parseInt(item.dataset.quantity), price, item.dataset.name);
+                        });
+
+                        alert("Order confirmed! Stock updated.");
+
+                        // Clear cart
+                        document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
+                        document.getElementById('total-price').innerText = '₱0.00';
+
+                        window.frames[0].postMessage({ type: 'order-confirmed' }, '*');
+
+                        ProductDisplay();
                     });
-
-                    alert("Order confirmed! Stock updated.");
-
-                    // Clear the cart after confirmation
-                    document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
-                    document.getElementById('total-price').innerText = '₱0.00';
-
-                    window.frames[0].postMessage({ type: 'order-confirmed' }, '*');
-
-                    ProductDisplay();
-                });
-            } else {
-                alert(`The payment is not enough.`);
-            }        
+                } else {
+                    alert("The payment is not enough.");
+                }
+            }, 500); // Adjust delay to match CSS transition time
         }
     })
     .catch(error => console.error('Error:', error));
 });
+
 
 
 function insertInfo(Amount, DateTime) {
