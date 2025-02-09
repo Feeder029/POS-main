@@ -3,23 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
     <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+   
 </head>
 <body>
-    <form action="" id="loginform">
-        <div class="container">
-            <h2>LOGIN</h2>
-            <div class="input-container">
-                <input type="text" placeholder="USERNAME" id="username" required>
-                <input type="password" placeholder="PASSWORD" id="password" required>
-                <input type="submit" value="LOGIN" id="submit">
+    <div class="form-box">
+        <form class="form" id="loginform">
+            <span class="title">Login</span>
+            <span class="subtitle">Enter your credentials to continue.</span>
+            <div class="form-container">
+                <input type="text" class="input" id="username" placeholder="Username" required>
+                <input type="password" class="input" id="password" placeholder="Password" required>
             </div>
+            <button type="submit">Login</button>
+        </form>
+        <form class="form hidden" id="signupform">
+            <span class="title">Sign Up</span>
+            <span class="subtitle">Create a new account.</span>
+            <div class="form-container">
+                <input type="text" class="input" id="fullname" placeholder="Full Name" required>
+                <input type="email" class="input" id="email" placeholder="Email" required>
+                <input type="password" class="input" id="newpassword" placeholder="Password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="form-section">
+            <p id="toggle-form">Don't have an account? <a id="signup-link">Sign up</a></p>
         </div>
-    </form>
-
-
-    
-    <script src="login.js"></script>
+    </div>
+    <script src="login.js">
+     
+    </script>
 </body>
 </html>
