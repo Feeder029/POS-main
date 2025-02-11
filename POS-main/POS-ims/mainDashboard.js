@@ -268,6 +268,8 @@ document.getElementById('confirm-order').addEventListener('click', function() {
                         document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
                         document.getElementById('total-price').innerText = '₱0.00';
                         document.getElementById('payment').value = '';
+
+                        floatPanel.classList.remove('active');
                         floatPanel.classList.add("inactive"); 
                         document.querySelector(".payment-container").style.display = "none";
 
