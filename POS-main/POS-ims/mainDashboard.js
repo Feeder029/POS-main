@@ -267,13 +267,16 @@ document.getElementById('confirm-order').addEventListener('click', function() {
                         // Clear cart
                         document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
                         document.getElementById('total-price').innerText = '₱0.00';
+                        document.getElementById('payment').value = '';
+                        floatPanel.classList.add("inactive"); 
+                        document.querySelector(".payment-container").style.display = "none";
 
                         window.frames[0].postMessage({ type: 'order-confirmed' }, '*');
 
                         ProductDisplay();
                     });
                 } else {
-                    alert("The payment is not enough.");
+                    
                 }
             }, 500); // Adjust delay to match CSS transition time
         }

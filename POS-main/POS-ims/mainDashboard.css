@@ -216,6 +216,11 @@ html{
     display: block;
 }
 
+.float-panel.inactive {
+    width: 300px;
+
+}
+
 .cart-container,
 .bot-float {
     width: 300px; 
