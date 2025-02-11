@@ -1,3 +1,5 @@
+const floatPanel = document.querySelector(".float-panel");
+
 document.addEventListener("DOMContentLoaded", function () {
         // Automatically click the "Menu" link
         document.getElementById("toggleMenu").click();
@@ -6,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById('clear-order').addEventListener('click', function() {
     document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
     document.getElementById('total-price').innerText = '$0.00';
+
+    floatPanel.classList.remove('active');
+    floatPanel.classList.add("inactive");
+    document.getElementById('confirm-order').innerText = 'Confirm Order';
 });
 
 // Listen for messages from iframe (menu.html)
@@ -245,7 +251,7 @@ document.getElementById('confirm-order').addEventListener('click', function() {
                 const totalPrice = parseFloat(totalPriceElem.innerText.replace('₱', '').trim());
                 const payment = parseFloat(paymentElem.value.trim());
                 const selectedPayment = document.querySelector('input[name="paymentmethod"]:checked').value;
-
+                document.getElementById('confirm-order').innerText = 'Confirm Payment';
                 if (payment >= totalPrice) {
                     const change = payment - totalPrice;
                     alert(`Your total order price is: ₱${totalPrice}\nYour payment: ₱${payment}\nChange: ₱${change}`);
@@ -268,6 +274,9 @@ document.getElementById('confirm-order').addEventListener('click', function() {
                         document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
                         document.getElementById('total-price').innerText = '₱0.00';
                         document.getElementById('payment').value = '';
+
+                        document.getElementById('confirm-order').innerText = 'Confirm Order';
+                        
 
                         floatPanel.classList.remove('active');
                         floatPanel.classList.add("inactive"); 
