@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <div class="menu-btn">
                                 <button id="subtract">-</button>
-                                <input type="text" value="0" readonly />
+                                <input type="text" value="0" readonly id="item-count"/>
                                 <button id="add">+</button>
                             </div>
                         </div>`;

@@ -12,6 +12,15 @@ document.getElementById('clear-order').addEventListener('click', function() {
     floatPanel.classList.remove('active');
     floatPanel.classList.add("inactive");
     document.getElementById('confirm-order').innerText = 'Confirm Order';
+    document.querySelector(".payment-container").style.display = "none";
+    
+    let itemCountElement = document.getElementById("item-count");
+
+    if (itemCountElement) {
+        itemCountElement.value = ""; // Clear the input field
+    } else {
+        console.error("Element with ID 'item-count' not found.");
+    }
 });
 
 // Listen for messages from iframe (menu.html)
