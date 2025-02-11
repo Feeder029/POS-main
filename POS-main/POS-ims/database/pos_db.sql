@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2025 at 09:29 AM
+-- Generation Time: Feb 11, 2025 at 08:22 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -46,6 +46,15 @@ CREATE TABLE `paymentmethods` (
   `MethodName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `paymentmethods`
+--
+
+INSERT INTO `paymentmethods` (`PayID`, `MethodName`) VALUES
+(1, 'Cash'),
+(2, 'Card'),
+(3, 'Online');
+
 -- --------------------------------------------------------
 
 --
@@ -80,7 +89,8 @@ CREATE TABLE `products` (
 
 CREATE TABLE `sales` (
   `SalesID` int(11) NOT NULL,
-  `TotalAmount` decimal(10,2) NOT NULL
+  `TotalAmount` decimal(10,2) NOT NULL,
+  `Date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -135,7 +145,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `paymentmethods`
 --
 ALTER TABLE `paymentmethods`
-  MODIFY `PayID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PayID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `payments`
