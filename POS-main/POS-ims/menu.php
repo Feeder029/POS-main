@@ -12,7 +12,7 @@
     <nav class="navbar">
         <div class="bot-nav">            
             <div class="category-container">
-                <h3>Categories</h3>
+                <h3>PRODUCTS</h3>
                 <!-- <ul>
                     <li><button>All</button></li>
                     <li><button>cat1</button></li>
