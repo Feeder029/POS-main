@@ -251,7 +251,7 @@ document.getElementById('confirm-order').addEventListener('click', function() {
                 const totalPrice = parseFloat(totalPriceElem.innerText.replace('₱', '').trim());
                 const payment = parseFloat(paymentElem.value.trim());
                 const selectedPayment = document.querySelector('input[name="paymentmethod"]:checked').value;
-                document.getElementById('confirm-order').innerText = 'Confirm Payment';
+                document.getElementById('confirm-order').innerText = 'Checkout';
                 if (payment >= totalPrice) {
                     const change = payment - totalPrice;
                     alert(`Your total order price is: ₱${totalPrice}\nYour payment: ₱${payment}\nChange: ₱${change}`);
