@@ -4,8 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRANSACTIONS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .receipt {
+            width: 300px;
+            border: 1px solid black;
+            padding: 15px;
+            margin: 20px auto;
+            text-align: center;
+            background: #f9f9f9;
+        }
+        .receipt h2 {
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed black;
+        }
+        .item {
+            text-align: left;
+            margin: 5px 0;
+        }
+        .total {
+            font-weight: bold;
+            border-top: 1px dashed black;
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+        
+        #receipt-container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
     <h1>TRANSACTIONS</h1>
+
+    <div id="receipt-container"></div>
+    <script src="transaction.js"></script>
 </body>
 </html>

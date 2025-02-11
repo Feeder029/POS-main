@@ -264,8 +264,7 @@ document.getElementById('confirm-order').addEventListener('click', function() {
 
                         Array.from(cartItems).forEach(item => {
                             const price = parseInt(item.dataset.price) * parseInt(item.dataset.quantity);
-                            InsertProduct(item.dataset.name, parseInt(item.dataset.price));
-                            InsertOrder(salesID, parseInt(item.dataset.quantity), price, item.dataset.name);
+                            InsertProduct(item.dataset.name, parseInt(item.dataset.price),item,salesID);
                         });
 
                         alert("Order confirmed! Stock updated.");
@@ -319,7 +318,7 @@ function insertInfo(Amount, DateTime) {
     .catch(error => console.error('Error:', error));
 }
 
-async function InsertProduct(product, price) {
+async function InsertProduct(product, price, item, salesID) {
     let tof = false;
 
     try {
@@ -353,6 +352,9 @@ async function InsertProduct(product, price) {
     } catch (error) {
         console.error('Error:', error); // Handle errors
     }
+
+
+    InsertOrder(salesID, parseInt(item.dataset.quantity), price, item.dataset.name);
 }
 
 function InsertPayment(SID,PMID,AP,CG){
@@ -374,7 +376,7 @@ function InsertPayment(SID,PMID,AP,CG){
 }
 
 async function InsertOrder(SID, Q, UP, Name) {
-    let PID = 1;
+    let PID = null;
 
     // Wait for the first fetch to complete and get the data
     const response = await fetch('posapi.php');
