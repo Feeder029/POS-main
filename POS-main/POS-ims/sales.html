@@ -4,8 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SALES</title>
+    <link rel="stylesheet" href="sales.css">
+    
 </head>
 <body>
-    <h1>SALES</h1>
+
+    <div class="salesLabel">
+        <h1>Sales</h1>
+    </div>
+
+    <div class="containertop">
+    <div class="boxtop">
+        <div class="box-container1">
+            <div class="box">
+                <label for="">Total Sales</label>
+                <p>$123,456.00</p>
+            </div>
+                <div class="box">
+                <label for="">Total Orders</label>
+                <p>$123,456.00</p>
+            </div>
+        </div>
+        <div class="box-container2">
+            <div class="box">
+                <label for="">Top Product</label>
+                <p>$123,456.00</p>
+            </div>
+            <div class="box">
+                <label for="">i dont know</label>
+                <p>$123,456.00</p>
+            </div>
+        </div>
+
+        <div class="sales-container">
+            <canvas id="bar"></canvas>   <!-- sales chart -->       
+        </div>
+    </div>
+    </div>
+
+    <div class="containerbottom">
+      <div class="boxbottom">
+        <div class="historybox"> 
+           Recent Activity
+
+           <table class="sales-table">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>nega </td>
+                <td>10</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>maniega</td>
+                <td>10</td>
+                <td>10</td>
+            </tr>
+            
+        </table>
+        </div>
+       
+    </div>
+    <div class="donutchart">
+        <canvas id="doughnut"></canvas>   <!-- donut chart -->
+    </div>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="doughnutChart.js"></script>
+    <script src="barChart.js"></script>
 </body>
 </html>

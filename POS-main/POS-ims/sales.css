@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+
+
+}
+.sales-container{
+width: 70vh;
+height: 40vh;
+background-color: #fff;
+margin: 20px 0px 0px 0px;
+border-radius:13px ;
+
+}
+.boxtop{
+    
+    display: flex;
+    flex-direction: row; 
+    padding-top: 20px;
+    
+}
+
+.box{
+    background-color: seagreen;
+    border: 1px;
+    width: 30vh;
+    height: 20vh;
+    margin:  20px 20px 0px 0px;
+    border-radius:13px ;
+    padding: 20px;   
+}
+.box p {
+    font-size:xx-large;
+}
+.containertop{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+    
+}
+.containerbottom{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 44vh;
+}
+
+.historybox{
+    background-color: skyblue;
+    width: 90vh;
+    height: 40vh;
+    padding: 20px;
+    margin: 0px 20px 20px 0px;
+    border-radius: 13px;
+}
+
+.donutchart{
+width: 40vh;
+height: 40vh;
+background-color: #fff;
+border-radius:13px ;
+padding: 30px;
+
+}
+
+.salesLabel{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+
+}
+.salesLabel h1{
+padding-left: 5vh;
+}
+/* Recent Activity */
+.sales-table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border-radius: 13px;
+    overflow: scroll;
+   
+}
+.sales-table th, .sales-table td {
+    padding: 12px 20px; 
+    text-align: left; 
+}
+.sales-table th {
+    background-color: #e6e6e6; 
+    font-weight: bold; 
+    color: #333; 
+    
+}
+.sales-table tr:nth-child(even) {
+    background-color: #eeeeee; 
+}
+
