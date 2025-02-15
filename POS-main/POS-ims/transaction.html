@@ -8,11 +8,24 @@
         body {
             font-family: Arial, sans-serif;
         }
+        .transaction-list {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .transaction {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
         .receipt {
+            display: none;
             width: 300px;
             border: 1px solid black;
             padding: 15px;
-            margin: 20px auto;
+            margin: 10px auto;
             text-align: center;
             background: #f9f9f9;
         }
@@ -31,20 +44,24 @@
             margin-top: 10px;
             padding-top: 10px;
         }
-        
-        #receipt-container{
+        .Container{
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
+
         }
     </style>
 </head>
 <body>
-    <h1>TRANSACTIONS</h1>
+    <h1 style="text-align: center;">TRANSACTIONS HISTORY</h1>
+
+    <div class="Container">
+
+    <div class="transaction-list" id="transaction-list"></div>
 
     <div id="receipt-container"></div>
+</div>
     <script src="transaction.js"></script>
 </body>
 </html>
