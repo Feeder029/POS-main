@@ -5,100 +5,123 @@
     font-family: sans-serif;
 }
 body{
-
-
+height: 100vh;
 }
-.sales-container{
-width: 70vh;
-height: 40vh;
-background-color: #fff;
-margin: 20px 0px 0px 0px;
-border-radius:13px ;
-
-}
-.boxtop{
-    
-    display: flex;
-    flex-direction: row; 
-    padding-top: 20px;
-    
-}
-
-.box{
+.header{
+    height: 5vh;
+    width: 100%;
     background-color: seagreen;
-    border: 1px;
-    width: 30vh;
-    height: 20vh;
-    margin:  20px 20px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+.search-container{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding-left: 2vh;
+   
+}
+.search-container button{
+    font-size: medium;
+    background-color: #eeeeee;
+    padding-right: 18%;
+    padding-left: 1%;
+    height: 60%;
+    border-radius: 6px;
+    border: none;
+
+}
+.profile-container{
+    display: flex;
+    background-color: grey;
+    width: 10%;
+    gap: 1vh;
+    padding-right: 2vh;
+    align-items: center;
+    justify-content: end;
+}
+.profile-container h2{
+    font-size: medium;
+}
+.circle-logo{
+
+    background-color: RED;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+}
+.circle-logo img{
+    background-color: #eeeeee;
+    border-radius: 50%;
+}
+.box-container{
+background-color: skyblue;
+display: flex;
+justify-content: space-around;
+align-items: center;
+flex-direction: row;
+height: 30vh;
+padding: 2vh;
+gap: 2vh;
+
+}
+.date-header{
+    background-color: red;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 2vh;
+}
+.date-header h2{
+    font-size: medium;
+    background-color: #eeeeee;
+    padding-left:1%;
+    padding-right:1%;
+
+}
+.box{
+    background-color: rgb(117, 196, 151);
+    width: 25%;
+    height: 100%;
     border-radius:13px ;
-    padding: 20px;   
+    padding: 20px; 
 }
 .box p {
     font-size:xx-large;
 }
-.containertop{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 50vh;
-    
-}
-.containerbottom{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 44vh;
-}
-
-.historybox{
-    background-color: skyblue;
-    width: 90vh;
-    height: 40vh;
-    padding: 20px;
-    margin: 0px 20px 20px 0px;
-    border-radius: 13px;
-}
-
-.donutchart{
-width: 40vh;
-height: 40vh;
-background-color: #fff;
-border-radius:13px ;
-padding: 30px;
-
-}
-
 .salesLabel{
     width: 100%;
     height: 6vh;
     display: flex;
     align-items: center;
-
 }
 .salesLabel h1{
 padding-left: 5vh;
 }
 /* Recent Activity */
-.sales-table {
-    width: 100%;
-    border-collapse: collapse; 
-    margin-top: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+.recent-activity{
+    background-color: rgb(45, 51, 53);
+    width: 30%;
+    height: 100%;
+    padding: 20px;
     border-radius: 13px;
-    overflow: scroll;
    
 }
-.sales-table th, .sales-table td {
-    padding: 12px 20px; 
-    text-align: left; 
-}
-.sales-table th {
-    background-color: #e6e6e6; 
-    font-weight: bold; 
-    color: #333; 
-    
-}
-.sales-table tr:nth-child(even) {
-    background-color: #eeeeee; 
+.sales-container{
+    width: 70%;
+    height: 100%;
+    background-color: #311111;
+    border-radius:13px ;
 }
 
+.activity-sales-container{
+background-color: yellow;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;
+height: 60vh;
+padding: 0 2vh 2vh 2vh;
+gap: 2vh;
+}

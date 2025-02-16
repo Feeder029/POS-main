@@ -70,7 +70,7 @@ html{
     position: fixed;
     top: 0;
     left: 0;
-    width: 220px;
+    width: 200px;
     height: 100%;
     background-color: #2d2e29;
     z-index: 10;
@@ -128,7 +128,6 @@ html{
 
 .iframe-container iframe{
     position:fixed;
-
     left: 200px;
     height: 100vh;
     width: calc(100% - 200px);

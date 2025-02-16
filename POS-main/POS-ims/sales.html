@@ -9,69 +9,53 @@
 </head>
 <body>
 
-    <div class="salesLabel">
-        <h1>Sales</h1>
+    <div class="header">
+        <div class="search-container">
+            <button>Search</button>
+        </div>
+      <div class="profile-container">
+        <h2>Lagman</h2>
+        <div class="circle-logo"> 
+            <img src="#" alt="#">
+        </div>
+      </div>
     </div>
-
-    <div class="containertop">
-    <div class="boxtop">
-        <div class="box-container1">
+    <div class="date-header">
+        <h1>Sales</h1>
+        <h2>Feb 12, 2025</h2>
+    </div>
+    <div class="box-container">
+       
             <div class="box">
                 <label for="">Total Sales</label>
                 <p>$123,456.00</p>
             </div>
-                <div class="box">
+            <div class="box">
                 <label for="">Total Orders</label>
                 <p>$123,456.00</p>
             </div>
-        </div>
-        <div class="box-container2">
             <div class="box">
                 <label for="">Top Product</label>
                 <p>$123,456.00</p>
             </div>
             <div class="box">
-                <label for="">i dont know</label>
+                <label for="">future features</label>
                 <p>$123,456.00</p>
             </div>
-        </div>
+    </div>
 
+    <div class="activity-sales-container">
+        <div class="recent-activity"> 
+            Recent Activity  
+        </div>
         <div class="sales-container">
             <canvas id="bar"></canvas>   <!-- sales chart -->       
         </div>
-    </div>
-    </div>
-
-    <div class="containerbottom">
-      <div class="boxbottom">
-        <div class="historybox"> 
-           Recent Activity
-
-           <table class="sales-table">
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Total</th>
-            </tr>
-            <tr>
-                <td>nega </td>
-                <td>10</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>maniega</td>
-                <td>10</td>
-                <td>10</td>
-            </tr>
-            
-        </table>
-        </div>
        
-    </div>
-    <div class="donutchart">
-        <canvas id="doughnut"></canvas>   <!-- donut chart -->
-    </div>
-  </div>
+      
+    </div>   
+   
+ 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="doughnutChart.js"></script>
