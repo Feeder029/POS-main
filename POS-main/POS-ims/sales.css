@@ -77,7 +77,7 @@ gap: 2vh;
     font-size: medium;
     background-color: #4B70F5;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius:6px;
     padding: 8px 20px 8px 20px;
     border: none;
 
@@ -168,7 +168,7 @@ flex-direction: row;
 .sales-container-label button{
     font-size: medium;
     background-color: #eeeeee;
-    border-radius: 5px;
+    border-radius: 6px;
     padding: 8px 20px 8px 20px;
     border: none;
 }

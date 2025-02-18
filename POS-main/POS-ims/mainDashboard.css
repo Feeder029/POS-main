@@ -1,102 +1,86 @@
 body{
-    background-color:rgb(217, 217, 217);
+    background-color:#d1adad;
     overflow-x: hidden;
 }
-
 html{
     overflow-x: hidden;
-  
 }
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
 .side-panel ul{
-    height: 700px;
-   
+    height: 700px;  
 }
-
 .side-panel a{
     text-decoration: none;
     display: flex;
     align-items: center;
     font-size: 1.2rem;
-    color: white;
+    color: black;
     width: 100%;
     padding: 5px;
 }
-
 .side-panel i{
-    color: aliceblue;
+    color: black;
 }
-
 .side-panel li:hover a, li:hover i {
-    color: #414141;
-
+    color: #ffffff;
 }
-
 .side-panel li{
     list-style:none;
     margin-top: 5px;
     padding-left: 15px;
     transition: transform 0.2s ease;
     border-radius: 15px;
-    margin: 10px 20px;
-       
+    margin: 10px 20px;     
 }
 
 .side-panel li:hover{
-    background-color: #EEEEEE;
+    background-color: #4B70F5;
     border-radius: 15px;
 }
-
 #logout {
     margin-top: 250px;  
     background-color: #EEEEEE;
 }
-
 #logout a{
     margin-left: -10px;
-    color: #000000;
     justify-content: center;
 }
-
-
+.side-panel-border{
+    border-right: 2px solid #cecece;
+    width: 100%;
+    height: 100%;
+}
 .side-panel{
     position: fixed;
     top: 0;
     left: 0;
     width: 200px;
     height: 100%;
-    background-color: #2d2e29;
+    background-color: #ffffff;
     z-index: 10;
     overflow-x: hidden;
     scrollbar-width: none;
     display: flex;
     flex-direction: column;
+   padding: 2vh 0 2vh 0;
+    
 }
-
 .side-panel ul {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
-
 .logo{
     margin: 10px 10px 0 10px;
     justify-items: center;
     height: 90px;
     padding: 20px;
 }
-
-.logo h2{
-    color: burlywood;
-}
-
 #navbar {
     background-color: rgb(65, 116, 47);
     padding: 20px;
@@ -107,34 +91,27 @@ html{
     display: flex;
     align-items: center;
 }
-
 #navbar ul {
     display: flex;
     gap: 20px;
     padding-left: 200px;
 }
-
 #navbar li {
     list-style: none;
     color: white;
     font-size: 18px;
 } 
-
-
 .iframe-container{
     text-align: center;
     background-color:  #7d82c0;
 }
-
 .iframe-container iframe{
     position:fixed;
     left: 200px;
     height: 100vh;
     width: calc(100% - 200px);
     border: none;
-
 }
-
 .float-panel{
     margin: 30px;
     background-color: #FBFBFB;
@@ -147,7 +124,6 @@ html{
     padding: 15px;
     color: black;
     display: flex;
-    transition: width 0.5s ease-in-out; 
     overflow: hidden;
     flex-direction: row;
     align-items: flex-start;
@@ -163,12 +139,10 @@ html{
     list-style-type: none;
     padding: 0;
 }
-
 .cart-container, .bot-float {
     width: 300px; 
     flex-shrink: 0; 
 }
-
 .bot-float {
 
     text-align: center;
@@ -200,17 +174,14 @@ html{
     align-items: flex-start;
     
 }
-
 .float-panel.active .cart-container,
 .float-panel.active .bot-float {
     margin-left: auto;
 }
-
 .float-panel .payment-container {
     flex-grow: 1;
     display: none;
 }
-
 .float-panel.active .payment-container {
     display: block;
 }
@@ -219,16 +190,13 @@ html{
     width: 325px;
 
 }
-
 .cart-container,
 .bot-float {
     width: 300px; 
     flex-shrink: 0; 
     align-self: flex-end; 
 }
-
 /* payment */
-
 .payment-container {
     width: 100%;
     background: #f9f9f9;
@@ -237,14 +205,12 @@ html{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: none;
 }
-
 .payment-container h6 {
     font-size: 1.2rem;
     font-weight: bold;
     color: #003135;
     margin-bottom: 10px;
 }
-
 .total {
     width: 100%;
     padding: 10px;
@@ -254,13 +220,11 @@ html{
     text-align: right;
     background: white;
 }
-
 .numbtns {
     display: flex;
     justify-content: space-between;
     margin: 5px 0;
 }
-
 .num {
     width: 30%;
     padding: 15px;
@@ -272,11 +236,9 @@ html{
     cursor: pointer;
     transition: 0.2s;
 }
-
 .num:hover {
     background: #005a5a;
 }
-
 .payment-method {
     display: flex;
     justify-content: space-between;
@@ -284,11 +246,9 @@ html{
     gap: 10px;
     margin-top: 15px;
 }
-
 .payment-method input {
     display: none; /* Hide default radio buttons */
 }
-
 .payment-method label {
     flex: 1; /* Make each label take equal space */
     display: flex; /* Enable flexbox for centering */
@@ -307,17 +267,14 @@ html{
     background: #e0e0e0;
     text-align: center;
 }
-
 .payment-method label:hover {
     background: #d0d0d0;
 }
-
 .payment-method input:checked + label {
     background: green;
     color: white;
     border: 2px solid #00ac2b;
 }
-
 @media (max-width: 500px) {
     .payment-method {
         flex-direction: column;
