@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 receipt.innerHTML = `
                     <h2>Receipt</h2>
                     <p><strong>Date:</strong> ${item.Date}</p>
-                    <div class="item">${item.Products.replace(/,/g, '<br>')}</div>
+                    <div class="item">
+                        <p> ${item.ProductID}: ${item.Products.replace(/,/g, '<br>')} </p>
+                    </div>
                     <p class="total">Total: PHP ${item.TotalAmount}</p>
                     <p><strong>Payment Method:</strong> ${item.PaymentMethod}</p>
                     <p><strong>Amount Paid:</strong> PHP ${item.AmountPaid}</p>
