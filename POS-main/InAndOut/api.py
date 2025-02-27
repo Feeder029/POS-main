@@ -21,8 +21,6 @@ def get_items():
         return jsonify(items)
     except Exception as e:
         return jsonify({"error": str(e)}), 500 
-    
-
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)  # Running on Port 5000

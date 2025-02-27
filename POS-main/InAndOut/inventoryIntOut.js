@@ -10,7 +10,7 @@ document.getElementById("addProductForm").addEventListener("submit", function(ev
 
     console.log("Sending data:", JSON.stringify(productData));
 
-    fetch("http://localhost/pos-main/POS-main/InAndOut/addNewItem.php", {
+    fetch("http://127.0.0.1:5000/add-product", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -19,6 +19,8 @@ document.getElementById("addProductForm").addEventListener("submit", function(ev
     })
     .then(response => response.json())
     .then(data => {
+        console.log("Response from Python:", data);
+        alert(data.message); 
         console.log("Response:", data);
 
         if (data.message) {
