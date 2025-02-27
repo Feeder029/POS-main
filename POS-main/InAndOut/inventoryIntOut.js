@@ -10,6 +10,7 @@ document.getElementById("addProductForm").addEventListener("submit", function(ev
 
     console.log("Sending data:", JSON.stringify(productData));
 
+    // Step 1: Send data to Flask API
     fetch("http://127.0.0.1:5000/add-product", {
         method: "POST",
         headers: {
@@ -20,54 +21,44 @@ document.getElementById("addProductForm").addEventListener("submit", function(ev
     .then(response => response.json())
     .then(data => {
         console.log("Response from Python:", data);
-        alert(data.message); 
-        console.log("Response:", data);
 
         if (data.message) {
-            alert(data.message); // Show success message
-            // Call the function when needed
-            addProduct();
+            alert("Python API: " + data.message); // Show success message
 
+            // Step 2: After Flask API, send data to PHP script
+            return sendToPHP(productData);
+        } else {
+            throw new Error(data.error || "Unknown error from Python API");
+        }
+    })
+    .then(data => {
+        console.log("Response from PHP:", data);
+        if (data.success) {
+            alert("PHP: " + data.message);
 
             // Reset form fields
             event.target.reset();
 
             // Close the form
-            document.getElementById("add-new-container").hidePopover(); 
+            document.getElementById("add-new-container").hidePopover();
         } else {
-            alert(data.error); // Show error if any
+            alert("PHP Error: " + data.error);
         }
     })
     .catch(error => console.error("Error:", error));
 });
 
-function addProduct() {
-    const productData = {
-        name: "Sample Product",
-        price: 99.99,
-        quantity: 10
-    };
-
-    fetch("additem.php", {
+// Function to send data to PHP script
+function sendToPHP(productData) {
+    return fetch("http://localhost/pos-main/POS-main/InAndOut/addNewItem.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(productData)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Response from PHP:", data);
-
-        if (data.success) {
-            alert("Product successfully added to the database!");
-        } else {
-            alert("PHP Error: " + data.error);
-        }
-    })
-    .catch(error => console.error("PHP Error:", error));
+    .then(response => response.json());
 }
-
 
 
 document.getElementById("start-scan").addEventListener("click", function() {

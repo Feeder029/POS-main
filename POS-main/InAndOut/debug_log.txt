@@ -1,0 +1,13 @@
+Array
+(
+    [category] => 1
+    [brand] => 3
+    [product_name] => GABETLOG
+    [product_model] => Long
+    [description] => asdasdasdasd
+    [quantity] => 99
+    [unit] => Inch
+    [base_price] => 69
+    [product_tax] => 7
+    [supplier] => 1
+)
