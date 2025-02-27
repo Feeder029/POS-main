@@ -1,0 +1,9 @@
+#add-new-container{
+    max-height: 300px;
+    max-width: 350px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}

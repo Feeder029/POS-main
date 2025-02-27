@@ -32,6 +32,7 @@ def generate_qrcode(data, folder="POS-main/POS-ims/qrcodes"):
     print(f"QR Code saved as {filepath}")
 
 def main():
+    
     if len(sys.argv) < 2:
         print("No data received from PHP.")
         return
