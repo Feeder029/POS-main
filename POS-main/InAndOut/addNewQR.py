@@ -37,21 +37,7 @@ def generate_qrcode(data, qr_filename):
     qr.save(qr_filename)
     print(f"QR Code saved: {qr_filename}")
 
-@app.route("/add-product", methods=["POST"])
-def add_product():
-    try:
-        product_data = request.json
-        print("Received data:", product_data)
 
-        qr_filename = save_to_csv(product_data)
-        generate_qrcode(str(product_data), qr_filename)
-
-        response = jsonify({"message": "Product added successfully!", "qr_code": qr_filename})
-        response.headers.add("Access-Control-Allow-Origin", "*")  # Allow all origins
-        return response
-    
-    except Exception as e:
-        return jsonify({"error": str(e)})
 
 if __name__ == "__main__":
     app.run(debug=True)

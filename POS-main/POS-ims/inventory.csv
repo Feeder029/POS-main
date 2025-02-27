@@ -13,7 +13,7 @@
 2,Bike,1
 1,"Product 101",1
 1,"Product 101",1
-2,Bike,1
+1,"Product 101",1
 1,"Product 101",1
 1,"Product 101",1
 1,"Product 101",1
@@ -56,3 +56,5 @@
 4,"Product 103",1
 4,"Product 103",1
 2,Bike,1
+2,Bike,1
+4,"Product 103",1

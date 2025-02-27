@@ -10,9 +10,16 @@
     <button popovertarget="add-container">ADD PRODUCT</button>
 
     <div id="add-container" popover>
-        <button>ADD PRODUCT AMOUNT</button>
+        <button popovertarget="add-product">ADD PRODUCT AMOUNT</button>
         <button popovertarget="add-new-container">ADD NEW PRODUCT</button>
     </div>
+
+    <div id="add-product" popover>
+        <h1>SCAN THE QR</h1>
+        <button id="start-scan">Start QR Scan</button>
+        <p id="qr-result">Waiting for scan...</p>
+    </div>
+
 
     <div id="add-new-container" popover>
         <form id="addProductForm">
@@ -63,6 +70,6 @@
         <button popovertarget="add-new-container" popovertargetaction="hide">CLOSE</button>
     </div>
 
-    <script src="inventoryIntOut.js"></script>
+    <script src="inventoryIntOut.js?v=1.0.2"></script>
 </body>
 </html>
