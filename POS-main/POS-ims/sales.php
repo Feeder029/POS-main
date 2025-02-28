@@ -79,7 +79,6 @@ echo "Month 1: ₱" . number_format($predicted_month_1, 2) . "<br>";
 echo "Month 2: ₱" . number_format($predicted_month_2, 2) . "<br>";
 echo "Month 3: ₱" . number_format($predicted_month_3, 2) . "<br>";
 } else {
-    echo  "Help";
     $last_sales = $sales_data[0]; // Get the only available sales amount
     $growth_rate = 0.05; // Assume a 5% monthly increase
 

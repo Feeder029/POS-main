@@ -21,13 +21,14 @@
         </div>
     </nav>
 
-
+    <div class="menu-n-cart-container">
         <div class="menu-container" id="menu"> 
             
-
-    
         </div>
-
+        <div class="cart-containers">
+            cart here <!-- cart here-->
+        </div>
+    </div>
     <script src="menu.js?v=1.0.2"></script>
 </body>
 </html>
