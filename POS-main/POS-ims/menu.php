@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="menu.css?v=1.10">
+=======
+    <link rel="stylesheet" href="menu.css?v=1.0.2">
+>>>>>>> Stashed changes
     <title>Product Menu</title>
 </head>
 <body>

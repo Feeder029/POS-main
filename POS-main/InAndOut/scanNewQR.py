@@ -1,22 +1,19 @@
 import cv2
 import pandas as pd
 import numpy as np
+import requests
 from pyzbar.pyzbar import decode
 
 def display_output(df):
-    output_window = "QR Code Data"
-    text = df.to_string(index=False)
-    blank_image = np.ones((1500, 1800, 3), dtype=np.uint8) * 255
-    y0, dy = 50, 30
-    
-    for i, line in enumerate(text.split('\n')):
-        y = y0 + i * dy
-        cv2.putText(blank_image, line, (50, y), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
-    
-    cv2.imshow(output_window, blank_image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    exit()
+    product_name = df["Data"].iloc[0]  # Assuming the first column contains the product name
+    api_url = "http://localhost:5000/api/scanned-data"  # Change if needed
+
+    # Send scanned data to the API
+    try:
+        response = requests.post(api_url, json={"product_name": product_name})
+        print(response.json())
+    except Exception as e:
+        print("Error sending data to API:", e)
 
 def scan_qrcode_from_camera():
     cap = cv2.VideoCapture(0) #open camera

@@ -1,13 +1,13 @@
 Array
 (
-    [category] => 1
-    [brand] => 3
-    [product_name] => GABETLOG
-    [product_model] => Long
-    [description] => asdasdasdasd
-    [quantity] => 99
-    [unit] => Inch
-    [base_price] => 69
-    [product_tax] => 7
-    [supplier] => 1
+    [category] => 3
+    [brand] => 1
+    [product_name] => HATDOG
+    [product_model] => asdads
+    [description] => 1111
+    [quantity] => 10
+    [unit] => Kg
+    [base_price] => 5
+    [product_tax] => 6
+    [supplier] => 2
 )

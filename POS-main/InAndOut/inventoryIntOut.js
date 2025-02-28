@@ -26,6 +26,7 @@ document.getElementById("addProductForm").addEventListener("submit", function(ev
             alert("Python API: " + data.message); // Show success message
 
             // Step 2: After Flask API, send data to PHP script
+            document.getElementById("add-new-container").hidePopover();
             return sendToPHP(productData);
         } else {
             throw new Error(data.error || "Unknown error from Python API");
@@ -72,3 +73,59 @@ document.getElementById("start-scan").addEventListener("click", function() {
         document.getElementById("qr-result").textContent = "Failed to start scanning.";
     });
 });
+
+function updateProductName() {
+    fetch("http://localhost:5000/api/get-scanned-data")
+    .then(response => response.json())
+    .then(data => {
+        console.log("Received Data:", data);
+
+        if (data.product_name) {
+            document.querySelector("#add-quantity h1").textContent = data.product_name;
+        } else {
+            console.error("Error: product_name not found in response.");
+        }
+    })
+    .catch(error => console.error("Error fetching scanned data:", error));
+
+
+}
+
+// Refresh the product name every 2 seconds
+setInterval(updateProductName, 2000);
+console.log("Product Name:", data.product_name);
+
+function updateQuantity() {
+    let productName = document.getElementById("product-name").textContent; // Get product name
+    let quantity = document.getElementById("add-quantity-input").value; // Get input value
+
+    if (!quantity || isNaN(quantity) || quantity <= 0) {
+        alert("Please enter a valid quantity.");
+        return;
+    }
+
+    let data = {
+        product_name: productName,
+        quantity: parseInt(quantity)
+    };
+
+    fetch("http://localhost/pos-main/POS-main/InAndOut/updateQuantity.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message);
+            document.getElementById("add-quantity-input").value = ""; // Clear input
+        } else {
+            alert("Error: " + data.error);
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+}

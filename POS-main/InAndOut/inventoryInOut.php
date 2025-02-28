@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INVENTORY IN & OUT</title>
-    <link rel="stylesheet" href="inventoryInOut.css">
+    <link rel="stylesheet" href="inventoryInOut.css?v=1.0.2">
 </head>
 <body>
     <button popovertarget="add-container">ADD PRODUCT</button>
@@ -18,6 +18,13 @@
         <h1>SCAN THE QR</h1>
         <button id="start-scan">Start QR Scan</button>
         <p id="qr-result">Waiting for scan...</p>
+    </div>
+
+    <div id="add-quantity">
+        <h1 id="product-name">ITEM NAME</h1>
+        <h1>ADD QUANTITY</h1>
+        <input type="number" name="add-quantity-input" id="add-quantity-input">
+        <button onclick="updateQuantity()">ADD</button> <!-- Call JS function -->
     </div>
 
 

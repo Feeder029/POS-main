@@ -86,6 +86,24 @@ def add_product():
     except Exception as e:
         return jsonify({"error": str(e)})
 
+scanned_data = {"product_name": ""}  # Store the last scanned product
+
+@app.route('/api/scanned-data', methods=['POST'])
+def receive_scanned_data():
+    global scanned_data
+    data = request.json
+    try:
+        # Parse the JSON object properly
+        product_info = eval(data.get("product_name", "{}"))  # Convert string to dictionary safely
+        scanned_data["product_name"] = product_info.get("product_name", "")  # Extract only product_name
+    except:
+        scanned_data["product_name"] = ""  # Handle errors gracefully
+
+    return jsonify({"message": "Scanned data received successfully!"})
+
+@app.route('/api/get-scanned-data', methods=['GET'])
+def get_scanned_data():
+    return jsonify(scanned_data)
 
 # ---------------------- RUN THE FLASK SERVER ---------------------- #
 if __name__ == "__main__":
