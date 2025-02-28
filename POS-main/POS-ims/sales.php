@@ -12,6 +12,20 @@ if($conn->connect_error){
     die("Connection failed: " . $conn->connect_error);
 }
 
+
+$sql_order = "SELECT COUNT(`SalesID`) AS ORDERS FROM `sales` WHERE MONTH(Date) = MONTH(CURDATE())";
+
+$result_order = $conn->query($sql_order);
+
+$order;
+
+if ($result_order->num_rows > 0) {
+    while ($row_order = $result_order->fetch_assoc()) {
+            $order = $row_order['ORDERS'];
+} 
+} 
+
+
 $sql2 ="SELECT SUM(TotalAmount) as Amount
 FROM sales s
 where date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH);";
@@ -25,7 +39,6 @@ $sales;
 if ($result2->num_rows > 0) {
     while ($row2 = $result2->fetch_assoc()) {
             $sales = $row2['Amount'];
-    
 } 
 } 
 
@@ -67,8 +80,8 @@ if ($result2->num_rows > 0) {
 
             </div>
             <div class="box">
-                <label for="">Total Orders</label>
-                <p>$123,456.00</p>
+                <label for="">Total Orders of the Month</label>
+                <p><?php echo $order ?></p>
             </div>
             <div class="box">
                 <label for="">Items Sales of the Month</label>
@@ -117,7 +130,7 @@ if ($result2->num_rows > 0) {
 
         <div class="sales-container">
             <div class="sales-container-label">
-                <h1>Next Month's Item Forecast</h1>
+                <h1>Forecasted Stock for Next Month</h1>
             </div>    
             <div class="graph">
             <canvas id="Item_Forecast"></canvas>     
@@ -129,7 +142,7 @@ if ($result2->num_rows > 0) {
  
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Load Chart.js first -->
     
-    <script src="reports.js?v=1.1"></script>
+    <script src="reports.js?v=1.2"></script>
 
 
     <script src="doughnutChart.js"></script>

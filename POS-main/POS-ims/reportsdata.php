@@ -71,7 +71,7 @@ while ($row = $monthlyresult->fetch_assoc()){
 
 $Forecastsql ="SELECT *, DATE_FORMAT(Date,'%Y-%m') as Month, SUM(TotalAmount) as Amount
 FROM sales s
-where date >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)
+where date >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
 group by month
 order by month;";
 
@@ -146,10 +146,81 @@ while ($row = $BP_result->fetch_assoc()){
     $BP_Sales[] = (float) $row['Total_Sales'];
 }
 
-//Items Forecast
+// Items Forecast Query
+$ItemForecast = "SELECT 
+    p.ProductID,
+    p.ProductName,
+    DATE_FORMAT(s.Date, '%Y-%m') AS Month,
+    SUM(o.Quantity) AS TotalQuantity
+FROM 
+    orders o
+JOIN 
+    sales s ON o.SalesID = s.SalesID
+JOIN 
+    products p ON o.ProductID = p.ProductID
+GROUP BY 
+    p.ProductID, Month
+ORDER BY 
+    p.ProductID, Month;";
 
+$ItemForecast_Res = $conn->query($ItemForecast);
 
+// Organize data per product
+$products = [];
 
+while ($row = $ItemForecast_Res->fetch_assoc()) {
+    $productId = $row['ProductID'];
+    $productName = $row['ProductName'];
+    $month = $row['Month'];
+    $totalQuantity = $row['TotalQuantity'];
+
+    if (!isset($products[$productId])) {
+        $products[$productId] = ['name' => $productName, 'sales' => []];
+    }
+
+    $products[$productId]['sales'][] = ['month' => $month, 'quantity' => $totalQuantity];
+}
+
+// Function to calculate Linear Regression and forecast next month's stock
+function forecast_stock($salesData) {
+    $n = count($salesData);
+    if ($n < 2) return null; // Need at least 2 months of data
+
+    $sumX = 0; $sumY = 0; $sumXY = 0; $sumXX = 0;
+
+    for ($i = 0; $i < $n; $i++) {
+        $x = $i + 1; // Convert months into numerical sequence
+        $y = $salesData[$i]['quantity'];
+
+        $sumX += $x;
+        $sumY += $y;
+        $sumXY += $x * $y;
+        $sumXX += $x * $x;
+    }
+
+    // Compute slope (m) and intercept (b)
+    $m = ($n * $sumXY - $sumX * $sumY) / ($n * $sumXX - $sumX * $sumX);
+    $b = ($sumY - $m * $sumX) / $n;
+
+    // Predict next month (n + 1)
+    $nextMonthIndex = $n + 1;
+    return round($m * $nextMonthIndex + $b);
+}
+
+// Forecast for each product
+$PP_Name = [];
+$PP_Amount = [];
+
+foreach ($products as $productId => $product) {
+    $predictedStock = forecast_stock($product['sales']);
+
+    if($predictedStock==null){
+
+    } else {
+        $PP_Name[] = $product['name'];
+        $PP_Amount[] = $predictedStock !== null ? $predictedStock : 0;
+    }
+}
 
 $data = [
     "dates" => $date,
@@ -163,6 +234,8 @@ $data = [
     "PM_Sales" => $sales_data,
     "BP_Name" => $BP_Name, 
     "BP_Sales" => $BP_Sales,
+    "PP_Name" => $PP_Name,
+    "PP_Amount" => $PP_Amount
     
 ];
 

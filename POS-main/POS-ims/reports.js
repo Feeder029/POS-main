@@ -103,5 +103,30 @@ fetch('reportsdata.php')
     });  
 
 
+    //Forecast Item Charts
+    var myLineChart = new Chart(ItemForecast,{
+        type:'bar',
+        data:{
+            labels: data.PP_Name,
+            datasets: [{
+                label: 'Monthly Sales',
+                data: data.PP_Amount,
+                fill: true,
+                tension: 0.3,
+                backgroundColor : 'rgb(48, 241, 255)',
+            }]
+        }, 
+        options: {
+            responsive: true,
+            scales:{
+                y:{
+                    beginAtZero: true                   
+                }
+            }
+        }
+    });  
+
+
+
 })
 .catch(error => console.error("Error fetching data:", error));
