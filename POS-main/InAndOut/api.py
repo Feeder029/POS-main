@@ -111,6 +111,30 @@ def reset_scanned_data():
     scanned_data = {"product_name": ""}  # Clear the last scanned product
     return jsonify({"message": "Scanned data reset successfully!"})
 
+@app.route('/api/check-item', methods=['GET'])
+def check_item():
+    product_name = request.args.get("name", "")
+
+    if not product_name:
+        return jsonify({"error": "Missing product name"}), 400
+
+    try:
+        db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="ims_db"
+        )
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM ims_product WHERE pname = %s", (product_name,))
+        result = cursor.fetchone()
+        db.close()
+
+        return jsonify({"exists": result[0] > 0})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 # ---------------------- RUN THE FLASK SERVER ---------------------- #
 if __name__ == "__main__":
     app.run(debug=True, port=5000)  # Running on Port 5000

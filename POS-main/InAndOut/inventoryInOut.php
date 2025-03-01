@@ -27,6 +27,7 @@
             <h1>SCAN THE QR</h1>
             <button id="start-scan-add">Start QR Scan</button>
             <p id="qr-result-add">Waiting for scan...</p>
+            <button onclick="closeQR()">CLOSE</button>
         </div>
         
     </div>
@@ -36,6 +37,7 @@
             <h1>SCAN THE QR</h1>
             <button id="start-scan-deduct">Start QR Scan</button>
             <p id="qr-result-deduct">Waiting for scan...</p>
+            <button onclick="closeQR()">CLOSE</button>
         </div>   
     </div>
     

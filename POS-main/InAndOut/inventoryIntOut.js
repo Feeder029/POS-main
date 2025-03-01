@@ -14,6 +14,13 @@ function closeAddContainer(){
     document.getElementById("add-container").style.display = "none";
 }
 
+function closeQR(){
+    stopFetching = true;
+    clearInterval(intervalID);
+    document.getElementById("add-product").hidePopover();
+    document.getElementById("deduct-product").hidePopover();
+}
+
 document.getElementById("addProductForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -114,29 +121,54 @@ let intervalID = setInterval(updateProductName, 2000);
 
 function updateProductName() {
     if (stopFetching) return;
+    
     fetch("http://localhost:5000/api/get-scanned-data")
     .then(response => response.json())
     .then(data => {
         console.log("Received Data:", data);
 
         if (data.product_name) {
-            if(activeScan === "add"){
-                document.querySelector("#add-quantity h1").textContent = data.product_name;
-                document.getElementById("add-quantity").style.display = "block";
-                document.getElementById("qr-result-add").textContent = "Waiting for scan...";
-                document.getElementById("add-product").hidePopover();
-            } else if (activeScan === "deduct"){
-                document.querySelector("#deduct-quantity h1").textContent = data.product_name;
-                document.getElementById("deduct-quantity").style.display = "block";
-                document.getElementById("qr-result-deduct").textContent = "Waiting for scan...";
-                document.getElementById("deduct-product").hidePopover();
-            } 
-        } else {
-            console.error("Error: product_name not found in response.");
+            // Check if the product exists in the database
+            fetch(`http://127.0.0.1:5000/api/check-item?name=${encodeURIComponent(data.product_name)}`)
+            .then(response => response.json())
+            .then(itemData => {
+                if (itemData.exists) {
+                    if(activeScan === "add"){
+                        document.querySelector("#add-quantity h1").textContent = data.product_name;
+                        document.getElementById("add-quantity").style.display = "block";
+                        document.getElementById("qr-result-add").textContent = "Waiting for scan...";
+                        document.getElementById("add-product").hidePopover();
+                    } else if (activeScan === "deduct"){
+                        document.querySelector("#deduct-quantity h1").textContent = data.product_name;
+                        document.getElementById("deduct-quantity").style.display = "block";
+                        document.getElementById("qr-result-deduct").textContent = "Waiting for scan...";
+                        document.getElementById("deduct-product").hidePopover();
+                    }
+                } else {
+                    if(activeScan === "add") {
+                        document.getElementById("qr-result-deduct").textContent = "Waiting for scan...";
+                        document.getElementById("qr-result-add").textContent = "Item not found";   
+                        clearInterval(intervalID);                  
+                    } else if (activeScan === "deduct"){
+                        document.getElementById("qr-result-add").textContent = "Waiting for scan...";
+                        document.getElementById("qr-result-deduct").textContent = "Item not found";
+                        clearInterval(intervalID);
+                    }
+                }
+            })
+            .catch(error => {
+                console.error("Error checking item in database:", error);
+                document.getElementById("qr-result-add").textContent = "Error checking database.";
+            });
         }
     })
-    
+    .catch(error => {
+        console.error("Error:", error);
+        document.getElementById("qr-result-add").textContent = "Error retrieving scanned data.";
+        document.getElementById("qr-result-deduct").textContent = "Error retrieving scanned data.";
+    });
 }
+
 
 // Refresh the product name every 2 seconds
 setInterval(updateProductName, 2000);
