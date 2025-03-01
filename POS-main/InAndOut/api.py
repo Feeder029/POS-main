@@ -38,6 +38,14 @@ def start_scan():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/start-scan-receipt', methods=['GET'])
+def start_scan_receipt():
+    try:
+        # Run the QR scanning script
+        subprocess.Popen(["python", "POS-main/Delivery/scanQR.py"])  # Adjust to "python3" if needed
+        return jsonify({"message": "QR scan started"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # ---------------------- ADD PRODUCT & GENERATE QR ---------------------- #
 CSV_FILE = "POS-main/InAndOut/inventoryIn.csv"
@@ -134,51 +142,91 @@ def check_item():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+# ---------------------- RECEIPT ---------------------- #
+scanned_data_receipt = {"SalesID": ""}  # Store the last scanned product
+
+@app.route('/api/scanned-data-receipt', methods=['POST'])
+def receive_scanned_data_receipt():
+    global scanned_data_receipt
+    data = request.json
+    scanned_data_receipt["SalesID"] = data.get("SalesID", "")
+
+    return jsonify({"message": "Scanned data received successfully!"})
+
+@app.route('/api/get-scanned-data-receipt', methods=['GET'])
+def get_scanned_data_receipt():
+    return jsonify(scanned_data_receipt)
+
+@app.route('/api/reset-scanned-data-receipt', methods=['POST'])
+def reset_scanned_data_receipt():
+    global scanned_data_receipt
+    scanned_data_receipt = {"SalesID": ""}  # Clear the last scanned product
+    return jsonify({"message": "Scanned data reset successfully!"})
+
+@app.route('/api/check-item-receipt', methods=['GET'])
+def check_item_receipt():
+    SalesID = request.args.get("SalesID", "")
+
+    if not SalesID:
+        return jsonify({"error": "Missing product name"}), 400
+
+    try:
+        db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="pos_db"
+        )
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM sales WHERE SalesID = %s", (SalesID,))
+        result = cursor.fetchone()
+        db.close()
+
+        return jsonify({"exists": result[0] > 0})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
     
+ # ---------------------- RUN THE FLASK SERVER ---------------------- #
+@app.route('/api/get-receipt', methods=['GET'])
+def get_receipt():
+    sales_id = request.args.get("SalesID", "")
 
-# ---------------------- CREATE RECIEPT QR ---------------------- #
-
-CSV_FILE = "Reciept_Info.csv"
-
-# Ensure CSV file exists
-if not os.path.exists(CSV_FILE):
-    with open(CSV_FILE, mode="w", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["SalesID", "Status"])  # Header
-
-# Function to update CSV
-def update_csv(salesID):
-    with open(CSV_FILE, mode="a", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow([salesID, "Not Delivered"])
-    print(f"SalesID {salesID} marked as 'Not Delivered' in {CSV_FILE}")
-
-# Function to generate QR code
-def generate_qr(salesID):
-    qr_data = f"SalesID: {salesID}"
-    qr = qrcode.make(qr_data)
-
-    qr_filename = f"Reciept_QR/{salesID}.png"
-    os.makedirs("Reciept_QR", exist_ok=True)  # Ensure directory exists
-
-    qr.save(qr_filename)
-    print(f"QR code saved as {qr_filename}")
-    return qr_filename
-
-# API endpoint to receive salesID
-@app.route('/generate_qr', methods=['POST'])
-def handle_request():
-    data = request.get_json()
-    salesID = data.get("salesID")
-
-    if not salesID:
+    if not sales_id:
         return jsonify({"error": "Missing SalesID"}), 400
 
-    update_csv(salesID)
-    qr_filename = generate_qr(salesID)
+    try:
+        db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="pos_db"
+        )
+        cursor = db.cursor(dictionary=True)
 
-    return jsonify({"message": "QR Code Generated", "qr_path": qr_filename})
+        query = """
+            SELECT 
+                p.ProductID, 
+                p.ProductName, 
+                o.Quantity, 
+                o.UnitPrice 
+            FROM orders o
+            JOIN Products p ON o.ProductID = p.ProductID
+            WHERE o.SalesID = %s
+        """
+        cursor.execute(query, (sales_id,))
+        orders = cursor.fetchall()
+        db.close()
 
+        return jsonify({"orders": orders})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+   
 # ---------------------- RUN THE FLASK SERVER ---------------------- #
 if __name__ == "__main__":
     app.run(debug=True, port=5000)  # Running on Port 5000
+
+

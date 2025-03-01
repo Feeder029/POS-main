@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELIVERY</title>
+</head>
+<body>
+    <div class="scan-qr">
+        <div class="scan-container">
+            <h1>SCAN THE QR</h1>
+            <button id="start-scan">Start QR Scan</button>
+            <p id="qr-result">Waiting for scan...</p>
+            <button onclick="closeQR()">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="container" >
+        <h1>SALES ID</h1>
+        <button id="Show-receipt" onclick="showReceipt()">SHOW RECEIPT</button>
+        <button id="confirm-btn">CONFIRM DELIVERY</button>
+    </div>
+
+    <div id="receipt">
+        <h1>Receipt</h1>
+    </div>
+    <script src="delivery.js?v=1.0.3"></script>
+</body>
+</html>
