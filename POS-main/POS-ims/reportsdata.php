@@ -226,6 +226,31 @@ foreach ($products as $productId => $product) {
     }
 }
 
+
+//Recent Activity
+$RASQL= "SELECT SalesID, TotalAmount, 
+DATE_FORMAT(Date, '%b %e, %Y, %l:%i %p') AS date_process
+FROM sales
+ORDER BY Date DESC
+LIMIT 6
+;";
+
+
+$RA_result = $conn->query($RASQL);
+
+$recentActivity = [];
+
+while ($row = $RA_result->fetch_assoc()) {
+    $recentActivity[] = [
+        "RA_ID" => $row['SalesID'],  // Fix here
+        "RA_Tot" => $row['TotalAmount'], // Fix here
+        "RA_Dates" => $row['date_process'] // Fix here
+    ];
+}
+
+
+
+// Send Data
 $data = [
     "dates" => $date,
     "amounts" => $amount,
@@ -239,8 +264,9 @@ $data = [
     "BP_Name" => $BP_Name, 
     "BP_Sales" => $BP_Sales,
     "PP_Name" => $PP_Name,
-    "PP_Amount" => $PP_Amount
-    
+    "PP_Amount" => $PP_Amount,
+    "recentActivity" => $recentActivity  
+
 ];
 
 

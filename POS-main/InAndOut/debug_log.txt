@@ -1,13 +1,13 @@
 Array
 (
-    [category] => 3
-    [brand] => 1
-    [product_name] => HATDOG
-    [product_model] => asdads
-    [description] => 1111
-    [quantity] => 10
-    [unit] => Kg
-    [base_price] => 5
-    [product_tax] => 6
+    [category] => 1
+    [brand] => 2
+    [product_name] => Pork
+    [product_model] => Meats
+    [description] => Pork
+    [quantity] => 22
+    [unit] => Packet
+    [base_price] => 300
+    [product_tax] => 3
     [supplier] => 2
 )

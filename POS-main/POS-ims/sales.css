@@ -9,7 +9,7 @@ height: 100vh;
 background-color: #ffffff;
 }
 .header{
-    height: 6vh;
+    height: 2vh;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -171,4 +171,29 @@ flex-direction: row;
     border-radius: 6px;
     padding: 8px 20px 8px 20px;
     border: none;
+}
+#a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Distributes items evenly */
+    align-items: center; /* Centers content horizontally */
+    gap: 10px; /* Adds spacing between items */
+    min-height: 300px; /* Ensures the container has enough height */
+}
+
+.case {
+    background-color: #f8f9fa; /* Light gray background */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 12px 16px; /* Space inside the box */
+    width: 100%; /* Adjust width to prevent stretching */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+    text-align: center; /* Center text inside */
+}
+
+.case h3 {
+    font-size: 16px;
+    color: #171717; /* Darker text for readability */
+    margin: 0; /* Remove default margin */
+    font-weight: 600; /* Slightly bold */
 }

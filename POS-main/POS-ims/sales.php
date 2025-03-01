@@ -7,11 +7,9 @@ $db = "pos_db";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
-
 if($conn->connect_error){
     die("Connection failed: " . $conn->connect_error);
 }
-
 
 $sql_order = "SELECT COUNT(`SalesID`) AS ORDERS FROM `sales` WHERE MONTH(Date) = MONTH(CURDATE())";
 
@@ -25,23 +23,19 @@ if ($result_order->num_rows > 0) {
 } 
 } 
 
-
 $sql2 ="SELECT SUM(TotalAmount) as Amount
 FROM sales s
 WHERE MONTH(Date) = MONTH(CURDATE());";
 
 $result2 = $conn->query($sql2);
 
-
 $sales;
-
 
 if ($result2->num_rows > 0) {
     while ($row2 = $result2->fetch_assoc()) {
             $sales = $row2['Amount'];
 } 
 } 
-
 
 ?>
 
@@ -52,13 +46,13 @@ if ($result2->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SALES</title>
-    <link rel="stylesheet" href="sales.css">
+    <link rel="stylesheet" href="sales.css?v=1.1">
     
 </head>
 <body>
 
     <div class="header">
-        <div class="search-container">
+        <!-- <div class="search-container">
             <button>Search</button>
         </div>
       <div class="profile-container">
@@ -66,7 +60,7 @@ if ($result2->num_rows > 0) {
         <div class="circle-logo">
             <img src="#" alt="#">
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="date-header">
         <h1>Sales</h1>
@@ -106,7 +100,7 @@ if ($result2->num_rows > 0) {
                 <h1>Recent Activity</h1>
                 <a href="">View</a>
            </div> 
-           <div class="recent-activity-history">
+           <div id="a">
                                     <!-- recent activity history -->   
             </div>
         </div>

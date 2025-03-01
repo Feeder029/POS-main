@@ -130,3 +130,38 @@ fetch('reportsdata.php')
 
 })
 .catch(error => console.error("Error fetching data:", error));
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOMContentLoaded event fired, fetching data...");
+
+    fetch('reportsdata.php')
+    .then(response => {
+        console.log("Response received:", response);
+        return response.json();
+    })
+    .then(data => {
+        console.log("Parsed JSON data:", data);
+
+        let display = '';
+
+        if (Array.isArray(data.recentActivity)) {
+            console.log("recentActivity is an array with length:", data.recentActivity.length);
+
+            data.recentActivity.forEach(item => {
+                display += `
+                    <div class="case">
+                    <h3>
+                        Sale completed: ₱${item.RA_Tot} (ID: ${item.RA_ID}) on ${item.RA_Dates}
+                    </h3>
+                    </div>`;
+            });
+
+            document.getElementById('a').innerHTML = display;
+            console.log("Updated innerHTML of #a.");
+        } else {
+            console.error("recentActivity is not an array or is undefined:", data.recentActivity);
+        }
+    })
+    .catch(error => console.error("Error fetching data:", error));
+});
