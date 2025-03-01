@@ -216,12 +216,12 @@ function updateQuantity1() {
 }
 
 function updateQuantity2() {
-   
     let productName = document.getElementById("product-name-deduct").textContent; // Get product name
     let quantity = document.getElementById("deduct-quantity-input").value; // Get input value
 
     if (!quantity || isNaN(quantity) || quantity <= 0) {
         alert("Please enter a valid quantity.");
+        console.error("Invalid quantity input:", quantity);
         return;
     }
 
@@ -229,6 +229,8 @@ function updateQuantity2() {
         product_name: productName,
         quantity: parseInt(quantity)
     };
+
+    console.log("Sending data to updateQuantity2.php:", data);
 
     fetch("http://localhost/pos-main/POS-main/InAndOut/updateQuantity2.php", {
         method: "POST",
@@ -239,19 +241,40 @@ function updateQuantity2() {
     })
     .then(response => response.json())
     .then(data => {
+        console.log("Response from updateQuantity2.php:", data);
         if (data.message) {
             alert(data.message);
             document.getElementById("deduct-quantity").style.display = "none";
             document.getElementById("deduct-quantity-input").value = ""; // Clear input
             stopFetching = true;
             clearInterval(intervalID);
+
             fetch("http://localhost:5000/api/reset-scanned-data", { method: "POST" })
+                .then(response => response.json())
+                .then(data => console.log("Scan reset response:", data))
                 .catch(error => console.error("Error resetting scan:", error));
         } else {
             alert("Error: " + data.error);
+            console.error("Error from updateQuantity2.php:", data.error);
         }
     })
     .catch(error => {
-        console.error("Error:", error);
+        console.error("Fetch error:", error);
     });
+
+    // Second fetch request with logging
+    fetch("http://localhost/POS-main/POS-main/POS-ims/fetchapi.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            P_Name: productName,
+            P_Quantity: parseInt(quantity)
+        })
+    })
+    .then(response => response.json())
+    .then(data => console.log("Response from fetchapi.php:", data))
+    .catch(error => console.error("Fetch error for fetchapi.php:", error));
 }
+

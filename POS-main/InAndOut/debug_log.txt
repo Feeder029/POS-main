@@ -1,13 +1,13 @@
 Array
 (
     [category] => 1
-    [brand] => 2
-    [product_name] => Pork
+    [brand] => 3
+    [product_name] => Porkchop
     [product_model] => Meats
-    [description] => Pork
-    [quantity] => 22
-    [unit] => Packet
-    [base_price] => 300
+    [description] => aef
+    [quantity] => 1000
+    [unit] => Nos
+    [base_price] => 25
     [product_tax] => 3
-    [supplier] => 2
+    [supplier] => 1
 )

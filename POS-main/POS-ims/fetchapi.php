@@ -67,23 +67,48 @@ if (isset($data['SalesID'], $data['PaymentMethodID'], $data['AmountPaid'], $data
     $response['payments'] = ['status' => 'error', 'message' => 'Invalid payment data provided'];
 }
 
+if (isset($data['P_Name'], $data['P_Quantity'])) {
+    $NName = $conn->real_escape_string($data['P_Name']);
+    $Quantity = (int) $data['P_Quantity']; // Ensure it's an integer
 
-if (isset($data['ProductID'],$data['SalesID'],$data['Quantity'],$data['UnitPrice'])){
-    $PID = $conn->real_escape_string($data['ProductID']);
+    // Corrected SQL query with proper string handling
+    $QuantityQuery = "UPDATE `products` 
+                      SET `Temp_Sales` = COALESCE(`Temp_Sales`, 0) - $Quantity 
+                      WHERE `ProductName` = '$NName'";
+
+    if ($conn->query($QuantityQuery)) {
+        $response['payments'] = ['status' => 'success', 'message' => 'Record updated successfully'];
+    } else {
+        $response['payments'] = ['status' => 'error', 'message' => 'Failed to update record', 'error' => $conn->error];
+    }
+} else {
+    $response['payments'] = ['status' => 'error', 'message' => 'Invalid data provided'];
+}
+
+
+if (isset($data['ProductID'], $data['SalesID'], $data['Quantity'], $data['UnitPrice'])) {
+    $PID = (int)$data['ProductID'];  // Ensure ProductID is an integer
     $SID = $conn->real_escape_string($data['SalesID']);
-    $Q = $conn->real_escape_string($data['Quantity']);
+    $Q = (int)$data['Quantity'];  // Ensure Quantity is an integer
     $UP = $conn->real_escape_string($data['UnitPrice']);
 
-    $OrderQuery = "INSERT INTO `orders`(`ProductID`, `SalesID`, `Quantity`, `UnitPrice`)VALUES ('$PID','$SID','$Q','$UP')";
+    $OrderQuery = "INSERT INTO `orders`(`ProductID`, `SalesID`, `Quantity`, `UnitPrice`) 
+                   VALUES ('$PID','$SID','$Q','$UP')";
 
-    if ($conn->query($OrderQuery)){
+    $TempQuery = "UPDATE `products` a 
+                  SET a.`Temp_Sales` = COALESCE(a.`Temp_Sales`, 0) + $Q 
+                  WHERE a.`ProductID` = $PID;";
+
+    if ($conn->query($OrderQuery) && $conn->query($TempQuery)) { // Use same connection
         $response['payments'] = ['status' => 'success', 'message' => 'Record inserted successfully into payments table'];
     } else {
-        $response['payments'] = ['status' => 'error', 'message' => 'Failed to insert record into payments table'];
+        $response['payments'] = ['status' => 'error', 'message' => 'Failed to insert record into payments table', 'error' => $conn->error];
     }
 } else {
     $response['payments'] = ['status' => 'error', 'message' => 'Invalid payment data provided'];
 }
+
+
 
 
 

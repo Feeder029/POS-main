@@ -294,7 +294,7 @@ document.getElementById('confirm-order').addEventListener('click', function() {
 
                         sendSalesIDToPython(salesID);
                         
-                        ProductDisplay();
+                        Repeat();
                     });
 
 
@@ -415,13 +415,18 @@ async function InsertOrder(SID, Q, UP, Name) {
             ProductID: PID,
             SalesID: SID,
             Quantity: Q,
-            UnitPrice: UP
-        })
+            UnitPrice: UP,
+            U_ProductID: PID,
+            U_Quantity: Q
+        }),
+
     });
 
     const orderData = await orderResponse.json(); // Parse the JSON response
     console.log(orderData.message); // Handle success message
 }
+
+
 
 
 function sendSalesIDToPython(salesID) {

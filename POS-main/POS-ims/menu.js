@@ -1,18 +1,48 @@
-// Wait until the DOM is fully loaded fo add
-document.addEventListener('DOMContentLoaded', () => {
+// Wait until the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', async () => {
+    let product_deduction = new Map();
+
+    await GetData(); // Ensure GetData completes before proceeding
+    ProductDisplay();
+
+    async function GetData() {
+        try {
+            let response = await fetch('posapi.php');
+            let data = await response.json();
+
+            data.forEach(item => {
+                product_deduction.set(item.ProductName, item.Temp_Sales);
+            });
+
+            console.log("Product Deduction Loaded:", [...product_deduction.entries()]);
+        } catch (error) {
+            console.error('Error fetching posapi.php data:', error);
+        }
+    }
+
     function ProductDisplay() {
         fetch('api.php')
             .then(response => response.json())
             .then(data => {
                 let display = '';
+
                 data.forEach(item => {
+                    let val = 0;
+
+                    product_deduction.forEach((value, key) => {
+                        // console.log(key + " : " + value);
+                            if(item.ProductName == key && value != null){
+                                val = value;
+                            };
+                    });
+                          
                     display += `
                         <div class="menu">
                             <div class="menu-image"></div>
                             <div class="menu-detail">
                                 <h3>${item.ProductName}</h3> 
                                 <p>₱${item.ProductPrice}</p>
-                                <p>Stock: <span class="stock-count">${item.Stock}</span></p>
+                                <p>Stock: <span class="stock-count">${item.Stock-val}</span></p>
                             </div>
                             <div class="menu-btn">
                                 <button id="subtract">-</button>
@@ -20,16 +50,18 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <button id="add">+</button>
                             </div>
                         </div>`;
-                }); //Display Code
+                });
 
-                //Add the display to the html
+                //Add the display to the HTML
                 document.getElementById('menu').innerHTML = display;
 
                 // Call function to attach event listeners
                 attachEventListeners();
             })
-            .catch(error => console.error('Error fetching data:', error));
+            .catch(error => console.error('Error fetching api.php data:', error));
     }
+
+   
 
     function updateStock(pname, change, stockElement) {
         // Update the stock display directly in the UI without making any database changes

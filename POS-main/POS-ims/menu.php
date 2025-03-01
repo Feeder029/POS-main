@@ -34,6 +34,6 @@
     <div class="cart-containers">
     </div>
        
-    <script src="menu.js?v=1.0.2"></script>
+    <script src="menu.js?v=1.2"></script>
 </body>
 </html>

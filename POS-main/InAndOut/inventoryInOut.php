@@ -112,6 +112,6 @@
     </div>
 
 
-    <script src="inventoryIntOut.js?v=1.0.3"></script>
+    <script src="inventoryIntOut.js?v=1.2"></script>
 </body>
 </html>
