@@ -1,4 +1,5 @@
 "Item Code","Item Name","Item Quantity"
+<<<<<<< Updated upstream
 1,"Product 101",3
 3,GOODS,2
 6,"Product 103",5
@@ -22,3 +23,64 @@
 1,"Product 101",7
 3,GOODS,4
 2,"Foody Food",5
+=======
+1,"Product 101",1
+1,"Product 101",1
+1,"Product 101",11
+1,"Product 101",1
+1,"Product 101",2
+1,"Product 101",1
+1,"Product 101",1
+1,"Product 101",1
+2,Bike,1
+2,Bike,1
+1,"Product 101",1
+2,Bike,1
+1,"Product 101",1
+2,Bike,1
+1,"Product 101",1
+1,"Product 101",1
+1,"Product 101",1
+1,"Product 101",1
+1,"Product 101",1
+1,"Product 101",1
+1,"Product 101",1
+1,"Product 101",1
+4,"Product 103",1
+4,"Product 103",1
+4,"Product 103",1
+1,"Product 101",1
+4,"Product 103",1
+1,"Product 101",1
+4,"Product 103",1
+4,"Product 103",1
+2,Bike,1
+3,"Product 102",2
+4,"Product 103",1
+4,"Product 103",1
+2,Bike,1
+2,Bike,1
+4,"Product 103",1
+4,"Product 103",1
+4,"Product 103",1
+4,"Product 103",1
+4,"Product 103",1
+2,Bike,1
+2,Bike,1
+4,"Product 103",1
+4,"Product 103",1
+4,"Product 103",1
+2,Bike,1
+4,"Product 103",1
+4,"Product 103",1
+4,"Product 103",1
+4,"Product 103",1
+4,"Product 103",1
+2,Bike,1
+4,"Product 103",1
+4,"Product 103",1
+4,"Product 103",1
+2,Bike,1
+2,Bike,1
+4,"Product 103",1
+>>>>>>> Stashed changes
