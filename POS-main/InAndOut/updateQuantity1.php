@@ -44,7 +44,7 @@
         $update_stmt->bind_param("is", $new_quantity, $pname);
 
         if ($update_stmt->execute()) {
-            echo json_encode(["message" => "Quantity updated successfully", "new_quantity" => $new_quantity]);
+            echo json_encode(["message" => "Quantity Added successfully", "new_quantity" => $new_quantity]);
         } else {
             echo json_encode(["error" => "Failed to update quantity"]);
         }

@@ -77,20 +77,41 @@ function sendToPHP(productData) {
     .then(response => response.json());
 }
 
+let activeScan = "";
 
-document.getElementById("start-scan").addEventListener("click", function() {
+document.getElementById("start-scan-add").addEventListener("click", function() {
+    activeScan = "add";
+    stopFetching = false;
+    intervalID = setInterval(updateProductName, 2000);
     fetch("http://127.0.0.1:5000/start-scan")
     .then(response => response.json())
     .then(data => {
-        document.getElementById("qr-result").textContent = data.message;
+        document.getElementById("qr-result-add").textContent = data.message;
     })
     .catch(error => {
         console.error("Error:", error);
-        document.getElementById("qr-result").textContent = "Failed to start scanning.";
+        document.getElementById("qr-result-add").textContent = "Failed to start scanning.";
     });
 });
+
+document.getElementById("start-scan-deduct").addEventListener("click", function() {
+    activeScan = "deduct";
+    stopFetching = false;
+    intervalID = setInterval(updateProductName, 2000);
+    fetch("http://127.0.0.1:5000/start-scan")
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("qr-result-deduct").textContent = data.message;
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        document.getElementById("qr-result-deduct").textContent = "Failed to start scanning.";
+    });
+});
+
 let stopFetching = false;
 let intervalID = setInterval(updateProductName, 2000);
+
 function updateProductName() {
     if (stopFetching) return;
     fetch("http://localhost:5000/api/get-scanned-data")
@@ -99,9 +120,17 @@ function updateProductName() {
         console.log("Received Data:", data);
 
         if (data.product_name) {
-            document.querySelector("#add-quantity h1").textContent = data.product_name;
-            document.getElementById("add-quantity").style.display = "block";
-            document.getElementById("add-product").style.display = "none";
+            if(activeScan === "add"){
+                document.querySelector("#add-quantity h1").textContent = data.product_name;
+                document.getElementById("add-quantity").style.display = "block";
+                document.getElementById("qr-result-add").textContent = "Waiting for scan...";
+                document.getElementById("add-product").hidePopover();
+            } else if (activeScan === "deduct"){
+                document.querySelector("#deduct-quantity h1").textContent = data.product_name;
+                document.getElementById("deduct-quantity").style.display = "block";
+                document.getElementById("qr-result-deduct").textContent = "Waiting for scan...";
+                document.getElementById("deduct-product").hidePopover();
+            } 
         } else {
             console.error("Error: product_name not found in response.");
         }
@@ -113,9 +142,9 @@ function updateProductName() {
 setInterval(updateProductName, 2000);
 console.log("Product Name:", data.product_name);
 
-function updateQuantity() {
+function updateQuantity1() {
    
-    let productName = document.getElementById("product-name").textContent; // Get product name
+    let productName = document.getElementById("product-name-add").textContent; // Get product name
     let quantity = document.getElementById("add-quantity-input").value; // Get input value
 
     if (!quantity || isNaN(quantity) || quantity <= 0) {
@@ -128,7 +157,7 @@ function updateQuantity() {
         quantity: parseInt(quantity)
     };
 
-    fetch("http://localhost/pos-main/POS-main/InAndOut/updateQuantity.php", {
+    fetch("http://localhost/pos-main/POS-main/InAndOut/updateQuantity1.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -141,6 +170,47 @@ function updateQuantity() {
             alert(data.message);
             document.getElementById("add-quantity").style.display = "none";
             document.getElementById("add-quantity-input").value = ""; // Clear input
+            stopFetching = true;
+            clearInterval(intervalID);
+            fetch("http://localhost:5000/api/reset-scanned-data", { method: "POST" })
+                .catch(error => console.error("Error resetting scan:", error));
+        } else {
+            alert("Error: " + data.error);
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+}
+
+function updateQuantity2() {
+   
+    let productName = document.getElementById("product-name-deduct").textContent; // Get product name
+    let quantity = document.getElementById("deduct-quantity-input").value; // Get input value
+
+    if (!quantity || isNaN(quantity) || quantity <= 0) {
+        alert("Please enter a valid quantity.");
+        return;
+    }
+
+    let data = {
+        product_name: productName,
+        quantity: parseInt(quantity)
+    };
+
+    fetch("http://localhost/pos-main/POS-main/InAndOut/updateQuantity2.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message);
+            document.getElementById("deduct-quantity").style.display = "none";
+            document.getElementById("deduct-quantity-input").value = ""; // Clear input
             stopFetching = true;
             clearInterval(intervalID);
             fetch("http://localhost:5000/api/reset-scanned-data", { method: "POST" })

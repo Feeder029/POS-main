@@ -22,31 +22,38 @@
         <button id="back-add-container" onclick="back()">BACK</button>
     </div>
 
-    <div id="add-product" popover>
+    <div id="add-product" popover >
         <div class="scan-container">
             <h1>SCAN THE QR</h1>
-            <button id="start-scan">Start QR Scan</button>
-            <p id="qr-result">Waiting for scan...</p>
+            <button id="start-scan-add">Start QR Scan</button>
+            <p id="qr-result-add">Waiting for scan...</p>
         </div>
         
     </div>
 
     <div id="deduct-product" popover>
-        <div class="scan-container2">
+        <div class="scan-container">
             <h1>SCAN THE QR</h1>
-            <button id="start-scan2">Start QR Scan</button>
-            <p id="qr-result2">Waiting for scan...</p>
+            <button id="start-scan-deduct">Start QR Scan</button>
+            <p id="qr-result-deduct">Waiting for scan...</p>
         </div>   
     </div>
     
     
+    
     <div id="add-quantity" style="display:none;">
-        <h1 id="product-name">ITEM NAME</h1>
+        <h1 id="product-name-add">ITEM NAME</h1>
         <h1>ADD QUANTITY</h1>
         <input type="number" name="add-quantity-input" id="add-quantity-input">
-        <button onclick="updateQuantity()">ADD</button> <!-- Call JS function -->
+        <button onclick="updateQuantity1()">ADD</button> <!-- Call JS function -->
     </div>
-    
+
+    <div id="deduct-quantity" style="display:none;">
+        <h1 id="product-name-deduct">ITEM NAME</h1>
+        <h1>DEDUCT QUANTITY</h1>
+        <input type="number" name="deduct-quantity-input" id="deduct-quantity-input">
+        <button onclick="updateQuantity2()">DEDUCT</button> <!-- Call JS function -->
+    </div>
     
     
 
