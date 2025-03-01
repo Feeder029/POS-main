@@ -59,11 +59,11 @@ ORDER BY months.Month_Num;";
 
 $monthlyresult = $conn->query($monthlyresultssql);
 
-$month = [];
+$months_name = [];
 $monthlyamount = [];
 
 while ($row = $monthlyresult->fetch_assoc()){
-    $month[] = $row['Month_Report'];
+    $months_name[] = $row['Month_Report'];
     $monthlyamount[] = (float) $row['Amount'];
 }
 
@@ -216,7 +216,11 @@ foreach ($products as $productId => $product) {
 
     if($predictedStock==null){
 
-    } else {
+    } elseif($predictedStock<0) {
+
+    }
+    
+    else {
         $PP_Name[] = $product['name'];
         $PP_Amount[] = $predictedStock !== null ? $predictedStock : 0;
     }
@@ -225,7 +229,7 @@ foreach ($products as $productId => $product) {
 $data = [
     "dates" => $date,
     "amounts" => $amount,
-    "M_Month" => $month,
+    "M_Month" => $months_name,
     "M_Amount" => $monthlyamount,
     "PM1" => $predicted_month_1,
     "PM2" => $predicted_month_2,

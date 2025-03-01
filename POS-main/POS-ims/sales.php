@@ -28,7 +28,7 @@ if ($result_order->num_rows > 0) {
 
 $sql2 ="SELECT SUM(TotalAmount) as Amount
 FROM sales s
-where date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH);";
+WHERE MONTH(Date) = MONTH(CURDATE());";
 
 $result2 = $conn->query($sql2);
 
@@ -70,7 +70,13 @@ if ($result2->num_rows > 0) {
     </div>
     <div class="date-header">
         <h1>Sales</h1>
-        <button>Feb 12, 2025</button>
+        <button>
+        <?php
+          date_default_timezone_set('Asia/Manila');
+          $formattedDate = date('F d Y'); 
+          echo $formattedDate;
+        ?>
+        </button>
     </div>
 
     <div class="box-container">
@@ -107,7 +113,6 @@ if ($result2->num_rows > 0) {
         <div class="sales-container">
             <div class="sales-container-label">
                 <h1>Monthly Sales</h1>
-                <button>Month</button>
             </div>    
             <div class="graph">
             <canvas id="MonthlyChart"></canvas>     
@@ -142,7 +147,7 @@ if ($result2->num_rows > 0) {
  
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Load Chart.js first -->
     
-    <script src="reports.js?v=1.2"></script>
+    <script src="reports.js?v=1.3"></script>
 
 
     <script src="doughnutChart.js"></script>

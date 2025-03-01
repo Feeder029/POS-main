@@ -6,7 +6,7 @@ fetch('reportsdata.php')
     var ForecastSales = document.getElementById('Forecast').getContext('2d');
     var ItemSales = document.getElementById('ItemsChart').getContext('2d');
     var ItemForecast = document.getElementById('Item_Forecast').getContext('2d');
-
+    let BarLines= 'rgb(73, 70, 255)'; 
     
     // Daily Sales Chart
     var myLineChart = new Chart(dailysales, {
@@ -17,7 +17,7 @@ fetch('reportsdata.php')
                 label: 'Sales',
                 data: data.amounts, 
                 fill: true,
-                borderColor: 'rgb(48, 241, 255)',
+                borderColor: BarLines,
                 tension: 0.3
             }]
         },
@@ -40,7 +40,7 @@ fetch('reportsdata.php')
                 label: 'Monthly Sales',
                 data: data.M_Amount,
                 fill: true,
-                borderColor:  'rgb(48, 241, 255)',
+                borderColor:  BarLines,
                 tension: 0.3
             }]
         }, 
@@ -60,10 +60,10 @@ fetch('reportsdata.php')
         data: {
             labels: [...data.PM_Months, "Next 1 Month", "Next 2 Months", "Next 3 Months"],  // Use spread operator
             datasets: [{
-                label: 'Monthly Sales',
+                label: 'Forecast Sales',
                 data: [...data.PM_Sales, data.PM1, data.PM2, data.PM3], // Ensure data matches labels
                 fill: true,
-                borderColor: 'rgb(48, 241, 255)',
+                borderColor: BarLines,
                 tension: 0.3
             }]
         },
@@ -85,11 +85,11 @@ fetch('reportsdata.php')
         data:{
             labels: data.BP_Name,
             datasets: [{
-                label: 'Monthly Sales',
+                label: 'Item Sales',
                 data: data.BP_Sales,
                 fill: true,
                 tension: 0.3,
-                backgroundColor : 'rgb(48, 241, 255)',
+                backgroundColor : BarLines,
             }]
         }, 
         options: {
@@ -109,11 +109,11 @@ fetch('reportsdata.php')
         data:{
             labels: data.PP_Name,
             datasets: [{
-                label: 'Monthly Sales',
+                label: 'Forecast Stocks',
                 data: data.PP_Amount,
                 fill: true,
                 tension: 0.3,
-                backgroundColor : 'rgb(48, 241, 255)',
+                backgroundColor : BarLines,
             }]
         }, 
         options: {
