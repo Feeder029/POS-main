@@ -292,8 +292,13 @@ document.getElementById('confirm-order').addEventListener('click', function() {
 
                         window.frames[0].postMessage({ type: 'order-confirmed' }, '*');
 
+                        sendSalesIDToPython(salesID);
+                        
                         ProductDisplay();
                     });
+
+
+
                 } else {
                     
                 }
@@ -417,3 +422,23 @@ async function InsertOrder(SID, Q, UP, Name) {
     const orderData = await orderResponse.json(); // Parse the JSON response
     console.log(orderData.message); // Handle success message
 }
+
+
+function sendSalesIDToPython(salesID) {
+    fetch('http://127.0.0.1:5000/generate_qr', { // Flask runs on port 5000 by default
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ salesID: salesID })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            console.error("Error:", data.error);
+        } else {
+            console.log("Success:", data.message);
+            alert("QR Code generated: " + data.qr_path);
+        }
+    })
+    .catch(error => console.error('Request Failed:', error));
+}
+

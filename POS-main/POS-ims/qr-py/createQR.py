@@ -10,7 +10,7 @@ except ImportError:
     print("qrcode module not found. Install it using: pip install qrcode[pil]")
     exit()
 
-def save_to_csv(itemcode, itemname, itemquantity, filename="inventory.csv"):
+def save_to_csv(SalesID, Deliver, itemquantity, filename="inventory.csv"):
     file_exists = os.path.isfile(filename)
     
     with open(filename, mode="a", newline="") as file:
@@ -19,8 +19,8 @@ def save_to_csv(itemcode, itemname, itemquantity, filename="inventory.csv"):
         if not file_exists:
             writer.writerow(["Item Code", "Item Name", "Item Quantity", "QR Code File"])
         
-        qr_filename = f"qrcodes/{itemname}.png"
-        writer.writerow([itemcode, itemname, itemquantity, qr_filename])
+        qr_filename = f"qrcodes/{SalesID}.png"
+        writer.writerow([SalesID, Deliver, qr_filename])
 
 def generate_qrcode(data, folder="POS-main/POS-ims/qrcodes"):
     if not os.path.exists(folder):
@@ -41,10 +41,10 @@ def main():
     items = json.loads(items_json)  # Convert JSON string back to list
     
     for item in items:   
-        itemcode, itemname, itemquantity = item.split(",")
-        save_to_csv(itemcode, itemname, itemquantity)
+        SalesID, Deliver, itemquantity = item.split(",")
+        save_to_csv(SalesID, Deliver, itemquantity)
 
-        data = f"{itemcode},{itemname},{itemquantity}"
+        data = f"{SalesID},{Deliver},{itemquantity}"
         generate_qrcode(data)
 
     print("Record saved successfully.")
