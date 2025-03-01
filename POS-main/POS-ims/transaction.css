@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #fafafa;
@@ -15,19 +14,19 @@ h1 {
     color: #222;
 }
 
+
 .Container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     padding: 20px;
 }
 
+
 .transaction-list {
-    position: fixed;
-    top: 70px;
-    left: 30px;
-    width: 100%;
+    flex: 1;
     max-width: 1250px;
-    margin: 0;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -35,6 +34,7 @@ h1 {
     height: 85vh;
     overflow-y: auto;
 }
+
 
 .transaction {
     display: flex;
@@ -69,19 +69,16 @@ h1 {
     background-color: #0056b3;
 }
 
-/* Updated for receipt container */
+
 .receipt-container {
-    position: fixed;  /* Fixing the receipt container to the right */
-    top: 70px;
-    right: 20px;        /* Position it to the far right */
-    width: 300px;
-    height: 85vh;    /* Make it take the full height of the screen */
+    flex: 0 1 300px;
     background: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;  /* Allow scrolling inside if content exceeds height */
+    overflow-y: auto;
 }
+
 
 .receipt {
     display: none;
@@ -138,4 +135,81 @@ h1 {
 
 .receipt button:hover {
     background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .Container {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .transaction-list {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .receipt-container {
+        width: 90%;
+        margin-top: 20px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+        margin: 15px 0;
+    }
+
+    .transaction-list, .receipt-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .transaction {
+        flex-wrap: wrap;
+        padding: 12px;
+    }
+
+    .transaction span {
+        font-size: 0.85rem;
+    }
+
+    .transaction button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    .transaction {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .transaction span {
+        font-size: 0.85rem;
+    }
+
+    .transaction button {
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+    }
+
+    .transaction-list, .receipt-container {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+    }
 }
