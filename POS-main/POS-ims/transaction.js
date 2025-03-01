@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p><strong>Payment Method:</strong> ${item.PaymentMethod}</p>
                     <p><strong>Amount Paid:</strong> PHP ${item.AmountPaid}</p>
                     <p><strong>Change Given:</strong> PHP ${item.ChangeGiven}</p>
+                    <img src="../../Reciept_QR/${item.SalesID}.png" alt="Receipt QR Code"  style="width:150px; height:auto; display:block; margin:10px auto;">
                     <button onclick="hideReceipt(${item.SalesID})">Close</button>
                 `;
 
