@@ -105,6 +105,12 @@ def receive_scanned_data():
 def get_scanned_data():
     return jsonify(scanned_data)
 
+@app.route('/api/reset-scanned-data', methods=['POST'])
+def reset_scanned_data():
+    global scanned_data
+    scanned_data = {"product_name": ""}  # Clear the last scanned product
+    return jsonify({"message": "Scanned data reset successfully!"})
+
 # ---------------------- RUN THE FLASK SERVER ---------------------- #
 if __name__ == "__main__":
     app.run(debug=True, port=5000)  # Running on Port 5000

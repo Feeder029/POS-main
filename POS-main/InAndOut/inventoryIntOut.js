@@ -1,3 +1,19 @@
+document.getElementById("add-product-main").addEventListener("click", function(event) {
+    document.getElementById("add-container").showPopover();
+
+    document.getElementById("add-container").style.display = "block";
+    document.getElementById("add-container").style.display = "flex";
+});
+
+
+function back(){
+    document.getElementById("add-container").style.display = "none";
+}
+
+function closeAddContainer(){
+    document.getElementById("add-container").style.display = "none";
+}
+
 document.getElementById("addProductForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -73,8 +89,10 @@ document.getElementById("start-scan").addEventListener("click", function() {
         document.getElementById("qr-result").textContent = "Failed to start scanning.";
     });
 });
-
+let stopFetching = false;
+let intervalID = setInterval(updateProductName, 2000);
 function updateProductName() {
+    if (stopFetching) return;
     fetch("http://localhost:5000/api/get-scanned-data")
     .then(response => response.json())
     .then(data => {
@@ -82,13 +100,13 @@ function updateProductName() {
 
         if (data.product_name) {
             document.querySelector("#add-quantity h1").textContent = data.product_name;
+            document.getElementById("add-quantity").style.display = "block";
+            document.getElementById("add-product").style.display = "none";
         } else {
             console.error("Error: product_name not found in response.");
         }
     })
-    .catch(error => console.error("Error fetching scanned data:", error));
-
-
+    
 }
 
 // Refresh the product name every 2 seconds
@@ -96,6 +114,7 @@ setInterval(updateProductName, 2000);
 console.log("Product Name:", data.product_name);
 
 function updateQuantity() {
+   
     let productName = document.getElementById("product-name").textContent; // Get product name
     let quantity = document.getElementById("add-quantity-input").value; // Get input value
 
@@ -120,7 +139,12 @@ function updateQuantity() {
     .then(data => {
         if (data.message) {
             alert(data.message);
+            document.getElementById("add-quantity").style.display = "none";
             document.getElementById("add-quantity-input").value = ""; // Clear input
+            stopFetching = true;
+            clearInterval(intervalID);
+            fetch("http://localhost:5000/api/reset-scanned-data", { method: "POST" })
+                .catch(error => console.error("Error resetting scan:", error));
         } else {
             alert("Error: " + data.error);
         }

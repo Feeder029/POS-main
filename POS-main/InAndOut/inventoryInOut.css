@@ -28,12 +28,12 @@ nav{
     border-radius:10px;
     width: 400px;
     height: 200px;
-    display: flex;
     justify-content: space-around;
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
     gap: 10px;
+    display: none;
 }
 #add-container h1{
     font-size: x-large;
@@ -156,3 +156,4 @@ border: none;
     flex-direction: column;
     gap: 10px;
 }
+
