@@ -2,6 +2,7 @@ SalesID,Status
 35,Not Delivered
 36,Not Delivered
 37,Not Delivered
+<<<<<<< Updated upstream
 38,Not Delivered
 1,3,Porkchop,Meats,aef,1000,Nos,25,3,1,POS-main/InAndOut/qrcode\Porkchop.png
 39,Not Delivered
@@ -23,3 +24,8 @@ SalesID,Status
 55,Not Delivered
 56,Not Delivered
 57,Not Delivered
+=======
+65,Not Delivered
+66,Not Delivered
+67,Not Delivered
+>>>>>>> Stashed changes

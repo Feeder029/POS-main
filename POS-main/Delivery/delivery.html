@@ -6,7 +6,7 @@
     <title>DELIVERY</title>
 </head>
 <body>
-    <div class="scan-qr">
+    <div class="scan-qr" style="visibility: visible;">
         <div class="scan-container">
             <h1>SCAN THE QR</h1>
             <button id="start-scan">Start QR Scan</button>
@@ -15,13 +15,13 @@
         </div>
     </div>
 
-    <div id="container" >
+    <div id="container" popover>
         <h1>SALES ID</h1>
-        <button id="Show-receipt" onclick="showReceipt()">SHOW RECEIPT</button>
+        <button id="Show-receipt" onclick="showReceipt()" popovertarget="receipt">SHOW RECEIPT</button>
         <button id="confirm-btn">CONFIRM DELIVERY</button>
     </div>
 
-    <div id="receipt">
+    <div id="receipt" popover>
         <h1>Receipt</h1>
     </div>
     <script src="delivery.js?v=1.0.3"></script>

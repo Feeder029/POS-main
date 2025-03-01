@@ -32,13 +32,14 @@ function updateProductName() {
                     document.getElementById("qr-result").textContent = "Waiting for scan...";     
                     clearInterval(intervalID);
                     stopFetching = true;      
+                    document.getElementById("container").showPopover();
+                    document.getElementById("scan-qr").style.visibility ="hidden";
                 } else {
                     document.getElementById("qr-result").textContent = "Waiting for scan...";   
                     clearInterval(intervalID);       
                 }
             })
             .catch(error => {
-                alert("Error checking item in database:", error);
                 document.getElementById("qr-result").textContent = "Error checking database.";
             });
         }
@@ -56,7 +57,7 @@ console.log("Sales ID:", data.SalesID);
 
 function showReceipt() {
     let salesID = document.querySelector("#container h1").textContent.trim(); // Get SalesID from UI
-
+    document.getElementById("container").hidePopover();
      // Extract only the numeric part (if "SalesID: 64" is shown instead of "64")
     salesID = salesID.replace(/[^\d]/g, '');
     if (!salesID || salesID === "SALES ID") {
