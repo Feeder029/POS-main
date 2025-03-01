@@ -7,28 +7,42 @@
     <link rel="stylesheet" href="inventoryInOut.css?v=1.0.2">
 </head>
 <body>
-    <button popovertarget="add-container">ADD PRODUCT</button>
+    <nav>
+        <button popovertarget="add-container">ADD PRODUCT</button>
+    </nav>
+    
 
     <div id="add-container" popover>
-        <button popovertarget="add-product">ADD PRODUCT AMOUNT</button>
-        <button popovertarget="add-new-container">ADD NEW PRODUCT</button>
+        <div class="scan-qr"> <h1>Scan QR</h1>
+            <button class="add-product" popovertarget="add-product">ADD PRODUCT AMOUNT</button>
+        </div>
+        <div class="fillup-form"> <h1>Form</h1>
+            <button popovertarget="add-new-container">ADD NEW PRODUCT</button>
+        </div>
     </div>
 
     <div id="add-product" popover>
-        <h1>SCAN THE QR</h1>
-        <button id="start-scan">Start QR Scan</button>
-        <p id="qr-result">Waiting for scan...</p>
+        <div class="scan-container">
+            <h1>SCAN THE QR</h1>
+            <button id="start-scan">Start QR Scan</button>
+            <p id="qr-result">Waiting for scan...</p>
+        </div>
+        
     </div>
 
-    <div id="add-quantity">
-        <h1 id="product-name">ITEM NAME</h1>
-        <h1>ADD QUANTITY</h1>
-        <input type="number" name="add-quantity-input" id="add-quantity-input">
-        <button onclick="updateQuantity()">ADD</button> <!-- Call JS function -->
-    </div>
+    
+        <div id="add-quantity">
+            <h1 id="product-name">ITEM NAME</h1>
+            <h1>ADD QUANTITY</h1>
+            <input type="number" name="add-quantity-input" id="add-quantity-input">
+            <button onclick="updateQuantity()">ADD</button> <!-- Call JS function -->
+        </div>
+    
+    
 
 
-    <div id="add-new-container" popover>
+<div id="add-new-container" popover>
+    <div class="main-form-container">
         <form id="addProductForm">
             <select name="category" id="category" required>
                 <option value="0">Select Category</option>
@@ -71,11 +85,13 @@
                 <option value="2">Supplier 102</option>
                 <option value="3">Supplier 103</option>
             </select>
-            <button type="submit">SUBMIT</button>
+            <button class="submit-btn" type="submit">SUBMIT</button>
         </form>
         
-        <button popovertarget="add-new-container" popovertargetaction="hide">CLOSE</button>
+        <button class="close-btn" popovertarget="add-new-container" popovertargetaction="hide">CLOSE</button>
     </div>
+</div>
+
 
     <script src="inventoryIntOut.js?v=1.0.2"></script>
 </body>
