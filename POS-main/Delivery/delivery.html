@@ -11,7 +11,7 @@
     <div class="scan-qr" style="visibility: visible;">
         <div class="scan-container">
                 <h1>SCAN THE QR</h1>
-                <button id="start-scan-add">Start QR Scan</button>
+                <button id="start-scan">Start QR Scan</button>
                 <p id="qr-result">Waiting for scan...</p>
             <div class="close-btn" id="close">
                 <button onclick="closeQR()">CLOSE</button>
@@ -20,9 +20,9 @@
    
 
 </div>
-        <div id="container" popover style="display:none;">
+        <div id="container" popover>
             <div class="child-container">
-                <div class="h1">  <h2>SALES ID</h2></div>
+                <div class="h1">  <h1>SALES ID</h1></div>
                     <div class="container-btn">
                         <button id="Show-receipt" onclick="showReceipt()" popovertarget="receipt">SHOW RECEIPT</button>
                         <button id="confirm-btn" onclick="confirmDelivery()">CONFIRM DELIVERY</button>
