@@ -8,7 +8,7 @@
         c.`Quantity`,
         GROUP_CONCAT(CONCAT(d.`ProductName`, ' x', c.`Quantity`, ' = ', c.`UnitPrice`)) AS `Products`,
         a.`TotalAmount`,
-        a.`Date`, 
+        a.`Date`,
         b.`PaymentMethodID`,
         b.`AmountPaid`,
         b.`ChangeGiven`,
@@ -18,7 +18,8 @@
     JOIN `orders` c ON a.`SalesID` = c.`SalesID`
     JOIN `products` d ON c.`ProductID` = d.`ProductID`
     JOIN `paymentmethods` e ON e.`PayID` = b.`PaymentMethodID`
-    GROUP BY a.`SalesID`, a.`TotalAmount`, a.`Date`, b.`PaymentMethodID`, b.`AmountPaid`, b.`ChangeGiven`");
+    GROUP BY a.`SalesID`, a.`TotalAmount`, a.`Date`, b.`PaymentMethodID`, b.`AmountPaid`, b.`ChangeGiven`
+    ORDER BY a.`Date` DESC");
 
 
     $reciept = [];
