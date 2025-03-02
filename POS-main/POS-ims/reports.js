@@ -6,7 +6,7 @@ fetch('reportsdata.php')
     var ForecastSales = document.getElementById('Forecast').getContext('2d');
     var ItemSales = document.getElementById('ItemsChart').getContext('2d');
     var ItemForecast = document.getElementById('Item_Forecast').getContext('2d');
-    let BarLines= 'rgb(73, 70, 255)'; 
+    let BarLines= '#213555'; 
     
     // Daily Sales Chart
     var myLineChart = new Chart(dailysales, {

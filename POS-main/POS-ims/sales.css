@@ -6,7 +6,7 @@
 }
 body{
 height: 100vh;
-background-color: #ffffff;
+background-color: #EEEDED;
 }
 .header{
     height: 2vh;
@@ -63,7 +63,7 @@ padding: 2vh;
 gap: 2vh;
 }
 .box:first-child{
-    background-color: #4B70F5;
+    background-color: #213555;
     color: #ffffff;
 }
 .date-header{
@@ -75,7 +75,7 @@ gap: 2vh;
 }
 .date-header button{
     font-size: medium;
-    background-color: #4B70F5;
+    background-color: #213555;
     color: #ffffff;
     border-radius:6px;
     padding: 8px 20px 8px 20px;
@@ -83,11 +83,15 @@ gap: 2vh;
 
 }
 .box{
-    background-color: #eeeeee;
+    background-color: #ffffff;
     width: 25%;
     height: 100%;
     border-radius:13px ;
     padding: 20px;
+    
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+
+    
 }
 .box label{
     font-size:larger;
@@ -111,10 +115,17 @@ padding-left: 5vh;
     height: 100%;
     padding: 20px;
     border-radius: 13px;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     gap: 2vh;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.recent-activity #a{
+overflow-y: scroll;
+-ms-overflow-style: none;
+scrollbar-width: none;
 }
 .recent-activity h1{
     font-size: x-large;
@@ -140,8 +151,10 @@ align-items: baseline;
     width: 70%;
     height: 100%;
     border-radius:13px ;
-    border: 1px solid black;
+   
     padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+    background-color: #ffffff;
 }
 .sales-container .graph{
     width: 100%;
@@ -156,6 +169,7 @@ align-items: center;
 height: 60vh;
 padding: 0 2vh 2vh 2vh;
 gap: 2vh;
+
 }
 .sales-container-label{
 display: flex;
@@ -179,21 +193,33 @@ flex-direction: row;
     align-items: center; /* Centers content horizontally */
     gap: 10px; /* Adds spacing between items */
     min-height: 300px; /* Ensures the container has enough height */
+
 }
 
 .case {
-    background-color: #f8f9fa; /* Light gray background */
-    border: 1px solid #ccc; /* Light border */
+     /* Light gray background */
     border-radius: 8px; /* Rounded corners */
     padding: 12px 16px; /* Space inside the box */
     width: 100%; /* Adjust width to prevent stretching */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
     text-align: center; /* Center text inside */
+    height: 60px;
+    border: 1px solid #ccc;
 }
 
 .case h3 {
     font-size: 16px;
-    color: #171717; /* Darker text for readability */
+    color: black; /* Darker text for readability */
     margin: 0; /* Remove default margin */
     font-weight: 600; /* Slightly bold */
+}
+
+.forcast-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 60vh;
+    padding: 0 2vh 2vh 2vh;
+    gap: 2vh;
 }

@@ -104,6 +104,7 @@ if ($result2->num_rows > 0) {
                                     <!-- recent activity history -->   
             </div>
         </div>
+        
         <div class="sales-container">
             <div class="sales-container-label">
                 <h1>Monthly Sales</h1>
@@ -115,8 +116,8 @@ if ($result2->num_rows > 0) {
         </div>
     </div>  
 
-    <div class="activity-sales-container">
-    <div class="sales-container">
+    <div class="forcast-container">
+        <div class="sales-container">
             <div class="sales-container-label">
                 <h1>Next 3 Months Sales Forecasting</h1>
             </div>    
