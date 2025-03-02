@@ -225,6 +225,111 @@ def get_receipt():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
    
+DELIVERY_CSV_FILE = "Reciept_Info.csv"
+
+@app.route('/api/check-delivery-status', methods=['GET'])
+def check_delivery_status():
+    sales_id = request.args.get("SalesID", "")
+
+    if not sales_id:
+        return jsonify({"error": "Missing SalesID"}), 400
+
+    if not os.path.exists(DELIVERY_CSV_FILE):
+        return jsonify({"error": "Delivery records file not found"}), 500
+
+    try:
+        with open(DELIVERY_CSV_FILE, mode="r", newline="") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                if row.get("SalesID") == sales_id:
+                    return jsonify({
+                        "SalesID": sales_id,
+                        "Status": row.get("Status", "Unknown")
+                    })
+                    
+        return jsonify({"SalesID": sales_id, "Status": "Not Found"})
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/status-update', methods=['POST'])
+def status_update():
+    try:
+        data = request.json
+        sales_id = data.get("SalesID", "")
+
+        if not sales_id:
+            return jsonify({"error": "Missing SalesID"}), 400
+
+        updated_orders = []
+        found = False
+
+        # Read and update CSV records
+        with open(DELIVERY_CSV_FILE, mode="r", newline="") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                if row["SalesID"].strip() == str(sales_id).strip() and row["Status"].strip().lower() == "not delivered":
+                    row["Status"] = "Delivered"
+                    found = True
+                updated_orders.append(row)
+
+        if not found:
+            return jsonify({"error": "SalesID not found or already delivered"}), 404
+
+        # Write back updated data
+        with open(DELIVERY_CSV_FILE, mode="w", newline="") as file:
+            fieldnames = ["SalesID", "Status"]
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(updated_orders)
+
+        return jsonify({"message": "Stock deducted and order marked as Delivered."})
+
+    except Exception as e:
+        return jsonify({"error": f"Failed to update delivery status: {str(e)}"}), 500
+
+
+@app.route('/api/deduct-stock', methods=['POST'])
+def deduct_stock():
+    try:
+        data = request.json
+        print("Received data:", data)
+        product_name = data.get("ProductName")
+        quantity_to_deduct = data.get("quantity")
+
+        if not product_name or quantity_to_deduct is None:
+            print("Error: Missing ProductName or Quantity")  # Debugging line
+            return jsonify({"error": "Missing ProductName or Quantity"}), 400
+
+        ims_db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="ims_db"
+        )
+        ims_cursor = ims_db.cursor()
+
+        # Deduct stock
+        update_query = """
+            UPDATE ims_product
+            SET quantity = quantity - %s
+            WHERE pname = %s
+        """
+        ims_cursor.execute(update_query, (quantity_to_deduct, product_name))
+        ims_db.commit()
+        ims_db.close()
+        status_update()
+        return jsonify({"message": "Stock successfully deducted."})
+
+    except Exception as e:
+        return jsonify({"error": f"Failed to deduct stock: {str(e)}"}), 500
+
+@app.route('/api/reset-sales-id', methods=['POST'])
+def reset_sales_id():
+    global last_scanned_sales_id
+    last_scanned_sales_id = None  # Clear last scanned ID
+    return jsonify({"message": "SalesID reset successfully."})
+
 # ---------------------- RUN THE FLASK SERVER ---------------------- #
 if __name__ == "__main__":
     app.run(debug=True, port=5000)  # Running on Port 5000
