@@ -7,29 +7,72 @@
     <link rel="stylesheet" href="inventoryInOut.css?v=1.0.5">
 </head>
 <body>
-    <nav>
-        <button id="add-product-main" popovertarget="add-container" type="button">ADD PRODUCT</button>
-        <button id="deduct-product-main" popovertarget="deduct-product" type="button">DEDUCT PRODUCT</button>
-    </nav>
+    <div class="main-container">
+        <nav>
+            <button id="add-product-main" popovertarget="add-container" type="button">ADD PRODUCT</button>
+            <button id="deduct-product-main" popovertarget="deduct-product" type="button">DEDUCT PRODUCT</button>
+        </nav>
+        
+        <div class="child-main-container">
+            <div id="add-quantity" style="display:none;">
+                <div class="main-add-quatity-container">
+                    <div class="make-label-center"> 
+                        <h1 id="product-name-add">ITEM NAME</h1>
+                            <h2>ADD QUANTITY</h2>
+                    </div>
+                    <div class="make-textbox-center">
+                        <input type="number" name="add-quantity-input" id="add-quantity-input">
+                        <button class="add-btn" onclick="updateQuantity1()">ADD</button> <!-- Call JS function -->
+                    </div>
+                </div>
+            </div>
 
-    <div id="add-container" popover>
-        <div class="scan-qr"> <h1>Scan QR</h1>
-            <button class="add-product" popovertarget="add-product"  onclick="closeAddContainer()">ADD PRODUCT AMOUNT</button>
+            <div id="deduct-quantity" style="display:none;">
+                <div class="main-deduct-quatity-container">
+                  <div class="make-label-center">
+                    <h1 id="product-name-deduct">ITEM NAME</h1>
+                    <h2>DEDUCT QUANTITY</h2>
+                  </div>
+                   <div class="make-textbox-center">
+                    <input type="number" name="deduct-quantity-input" id="deduct-quantity-input">
+                    <button class="deduct-btn" onclick="updateQuantity2()">DEDUCT</button> <!-- Call JS function -->
+                   </div>
+                </div>
+            </div>
         </div>
-        <div class="fillup-form"> <h1>Form</h1>
-            <button popovertarget="add-new-container"  onclick="closeAddContainer()">ADD NEW PRODUCT</button>
-        </div>
-        <button id="back-add-container" onclick="back()">BACK</button>
     </div>
 
-    <div id="add-product" popover >
-        <div class="scan-container">
-            <h1>SCAN THE QR</h1>
-            <button id="start-scan-add">Start QR Scan</button>
-            <p id="qr-result-add">Waiting for scan...</p>
-            <button onclick="closeQR()">CLOSE</button>
-        </div>
+   
+
+        <div id="add-container" popover>
+        <div class="semi-add-container">
+                <div class="add-container-child">
+                        <div class="scan-qr"> <h1>Scan QR</h1>
+                            <button class="add-product" popovertarget="add-product"  onclick="closeAddContainer()">ADD PRODUCT AMOUNT</button>
+                        </div>
+                        <div class="fillup-form"> <h1>Form</h1>
+                            <button popovertarget="add-new-container"  onclick="closeAddContainer()">ADD NEW PRODUCT</button>
+                        </div>
+                </div>
+
+                <div class="back-btn-container">
+                    <button id="back-add-container" onclick="back()">BACK</button>
+                </div>
+            </div>
+        </div>  
+    
         
+    <div id="add-product" popover >
+        <div class="add-product-main-container">
+            <div class="scan-container">
+                <h1>SCAN THE QR</h1>
+                <button id="start-scan-add">Start QR Scan</button>
+                <p id="qr-result-add">Waiting for scan...</p>
+                <div class="close-btn" id="close">
+                    <button onclick="closeQR()">CLOSE</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="deduct-product" popover>
@@ -37,32 +80,16 @@
             <h1>SCAN THE QR</h1>
             <button id="start-scan-deduct">Start QR Scan</button>
             <p id="qr-result-deduct">Waiting for scan...</p>
-            <button onclick="closeQR()">CLOSE</button>
+                <div class="close-btn">
+                    <button onclick="closeQR()">CLOSE</button>
+                </div>
         </div>   
     </div>
     
-    
-    
-    <div id="add-quantity" style="display:none;">
-        <h1 id="product-name-add">ITEM NAME</h1>
-        <h1>ADD QUANTITY</h1>
-        <input type="number" name="add-quantity-input" id="add-quantity-input">
-        <button onclick="updateQuantity1()">ADD</button> <!-- Call JS function -->
-    </div>
-
-    <div id="deduct-quantity" style="display:none;">
-        <h1 id="product-name-deduct">ITEM NAME</h1>
-        <h1>DEDUCT QUANTITY</h1>
-        <input type="number" name="deduct-quantity-input" id="deduct-quantity-input">
-        <button onclick="updateQuantity2()">DEDUCT</button> <!-- Call JS function -->
-    </div>
-    
-    
-
-
     <div id="add-new-container" popover>
         <div class="main-form-container">
             <form id="addProductForm">
+                <h2>ADD Product</h2>
                 <select name="category" id="category" required>
                     <option value="0">Select Category</option>
                     <option value="1">Random Item</option>
@@ -107,10 +134,9 @@
                 <button class="submit-btn" type="submit">SUBMIT</button>
             </form>
             
-            <button class="close-btn" popovertarget="add-new-container" popovertargetaction="hide">CLOSE</button>
+            <button class="form-close-btn" popovertarget="add-new-container" popovertargetaction="hide">CLOSE</button>
         </div>
     </div>
-
 
 <<<<<<< Updated upstream
     <script src="inventoryIntOut.js?v=1.2"></script>

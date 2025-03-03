@@ -3,27 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="delivery.css">
     <title>DELIVERY</title>
 </head>
 <body>
+
     <div class="scan-qr" style="visibility: visible;">
         <div class="scan-container">
-            <h1>SCAN THE QR</h1>
-            <button id="start-scan">Start QR Scan</button>
-            <p id="qr-result">Waiting for scan...</p>
-            <button onclick="closeQR()">CLOSE</button>
+                <h1>SCAN THE QR</h1>
+                <button id="start-scan-add">Start QR Scan</button>
+                <p id="qr-result">Waiting for scan...</p>
+            <div class="close-btn" id="close">
+                <button onclick="closeQR()">CLOSE</button>
+            </div>
         </div>
-    </div>
+   
 
-    <div id="container" popover>
-        <h1>SALES ID</h1>
-        <button id="Show-receipt" onclick="showReceipt()" popovertarget="receipt">SHOW RECEIPT</button>
-        <button id="confirm-btn" onclick="confirmDelivery()">CONFIRM DELIVERY</button>
-    </div>
-
-    <div id="receipt" popover>
-        <h1>Receipt</h1>
-    </div>
+</div>
+        <div id="container" popover style="display:none;">
+            <div class="child-container">
+                <div class="h1">  <h2>SALES ID</h2></div>
+                    <div class="container-btn">
+                        <button id="Show-receipt" onclick="showReceipt()" popovertarget="receipt">SHOW RECEIPT</button>
+                        <button id="confirm-btn" onclick="confirmDelivery()">CONFIRM DELIVERY</button>
+                    </div>
+            </div>  
+           
+        </div>
+    
+        <div id="receipt" popover style="display:none;">
+            <h1>Receipt</h1>
+        </div>
+    
     <script src="delivery.js?v=1.0.4"></script>
 </body>
 </html>

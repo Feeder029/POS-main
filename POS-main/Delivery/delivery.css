@@ -1,0 +1,127 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    
+}
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: #EEEDED;
+}
+.bruhh{
+    background-color: seagreen;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+   align-items: center;
+}
+.meow{
+    background-color: crimson;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.scan-qr{
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+.close-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.close-btn button{
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+    background-color: #D84040;
+    color: aliceblue;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.scan-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+#start-scan-add{
+    height: 50px;
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+    background-color: #0D92F4;
+    color: aliceblue;
+    padding: 5px;
+    cursor: pointer;
+}
+#container{
+    background-color: #f3f3f3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 140px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+.child-container{
+
+height: 100%;
+width: 100%;
+border: none;
+    border-radius: 5px;
+}
+#container .h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    height: 30%;
+    
+}
+.container-btn{
+    display: flex;
+    flex-direction: row;
+    height: 70%;
+    width: 100%;
+    justify-content: space-around;
+    align-items: end;
+    padding-bottom: 10px;
+    gap: 10px;
+    
+
+}
+.container-btn button{
+    border:none;
+    padding: 5px;
+    border-radius:5px ;
+    height: 50%;
+    width: 50%;
+    background-color: #0D92F4;
+    color:white ;
+    cursor: pointer;
+}
+#receipt{
+    top: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
