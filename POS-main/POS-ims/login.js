@@ -38,11 +38,20 @@ document.addEventListener("DOMContentLoaded", function() {
             sessionStorage.setItem('userRole', 'admin');
             alert('Login successfully!');
             window.location.href = "mainDashboard.html";
-        } else if (username === 'customer' && password === 'customer123') {
-            sessionStorage.setItem('userRole', 'customer');
+        } else if (username === 'rider' && password === 'rider123') {
+            sessionStorage.setItem('userRole', 'rider');
             alert('Login successfully!');
             window.location.href = "mainDashboard.html";
-        } else {
+        } else if (username === 'warehouse' && password === 'warehouse123') {
+            sessionStorage.setItem('userRole', 'warehouse');
+            alert('Login successfully!');
+            window.location.href = "mainDashboard.html";
+        } else if (username === 'cashier' && password === 'cashier123') {
+            sessionStorage.setItem('userRole', 'cashier');
+            alert('Login successfully!');
+            window.location.href = "mainDashboard.html";
+        }
+        else {
             alert('Invalid username or password!');
         }
     });
