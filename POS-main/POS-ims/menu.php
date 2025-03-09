@@ -16,11 +16,9 @@
             <div class="category-container">
                 <div class="category-label">
                     <div><a href="">All</a></div>
-                    <div><a href="">product1</a></div>
-                    <div><a href="">product2</a></div>
-                    <div><a href="">product3</a></div>
-                    <div><a href="">product3</a></div>
-                    <div><a href="">product3</a></div>
+                    <div><a href="">Bicycles</a></div>
+                    <div><a href="">Accessories</a></div>
+                    <div><a href="">Maintenance & Tools</a></div>
                 </div>
             </div>
         </nav>
@@ -34,6 +32,6 @@
     <div class="cart-containers">
     </div>
        
-    <script src="menu.js?v=1.2"></script>
+    <script src="menu.js?v=1.3"></script>
 </body>
 </html>

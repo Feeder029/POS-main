@@ -213,3 +213,43 @@ h1 {
         margin: 10px 0;
     }
 }
+
+.receipt-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+hr {
+    border: none;
+    border-top: 1px dashed black;
+    margin: 10px 0;
+}
+.item-list {
+    text-align: left;
+    margin-left: 10px;
+}
+.total {
+    font-size: 16px;
+    font-weight: bold;
+}
+.qr-code img {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+.thank-you {
+    font-style: italic;
+    margin-top: 10px;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.print-btn, .close-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}

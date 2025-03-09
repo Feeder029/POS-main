@@ -20,18 +20,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 receipt.classList.add('receipt');
                 receipt.id = `receipt-${item.SalesID}`;
                 receipt.innerHTML = `
-                    <h2>Receipt</h2>
-                    <p><strong>Date:</strong> ${item.Date}</p>
+                    <h2 class="receipt-title">BIKE SALES RECEIPT</h2>
+                    <hr>
+                    <p><strong>Date:</strong> ${new Date(item.Date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} &nbsp; ${new Date(item.Date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }).toUpperCase()}</p>
+                    <p><strong>OR No.:</strong> ${item.SalesID}</p>
+                    <hr>
                     <div class="item">
-                        <p> ${item.ProductID}: ${item.Products.replace(/,/g, '<br>')} </p>
-                    </div>
-                    <p class="total">Total: PHP ${item.TotalAmount}</p>
-                    <p><strong>Payment Method:</strong> ${item.PaymentMethod}</p>
+                   <p><strong>Items Purchased:</strong></p>
+                   <p class="item-list"> ${item.Products.replace(/,/g, '<br>')} </p>
+                   </div>
+                   <hr>
+                   <p class="total"><strong>Total: PHP ${item.TotalAmount}</strong></p>
+                   <p><strong>Payment Method:</strong> ${item.PaymentMethod}</p>
                     <p><strong>Amount Paid:</strong> PHP ${item.AmountPaid}</p>
-                    <p><strong>Change Given:</strong> PHP ${item.ChangeGiven}</p>
-                    <img src="../../Reciept_QR/${item.SalesID}.png" alt="Receipt QR Code" style="width:150px; height:auto; display:block; margin:10px auto;">
+                   <p><strong>Change Given:</strong> PHP ${item.ChangeGiven}</p>
+                   <hr>
+                   <div class="qr-code">
+                   <img src="../../Reciept_QR/${item.SalesID}.png" alt="Receipt QR Code">
+                    </div>
+                   <div class="button-container">
                     <button class="print-btn" onclick="printReceipt(${item.SalesID})">Print</button>
                     <button class="close-btn" onclick="hideReceipt(${item.SalesID})">Close</button>
+                    </div>
                 `;
 
 

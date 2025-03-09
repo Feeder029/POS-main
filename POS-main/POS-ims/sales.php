@@ -145,7 +145,5 @@ if ($result2->num_rows > 0) {
     <script src="reports.js?v=1.3"></script>
 
 
-    <script src="doughnutChart.js"></script>
-    <script src="barChart.js"></script>
 </body>
 </html>

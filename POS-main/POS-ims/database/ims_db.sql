@@ -1,15 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2022 at 10:21 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.5
+-- Generation Time: Mar 09, 2025 at 04:06 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `ims_db`
@@ -26,22 +32,16 @@ CREATE TABLE `ims_brand` (
   `categoryid` int(11) NOT NULL,
   `bname` varchar(250) NOT NULL,
   `status` enum('active','inactive') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ims_brand`
 --
 
 INSERT INTO `ims_brand` (`id`, `categoryid`, `bname`, `status`) VALUES
-(1, 2, 'Brand 1', 'active'),
-(2, 2, 'Brand 2', 'active'),
-(3, 2, 'Brand 3', 'active'),
-(4, 1, 'Brand 201', 'active'),
-(5, 1, 'Brand 202', 'active'),
-(6, 1, 'Brand 203', 'active'),
-(7, 3, 'Brand 301', 'active'),
-(8, 3, 'Brand 302', 'active'),
-(9, 3, 'Brand 303', 'active');
+(1, 1, 'Giant', 'active'),
+(2, 2, 'Trek', 'active'),
+(3, 3, 'Shimano', 'active');
 
 -- --------------------------------------------------------
 
@@ -53,16 +53,16 @@ CREATE TABLE `ims_category` (
   `categoryid` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `status` enum('active','inactive') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ims_category`
 --
 
 INSERT INTO `ims_category` (`categoryid`, `name`, `status`) VALUES
-(1, 'Smartphone', 'active'),
-(2, 'Random Item', 'active'),
-(3, 'Speaker', 'active');
+(1, 'Bicycles', 'active'),
+(2, 'Accessories', 'active'),
+(3, 'Maintenance & Tools', 'active');
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE `ims_customer` (
   `address` text NOT NULL,
   `mobile` int(50) NOT NULL,
   `balance` double(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ims_customer`
@@ -98,7 +98,7 @@ CREATE TABLE `ims_order` (
   `total_shipped` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `order_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ims_order`
@@ -129,16 +129,29 @@ CREATE TABLE `ims_product` (
   `supplier` int(11) NOT NULL,
   `status` enum('active','inactive') NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ims_product`
 --
 
 INSERT INTO `ims_product` (`pid`, `categoryid`, `brandid`, `pname`, `model`, `description`, `quantity`, `unit`, `base_price`, `tax`, `minimum_order`, `supplier`, `status`, `date`) VALUES
-(1, 2, 1, 'Product 101', 'P-1001', 'usce auctor faucibus efficitur.', 10, 'Bottles', 500.00, '12.00', 1.00, 1, 'active', '0000-00-00'),
-(2, 1, 4, 'Product 102', 'P-1002', 'Proin vehicula mi pulvinar ipsum ornare tincidunt.', 15, 'Box', 7500.00, '12.00', 1.00, 2, 'active', '0000-00-00'),
-(3, 3, 7, 'Product 103', 'P-1003', 'Integer interdum, odio eget mattis venenatis', 20, 'Bags', 350.00, '12.00', 1.00, 3, 'active', '0000-00-00');
+(17, 1, 1, 'Road Bike', 'POR-324', 'Broom Broom', 11, 'Nos', 3000.00, 20.00, 0.00, 1, 'active', '0000-00-00'),
+(18, 1, 2, 'BMX Frame', 'BMX Trex', 'Trex', 16, 'Nos', 8500.00, 10.00, 0.00, 2, 'active', '0000-00-00'),
+(19, 1, 2, 'City Ride', 'City Ride', 'City Ride', 9, 'Nos', 15000.00, 10.00, 0.00, 2, 'active', '0000-00-00'),
+(20, 1, 2, 'Tour Cycle', 'Tour Cycle', 'Tour Cycle', 5, 'Nos', 30000.00, 10.00, 0.00, 3, 'active', '0000-00-00'),
+(21, 1, 3, 'MTB Frame', 'MTB Frame', 'MTB Frame', 12, 'Nos', 12000.00, 10.00, 0.00, 2, 'active', '0000-00-00'),
+(22, 2, 2, 'Bell Horn', 'Bell Horn', 'Bell Horn', 23, 'Nos', 150.00, 10.00, 0.00, 3, 'active', '0000-00-00'),
+(23, 2, 1, 'Bike Lock', 'Bike Lock', 'Bike Lock', 28, 'Nos', 800.00, 10.00, 0.00, 3, 'active', '0000-00-00'),
+(24, 2, 3, 'Rear Rack', 'Rear Rack', 'Rear Rack', 22, 'Nos', 1500.00, 10.00, 0.00, 1, 'active', '0000-00-00'),
+(25, 2, 1, 'Grip Tape', 'Grip Tape', 'Grip Tape', 32, 'Nos', 600.00, 10.00, 0.00, 2, 'active', '0000-00-00'),
+(26, 2, 1, 'Water Cage', 'Water Cage', 'Water Cage', 27, 'Nos', 450.00, 10.00, 0.00, 1, 'active', '0000-00-00'),
+(27, 3, 2, 'Chain Lube', 'Chain Lube', 'Chain Lube', 29, 'Nos', 250.00, 10.00, 0.00, 2, 'active', '0000-00-00'),
+(28, 3, 3, 'Tire Pump', 'Tire Pump', 'Tire Pump', 33, 'Nos', 1200.00, 10.00, 0.00, 1, 'active', '0000-00-00'),
+(29, 3, 2, 'Hex Wrench', 'Hex Wrench', 'Hex Wrench', 40, 'Nos', 500.00, 10.00, 0.00, 1, 'active', '0000-00-00'),
+(30, 3, 2, 'Rim Strip', 'Rim Strip', 'Rim Strip', 40, 'Nos', 300.00, 10.00, 0.00, 1, 'active', '0000-00-00'),
+(31, 3, 2, 'Brake Pads', 'Brake Pads', 'Brake Pads', 22, 'Nos', 700.00, 10.00, 0.00, 1, 'active', '0000-00-00'),
+(32, 3, 2, 'Gear Grease', 'Gear Grease', 'Gear Grease', 20, 'Nos', 350.00, 10.00, 0.00, 3, 'active', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -152,7 +165,7 @@ CREATE TABLE `ims_purchase` (
   `product_id` varchar(255) NOT NULL,
   `quantity` varchar(255) NOT NULL,
   `purchase_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ims_purchase`
@@ -175,16 +188,16 @@ CREATE TABLE `ims_supplier` (
   `mobile` varchar(50) NOT NULL,
   `address` text NOT NULL,
   `status` enum('active','inactive') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ims_supplier`
 --
 
 INSERT INTO `ims_supplier` (`supplier_id`, `supplier_name`, `mobile`, `address`, `status`) VALUES
-(1, 'Supplier 101', '09645987123', 'Over Here', 'active'),
-(2, 'Supplier 102', '094568791252', 'Over There', 'active'),
-(3, 'Supplier 103', '09789897879', 'Anywhere There', 'active');
+(1, 'BikeWorld Trading', '09645987123', 'Over Here', 'active'),
+(2, 'Cycling Hub Supplies', '094568791252', 'Over There', 'active'),
+(3, 'RideGear Distributors', '09789897879', 'Anywhere There', 'active');
 
 -- --------------------------------------------------------
 
@@ -199,7 +212,7 @@ CREATE TABLE `ims_user` (
   `name` varchar(200) NOT NULL,
   `type` enum('admin','member') NOT NULL,
   `status` enum('Active','Inactive') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ims_user`
@@ -268,7 +281,7 @@ ALTER TABLE `ims_user`
 -- AUTO_INCREMENT for table `ims_brand`
 --
 ALTER TABLE `ims_brand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ims_category`
@@ -292,7 +305,7 @@ ALTER TABLE `ims_order`
 -- AUTO_INCREMENT for table `ims_product`
 --
 ALTER TABLE `ims_product`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `ims_purchase`
@@ -312,3 +325,7 @@ ALTER TABLE `ims_supplier`
 ALTER TABLE `ims_user`
   MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

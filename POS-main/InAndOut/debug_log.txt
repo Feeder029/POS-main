@@ -1,13 +1,13 @@
 Array
 (
-    [category] => 1
-    [brand] => 3
-    [product_name] => Porkchop
-    [product_model] => Meats
-    [description] => aef
-    [quantity] => 1000
+    [category] => 3
+    [brand] => 2
+    [product_name] => Gear Grease
+    [product_model] => Gear Grease
+    [description] => Gear Grease
+    [quantity] => 20
     [unit] => Nos
-    [base_price] => 25
-    [product_tax] => 3
-    [supplier] => 1
+    [base_price] => 350
+    [product_tax] => 10
+    [supplier] => 3
 )

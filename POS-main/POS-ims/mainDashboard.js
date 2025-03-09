@@ -24,7 +24,6 @@ document.getElementById('clear-order').addEventListener('click', function() {
 });
 
 // Listen for messages from iframe (menu.html)
-// Listen for messages from iframe (menu.html)
 window.addEventListener('message', function(event) {
     // Make sure the message is coming from the iframe
     if (event.origin !== window.location.origin) return;

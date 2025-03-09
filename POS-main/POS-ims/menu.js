@@ -1,4 +1,3 @@
-// Wait until the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', async () => {
     let product_deduction = new Map();
 

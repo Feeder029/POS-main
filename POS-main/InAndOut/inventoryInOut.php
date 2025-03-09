@@ -92,15 +92,15 @@
                 <h2>ADD Product</h2>
                 <select name="category" id="category" required>
                     <option value="0">Select Category</option>
-                    <option value="1">Random Item</option>
-                    <option value="2">Smartphone</option>
-                    <option value="3">Speaker</option>
+                    <option value="1">Bicycles</option>
+                    <option value="2">Accessories</option>
+                    <option value="3">Maintenance & Tools</option>
                 </select>
                 <select name="brand" id="brand" required>
                     <option value="">Select Brand</option>
-                    <option value="1">Brand 1</option>
-                    <option value="2">Brand 2</option>
-                    <option value="3">Brand 3</option>
+                    <option value="1">Shimano</option>
+                    <option value="2">Trek</option>
+                    <option value="3">Giant</option>
                 </select>
                 <input type="text" name="product_name" id="product-name" placeholder="Product Name" required>
                 <input type="text" name="product_model" id="product-model" placeholder="Product Model" required>
@@ -127,9 +127,9 @@
                 <input type="number" name="product_tax" id="product_tax" placeholder="Product Tax" required>
                 <select name="supplier" id="supplier" required>
                     <option value="">Select Supplier</option>
-                    <option value="1">Supplier 101</option>
-                    <option value="2">Supplier 102</option>
-                    <option value="3">Supplier 103</option>
+                    <option value="1">RideGear Distributors</option>
+                    <option value="2">Cycling Hub Supplies</option>
+                    <option value="3">BikeWorld Trading</option>
                 </select>
                 <button class="submit-btn" type="submit">SUBMIT</button>
             </form>
@@ -138,10 +138,7 @@
         </div>
     </div>
 
-<<<<<<< Updated upstream
     <script src="inventoryIntOut.js?v=1.2"></script>
-=======
-    <script src="inventoryIntOut.js?v=1.0.4"></script>
->>>>>>> Stashed changes
 </body>
 </html>
+A
