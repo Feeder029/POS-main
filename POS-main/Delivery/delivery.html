@@ -13,12 +13,14 @@
                 <h1>SCAN THE QR</h1>
                 <button id="start-scan">Start QR Scan</button>
                 <p id="qr-result">Waiting for scan...</p>
-            
+                <div class="close-btn" id="close">
+                    <button onclick="closeQR()">CLOSE</button>
+                </div>
         </div>
    
 
 </div>
-        <div id="container" popover style="display:none;">
+        <div id="container" popover >
             <div class="child-container">
                 <div class="h1">  <h1>SALES ID</h1></div>
                     <div class="container-btn">
@@ -29,7 +31,7 @@
            
         </div>
     
-        <div id="receipt" popover style="display:none;">
+        <div id="receipt" popover >
             <div>
                 <h1>Receipt</h1>
             </div>
