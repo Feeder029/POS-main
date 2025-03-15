@@ -39,7 +39,9 @@ function ProductDisplay() {
                 display += `<option value="">No customers found</option>`;
             }
 
-            display += `</select>`;
+            display += `</select>
+            <button popovertarget="AddCustomers"> + </button>`;
+
 
             // Add the display to the HTML
             document.getElementById('customer_list').innerHTML = display;

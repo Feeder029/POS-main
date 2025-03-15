@@ -110,6 +110,26 @@ if (isset($data['ProductID'], $data['SalesID'], $data['Quantity'], $data['UnitPr
 }
 
 
+if (isset($data['FN'],$data['LN'],$data['PH'],$data['EM'])) {
+
+    $FirstName = $conn->real_escape_string($data['FN']);
+    $LastName = $conn->real_escape_string($data['LN']);
+    $Phone = $conn->real_escape_string($data['PH']);
+    $Email = $conn->real_escape_string($data['EM']);
+
+
+    $CustomerQuery = "INSERT INTO `customers`(`first_name`, `last_name`, `email`, `phone`, `date_created`) VALUES ('$FirstName','$LastName','$Phone','$Email',NOW())";
+
+
+    if ($conn->query($CustomerQuery)) {
+        $response['payments'] = ['status' => 'success', 'message' => 'Record updated successfully'];
+    } else {
+        $response['payments'] = ['status' => 'error', 'message' => 'Failed to update record', 'error' => $conn->error];
+    }
+} else {
+    $response['payments'] = ['status' => 'error', 'message' => 'Invalid data provided'];
+}
+
 
 
 

@@ -84,7 +84,8 @@
                 
             </div>
             <div id="customer_list">
-                <h7>CUSTOMER:</h7> 
+
+
             </div>
         </div>
     </div>
@@ -93,7 +94,17 @@
         <iframe id="iframe-dashboard" name="iframe-dashboard" ></iframe>  
     </div>
 
-    <script src="mainDashboard.js?v=5.3.6"></script>
+    <div popover id="AddCustomers">
+        <h3> ADD CUSTOMERS </h3>
+        <input type="text" name="FN_Txt" id="FN_Txt" placeholder="Input First Name">
+        <input type="text" name="LN_Txt" id="LN_Txt" placeholder="Input Last Name">
+        <input type="email" name="Email_Txt" id="Email_Txt" placeholder="Input Your Email">
+        <input type="tel" name="Phone_Txt" id="Phone_Txt" placeholder="Input Your Phone Number">
+        <button popovertarget="AddCustomers" popovertargetaction="hide">CLOSE</button>
+        <button onclick="Enter_Customers()">SUBMIT</button>
+    </div>
+
+    <script src="mainDashboard.js?v=5.3.7"></script>
     <script src="numpad.js?v=1.4"></script>
     <script src="menu.js?v=1.2"></script>
 

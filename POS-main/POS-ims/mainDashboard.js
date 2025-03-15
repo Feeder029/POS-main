@@ -439,9 +439,6 @@ async function InsertOrder(SID, Q, UP, Name) {
     console.log(orderData.message); // Handle success message
 }
 
-
-
-
 function sendSalesIDToPython(salesID) {
     fetch('http://127.0.0.1:5000/generate_qr', { // Flask runs on port 5000 by default
         method: 'POST',
@@ -460,3 +457,46 @@ function sendSalesIDToPython(salesID) {
     .catch(error => console.error('Request Failed:', error));
 }
 
+function Enter_Customers(event) {
+    if (event) event.preventDefault(); // Prevents form submission if inside a form
+
+    const First = document.getElementById("FN_Txt").value.trim();
+    const Last = document.getElementById("LN_Txt").value.trim();
+    const Email = document.getElementById("Email_Txt").value.trim();
+    const Phone = document.getElementById("Phone_Txt").value.trim();
+
+    if (First === "" || Last === "" || Email === "" || Phone === "") {
+        alert("Please fill up all the information!");
+        return;  // Stop execution
+    }
+
+    fetch('fetchapi.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            FN: First,
+            LN: Last,
+            PH: Phone,
+            EM: Email
+        })
+    })
+    .then(response => response.json())  // Expecting JSON response
+    .then(data => {
+        console.log(data.message);
+        alert("Customer is Recorded!!");
+
+        // Clear input fields for next entry
+        document.getElementById("FN_Txt").value = "";
+        document.getElementById("LN_Txt").value = "";
+        document.getElementById("Email_Txt").value = "";
+        document.getElementById("Phone_Txt").value = "";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("There was an error recording the customer. Please try again.");
+    });
+
+    ProductDisplay();
+}
