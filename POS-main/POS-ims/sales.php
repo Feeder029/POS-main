@@ -46,7 +46,7 @@ if ($result2->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SALES</title>
-    <link rel="stylesheet" href="sales.css?v=1.1">
+    <link rel="stylesheet" href="sales.css?v=1.3">
     
 </head>
 <body>
@@ -63,15 +63,21 @@ if ($result2->num_rows > 0) {
       </div> -->
     </div>
     <div class="date-header">
-        <h1>Sales</h1>
-        <button>
-        <?php
-          date_default_timezone_set('Asia/Manila');
-          $formattedDate = date('F d Y'); 
-          echo $formattedDate;
-        ?>
-        </button>
+    <h1>Sales</h1>
+        <div class="date-container">
+        <button onclick="printPage()">🖨 Export to PDF</button>
+        <button onclick="exportToExcel()">📊 Export to Excel</button>
+            <button>
+                <?php
+                date_default_timezone_set('Asia/Manila');
+                $formattedDate = date('F d Y'); 
+                echo $formattedDate;
+                ?>
+            </button>
+        </div>
     </div>
+
+
 
     <div class="box-container">
             <div class="box">
@@ -141,7 +147,8 @@ if ($result2->num_rows > 0) {
 
  
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Load Chart.js first -->
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
     <script src="reports.js?v=1.3"></script>
 
 

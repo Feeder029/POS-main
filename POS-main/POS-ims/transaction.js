@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to check if the screen is mobile or tablet
     function isMobileOrTablet() {
-        return window.innerWidth <= 1024; // Adjust breakpoint if needed
+        return window.innerWidth <= 1024; 
     }
 
     // Function to show receipt

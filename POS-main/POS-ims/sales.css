@@ -66,22 +66,78 @@ gap: 2vh;
     background-color: #213555;
     color: #ffffff;
 }
-.date-header{
+
+.date-header {
     height: 4vh;
     display: flex;
-    justify-content: space-between;
-    align-items:center;
+    justify-content: space-between; /* Ensure spacing */
+    align-items: center;
     padding: 2vh;
 }
-.date-header button{
+
+.date-container {
+    display: flex;
+    flex-direction: row; /* Ensure horizontal layout */
+    align-items: center;
+    gap: 7px; /* Adds space between buttons */
+}
+
+.date-header button {
     font-size: medium;
     background-color: #213555;
     color: #ffffff;
-    border-radius:6px;
-    padding: 8px 20px 8px 20px;
+    border-radius: 6px;
+    padding: 10px 20px;
     border: none;
-
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    cursor: pointer;
 }
+
+/* Dropdown Print Button Styling */
+.print-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    z-index: 10;
+    min-width: 180px;
+    overflow: hidden;
+}
+
+.dropdown-content button {
+    width: 100%;
+    padding: 10px 15px;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: medium;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content button:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+.date-header button:hover {
+    background-color: #1b2a45;
+}
+
+
 .box{
     background-color: #ffffff;
     width: 25%;
@@ -222,4 +278,194 @@ flex-direction: row;
     height: 60vh;
     padding: 0 2vh 2vh 2vh;
     gap: 2vh;
+}
+
+/* Responsive media queries that keep the original design intact */
+@media screen and (max-width: 1200px) {
+    /* Maintain desktop design - only minor adjustments for viewport */
+    body {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    /* Make date header responsive */
+    .date-header {
+        min-height: 50px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    /* Box container wrapping */
+    .box-container {
+        flex-wrap: wrap;
+        height: auto;
+    }
+    
+    /* Maintain box width but allow wrapping */
+    .box {
+        margin-bottom: 2vh;
+    }
+    
+    /* Activity and sales containers */
+    .activity-sales-container {
+        flex-wrap: wrap;
+        height: auto;
+    }
+    
+    .sales-container, .recent-activity {
+        margin-bottom: 2vh;
+    }
+    
+    /* Forecast container */
+    .forcast-container {
+        flex-wrap: wrap;
+        height: auto;
+    }
+    
+    /* Date header text adjustments */
+    .date-header button {
+        font-size: 95%;
+        padding: 8px 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Date container buttons */
+    .date-container {
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+    
+    /* Date header adjustments */
+    .date-header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding-bottom: 15px;
+    }
+    
+    /* Sales & activity shifting to full width */
+    .recent-activity, .sales-container {
+        width: 100%;
+    }
+    
+    /* Keep boxes same width but stack them */
+    .box {
+        width: 45%;
+    }
+    
+    /* Adjust text sizes */
+    .salesLabel h1 {
+        font-size: 1.4em;
+    }
+    
+    .sales-container-label h1,
+    .recent-activity h1 {
+        font-size: 1.3em;
+    }
+    
+    .box label {
+        font-size: 1em;
+    }
+    
+    .box p {
+        font-size: 1.6em;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    /* Very small screens */
+    .box {
+        width: 100%;
+    }
+    
+    /* Header components adjustment */
+    .search-container button {
+        padding-right: 10%;
+        font-size: 90%;
+    }
+    
+    /* Date header button adjustments */
+    .date-header button {
+        font-size: 90%;
+        padding: 6px 12px;
+        height: 35px;
+    }
+    
+    /* Text sizes for small screens */
+    .salesLabel h1 {
+        padding-left: 2vh;
+        font-size: 1.2em;
+    }
+    
+    .sales-container-label h1,
+    .recent-activity h1 {
+        font-size: 1.1em;
+    }
+    
+    .box label {
+        font-size: 0.9em;
+    }
+    
+    .box p {
+        font-size: 1.4em;
+    }
+    
+    .case h3 {
+        font-size: 14px;
+    }
+    
+    /* Make profile text smaller */
+    .profile-container h2 {
+        font-size: 0.9em;
+    }
+    
+    /* Adjust sales container label */
+    .sales-container-label {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .sales-container-label button {
+        font-size: 90%;
+        padding: 6px 12px;
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 420px) {
+    /* Further reduce text sizes */
+    .date-header button {
+        font-size: 85%;
+        padding: 5px 10px;
+        height: 32px;
+    }
+    
+    .salesLabel h1 {
+        font-size: 1.1em;
+    }
+    
+    .sales-container-label h1,
+    .recent-activity h1 {
+        font-size: 1em;
+    }
+    
+    .box p {
+        font-size: 1.2em;
+    }
+    
+    /* Adjust padding for smaller screens */
+    .box {
+        padding: 15px;
+    }
+    
+    .salesLabel {
+        height: auto;
+        padding: 10px 0;
+    }
+    
+    .salesLabel h1 {
+        padding-left: 2vh;
+    }
 }

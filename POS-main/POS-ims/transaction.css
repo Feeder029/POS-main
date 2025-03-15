@@ -283,10 +283,10 @@ hr {
     }
 
     .receipt-container.active {
-        display: block; /* Show when active */
+        display: block; 
     }
 
-    /* Overlay for dark background effect */
+   
     .overlay {
         position: fixed;
         top: 0;
@@ -299,7 +299,7 @@ hr {
     }
 
     .overlay.active {
-        display: block; /* Show when active */
+        display: block; 
     }
 }
 
@@ -359,7 +359,7 @@ hr {
         margin: 10px 0;
     }
 
-    /* Receipt popover still applies */
+    
     .receipt-container {
         width: 95%;
         max-width: 350px;
