@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2025 at 04:06 PM
+-- Generation Time: Mar 15, 2025 at 05:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -139,7 +139,7 @@ INSERT INTO `ims_product` (`pid`, `categoryid`, `brandid`, `pname`, `model`, `de
 (17, 1, 1, 'Road Bike', 'POR-324', 'Broom Broom', 11, 'Nos', 3000.00, 20.00, 0.00, 1, 'active', '0000-00-00'),
 (18, 1, 2, 'BMX Frame', 'BMX Trex', 'Trex', 16, 'Nos', 8500.00, 10.00, 0.00, 2, 'active', '0000-00-00'),
 (19, 1, 2, 'City Ride', 'City Ride', 'City Ride', 9, 'Nos', 15000.00, 10.00, 0.00, 2, 'active', '0000-00-00'),
-(20, 1, 2, 'Tour Cycle', 'Tour Cycle', 'Tour Cycle', 5, 'Nos', 30000.00, 10.00, 0.00, 3, 'active', '0000-00-00'),
+(20, 1, 1, 'Tour Cycle', 'Tour Cycle', 'Tour Cycle', 6, 'Nos', 30000.00, 10.00, 0.00, 3, 'active', '0000-00-00'),
 (21, 1, 3, 'MTB Frame', 'MTB Frame', 'MTB Frame', 12, 'Nos', 12000.00, 10.00, 0.00, 2, 'active', '0000-00-00'),
 (22, 2, 2, 'Bell Horn', 'Bell Horn', 'Bell Horn', 23, 'Nos', 150.00, 10.00, 0.00, 3, 'active', '0000-00-00'),
 (23, 2, 1, 'Bike Lock', 'Bike Lock', 'Bike Lock', 28, 'Nos', 800.00, 10.00, 0.00, 3, 'active', '0000-00-00'),
@@ -151,7 +151,8 @@ INSERT INTO `ims_product` (`pid`, `categoryid`, `brandid`, `pname`, `model`, `de
 (29, 3, 2, 'Hex Wrench', 'Hex Wrench', 'Hex Wrench', 40, 'Nos', 500.00, 10.00, 0.00, 1, 'active', '0000-00-00'),
 (30, 3, 2, 'Rim Strip', 'Rim Strip', 'Rim Strip', 40, 'Nos', 300.00, 10.00, 0.00, 1, 'active', '0000-00-00'),
 (31, 3, 2, 'Brake Pads', 'Brake Pads', 'Brake Pads', 22, 'Nos', 700.00, 10.00, 0.00, 1, 'active', '0000-00-00'),
-(32, 3, 2, 'Gear Grease', 'Gear Grease', 'Gear Grease', 20, 'Nos', 350.00, 10.00, 0.00, 3, 'active', '0000-00-00');
+(32, 3, 2, 'Gear Grease', 'Gear Grease', 'Gear Grease', 20, 'Nos', 350.00, 10.00, 0.00, 3, 'active', '0000-00-00'),
+(33, 2, 1, 'brake', 'pos123', 'asdadsasdads', 97, 'Meters', 100.00, 88.00, 0.00, 1, 'active', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -305,7 +306,7 @@ ALTER TABLE `ims_order`
 -- AUTO_INCREMENT for table `ims_product`
 --
 ALTER TABLE `ims_product`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `ims_purchase`

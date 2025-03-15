@@ -15,12 +15,13 @@ if (!$data) {
 $response = [];  // Initialize response
 
 // Check if required data is provided for sales
-if (isset($data['TotalAmount'], $data['Date'])) {
+if (isset($data['TotalAmount'], $data['Date'], $data['CUS_ID'])) {
     $totalAmount = $conn->real_escape_string($data['TotalAmount']);
     $date = $conn->real_escape_string($data['Date']);
+    $CustomerID = $conn->real_escape_string($data['CUS_ID']);
 
     // Insert query for sales table
-    $salesQuery = "INSERT INTO sales (TotalAmount, Date) VALUES ('$totalAmount', '$date')";
+    $salesQuery = "INSERT INTO sales (TotalAmount, Date, `CustomerID`) VALUES ('$totalAmount', '$date', '$CustomerID')";
 
     if ($conn->query($salesQuery)) {
         $salesID = $conn->insert_id; // Get the last inserted ID

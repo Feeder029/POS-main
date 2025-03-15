@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function insertInfo(Amount, DateTime) {
+function insertInfo(Amount, DateTime,ID) {
     fetch('fetchapi.php', {
         method: 'POST', // Use POST method for inserting data
         headers: {
@@ -183,7 +183,8 @@ function insertInfo(Amount, DateTime) {
         },
         body: JSON.stringify({ // Convert JS object to JSON
             TotalAmount: Amount,
-            Date: DateTime
+            Date: DateTime,
+            CUS_ID: ID
         })
     })
     .then(response => response.json()) // Parse the JSON response
@@ -266,6 +267,7 @@ document.getElementById('confirm-order').addEventListener('click', function() {
 
                 const totalPriceElem = document.getElementById('total-price');
                 const paymentElem = document.getElementById('payment');
+                const CUS = document.getElementById('customer');
 
                 const totalPrice = parseFloat(totalPriceElem.innerText.replace('₱', '').trim());
                 const payment = parseFloat(paymentElem.value.trim());
@@ -278,7 +280,7 @@ document.getElementById('confirm-order').addEventListener('click', function() {
                     const now = new Date();
                     const formattedTime = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
 
-                    insertInfo(totalPrice, formattedTime).then(salesID => {
+                    insertInfo(totalPrice, formattedTime,CUS.value).then(salesID => {
                         InsertPayment(salesID, selectedPayment, payment, change);
 
                         Array.from(cartItems).forEach(item => {
@@ -320,7 +322,7 @@ document.getElementById('confirm-order').addEventListener('click', function() {
 
 
 
-function insertInfo(Amount, DateTime) {
+function insertInfo(Amount, DateTime,ID) {
     return fetch('fetchapi.php', {
         method: 'POST',
         headers: {
@@ -328,7 +330,8 @@ function insertInfo(Amount, DateTime) {
         },
         body: JSON.stringify({
             TotalAmount: Amount,
-            Date: DateTime
+            Date: DateTime,
+            CUS_ID: ID
         })
     })
     .then(response => response.json())
