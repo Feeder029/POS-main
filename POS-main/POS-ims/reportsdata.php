@@ -248,6 +248,21 @@ while ($row = $RA_result->fetch_assoc()) {
     ];
 }
 
+// Get Customers
+$CustomerSQL = "SELECT `CustomerID`, `first_name`, `last_name` FROM `customers`";
+$Customer_result = $conn->query($CustomerSQL);
+
+$Customers = []; // Initialize array
+
+if ($Customer_result->num_rows > 0) {
+    while ($row = $Customer_result->fetch_assoc()) {
+        $Customers[] = [
+            "Cus_ID" => $row['CustomerID'],
+            "Cus_FN" => $row['first_name'],
+            "Cus_LN" => $row['last_name']
+        ];
+    }
+}
 
 
 // Send Data
@@ -265,9 +280,11 @@ $data = [
     "BP_Sales" => $BP_Sales,
     "PP_Name" => $PP_Name,
     "PP_Amount" => $PP_Amount,
-    "recentActivity" => $recentActivity  
-
+    "recentActivity" => $recentActivity,
+    "CustomerList" => $Customers
 ];
+
+
 
 
 echo json_encode($data); // Output as JSON

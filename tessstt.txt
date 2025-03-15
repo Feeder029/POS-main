@@ -1,42 +1,19 @@
-# ---------------------- CREATE RECIEPT QR ---------------------- #
+// Check if required data is provided for sales
+if (isset($data['TotalAmount'], $data['Date'],$data['CUS_ID'])) {
+    console.log("Insert Info Database Entered");
+    $totalAmount = $conn->real_escape_string($data['TotalAmount']);
+    $date = $conn->real_escape_string($data['Date']);
+    $CustomerID = $conn->real_escape_string($data['CUS_ID']);
 
-CSV_FILE = "Reciept_Info.csv"
+    // Insert query for sales table
+    $salesQuery = "INSERT INTO sales (TotalAmount, Date, `CustomerID`) VALUES ('$totalAmount', '$date', '$CustomerID')";
 
-# Ensure CSV file exists
-if not os.path.exists(CSV_FILE):
-    with open(CSV_FILE, mode="w", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["SalesID", "Status"])  # Header
-
-# Function to update CSV
-def update_csv(salesID):
-    with open(CSV_FILE, mode="a", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow([salesID, "Not Delivered"])
-    print(f"SalesID {salesID} marked as 'Not Delivered' in {CSV_FILE}")
-
-# Function to generate QR code
-def generate_qr(salesID):
-    qr_data = f"SalesID: {salesID}"
-    qr = qrcode.make(qr_data)
-
-    qr_filename = f"Reciept_QR/{salesID}.png"
-    os.makedirs("Reciept_QR", exist_ok=True)  # Ensure directory exists
-
-    qr.save(qr_filename)
-    print(f"QR code saved as {qr_filename}")
-    return qr_filename
-
-# API endpoint to receive salesID
-@app.route('/generate_qr', methods=['POST'])
-def handle_request():
-    data = request.get_json()
-    salesID = data.get("salesID")
-
-    if not salesID:
-        return jsonify({"error": "Missing SalesID"}), 400
-
-    update_csv(salesID)
-    qr_filename = generate_qr(salesID)
-
-    return jsonify({"message": "QR Code Generated", "qr_path": qr_filename})
+    if ($conn->query($salesQuery)) {
+        $salesID = $conn->insert_id; // Get the last inserted ID
+        $response['sales'] = ['status' => 'success', 'message' => 'Record inserted successfully into sales table', 'SalesID' => $salesID];
+    } else {
+        $response['sales'] = ['status' => 'error', 'message' => 'Failed to insert record into sales table'];
+    }
+} else {
+    $response['sales'] = ['status' => 'error', 'message' => 'Invalid sales data provided'];
+}
