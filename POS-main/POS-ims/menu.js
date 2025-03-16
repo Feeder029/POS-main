@@ -176,3 +176,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".category-label a").classList.add("active");
 });
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    const categoryLinks = document.querySelectorAll(".category-label a");
+
+    categoryLinks.forEach(link => {
+        link.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default navigation behavior
+
+            // Remove 'active' class from all links
+            categoryLinks.forEach(l => l.classList.remove("active"));
+
+            // Add 'active' class to the clicked link
+            this.classList.add("active");
+        });
+    });
+});

@@ -20,7 +20,7 @@
                 <div class="category-label">
 
                 <div class="category-label">
-                <div><a onclick="ProductDisplay(0); setActive(this)">All</a></div>
+                <div><a onclick="ProductDisplay(0); setActive(this)" class="active" data-category="all">All</a></div>
                 <div><a onclick="ProductDisplay(1); setActive(this)">Bicycles</a></div>
                 <div><a onclick="ProductDisplay(2); setActive(this)">Accessories</a></div>
                 <div><a onclick="ProductDisplay(3); setActive(this)">Maintenance & Tools</a></div>
