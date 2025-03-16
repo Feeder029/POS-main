@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 
 // Handle GET request (Retrieve Products)
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $result = $conn->query("SELECT `pname` AS ProductName, `base_price` AS ProductPrice, `quantity` AS Stock FROM `ims_product`");
+    $result = $conn->query("SELECT `pname` AS ProductName,`categoryid`, `base_price` AS ProductPrice, `quantity` AS Stock FROM `ims_product`");
     $products = [];
     while ($row = $result->fetch_assoc()) {
         $products[] = $row;

@@ -1,11 +1,7 @@
 "Item Code","Item Name","Item Quantity"
-<<<<<<< Updated upstream
-5,"Tour Cycle",1
 14,"Bell Horn",1
-=======
-16,"BMX Frame",1
-11,"Water Cage",1
->>>>>>> Stashed changes
+9,"Grip Tape",2
+6,"MTB Frame",1
 4,"Bike Lock",1
 13,"Tire Pump",1
 7,"Hex Wrench",1
@@ -23,18 +19,11 @@
 10,"Rim Strip",1
 13,"Tire Pump",2
 4,"Bike Lock",1
-<<<<<<< Updated upstream
 6,"MTB Frame",1
 14,"Bell Horn",2
-15,"Chain Lube",4
-10,"Rim Strip",2
-=======
-14,"Bell Horn",1
-8,"Road Bike",1
 7,"Hex Wrench",1
-3,"Brake Pads",1
->>>>>>> Stashed changes
-14,"Bell Horn",2
+10,"Rim Strip",2
+4,"Bike Lock",1
 5,"Tour Cycle",1
 7,"Hex Wrench",2
 4,"Bike Lock",1
@@ -44,40 +33,25 @@
 10,"Rim Strip",1
 6,"MTB Frame",1
 11,"Water Cage",2
-4,"Bike Lock",1
+7,"Hex Wrench",1
 4,"Bike Lock",1
 8,"Road Bike",1
-<<<<<<< Updated upstream
 2,"Gear Grease",1
 14,"Bell Horn",1
-=======
-7,"Hex Wrench",2
-13,"Tire Pump",1
->>>>>>> Stashed changes
 13,"Tire Pump",1
 9,"Grip Tape",2
 13,"Tire Pump",2
-9,"Grip Tape",1
+15,"Chain Lube",1
 16,"BMX Frame",1
-<<<<<<< Updated upstream
 14,"Bell Horn",1
 4,"Bike Lock",2
 10,"Rim Strip",2
 6,"MTB Frame",2
 13,"Tire Pump",1
 2,"Gear Grease",1
-11,"Water Cage",2
-=======
-13,"Tire Pump",2
-4,"Bike Lock",2
-10,"Rim Strip",2
-6,"MTB Frame",2
-11,"Water Cage",1
-5,"Tour Cycle",1
-16,"BMX Frame",2
->>>>>>> Stashed changes
+3,"Brake Pads",3
 1,"Rear Rack",1
-7,"Hex Wrench",2
+14,"Bell Horn",2
 10,"Rim Strip",2
 14,"Bell Horn",1
 3,"Brake Pads",1
@@ -87,8 +61,8 @@
 4,"Bike Lock",1
 3,"Brake Pads",1
 15,"Chain Lube",2
-9,"Grip Tape",1
-1,"Rear Rack",1
+8,"Road Bike",1
+10,"Rim Strip",1
 12,"City Ride",1
 15,"Chain Lube",2
 4,"Bike Lock",2
@@ -98,16 +72,11 @@
 16,"BMX Frame",1
 6,"MTB Frame",1
 15,"Chain Lube",2
-10,"Rim Strip",1
+3,"Brake Pads",1
 8,"Road Bike",1
 2,"Gear Grease",1
-<<<<<<< Updated upstream
 10,"Rim Strip",1
 11,"Water Cage",2
-=======
-4,"Bike Lock",1
-15,"Chain Lube",2
->>>>>>> Stashed changes
 16,"BMX Frame",1
 5,"Tour Cycle",1
 4,"Bike Lock",1
@@ -123,26 +92,15 @@
 4,"Bike Lock",2
 13,"Tire Pump",1
 12,"City Ride",1
-10,"Rim Strip",1
+7,"Hex Wrench",2
 10,"Rim Strip",10
-<<<<<<< Updated upstream
 11,"Water Cage",2
 6,"MTB Frame",1
 1,"Rear Rack",1
 9,"Grip Tape",1
-=======
-4,"Bike Lock",1
-6,"MTB Frame",1
-1,"Rear Rack",1
-8,"Road Bike",1
->>>>>>> Stashed changes
 3,"Brake Pads",3
 7,"Hex Wrench",2
-5,"Tour Cycle",1
+6,"MTB Frame",1
 3,"Brake Pads",2
 4,"Bike Lock",2
-<<<<<<< Updated upstream
 3,"Brake Pads",3
-=======
-2,"Gear Grease",3
->>>>>>> Stashed changes

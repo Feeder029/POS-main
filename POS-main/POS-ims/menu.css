@@ -339,3 +339,15 @@ html{
         font-size: 12px;
     }
 }
+
+.category-label div a {
+    text-decoration: none;
+    color: black; /* Default text color */
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.category-label div a.active {
+    color: #003170; /* Change text color when active */
+    font-weight: bold;
+}

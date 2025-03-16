@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="menu.css?v=1.1">
     <title>Product Menu</title>
+    
+
+
 </head>
 <body>
     <div class="main-container">
@@ -15,10 +18,14 @@
     
             <div class="category-container">
                 <div class="category-label">
-                    <div><a href="">All</a></div>
-                    <div><a href="">Bicycles</a></div>
-                    <div><a href="">Accessories</a></div>
-                    <div><a href="">Maintenance & Tools</a></div>
+
+                <div class="category-label">
+                <div><a onclick="ProductDisplay(0); setActive(this)">All</a></div>
+                <div><a onclick="ProductDisplay(1); setActive(this)">Bicycles</a></div>
+                <div><a onclick="ProductDisplay(2); setActive(this)">Accessories</a></div>
+                <div><a onclick="ProductDisplay(3); setActive(this)">Maintenance & Tools</a></div>
+                </div>
+
                 </div>
             </div>
         </nav>
@@ -32,6 +39,8 @@
     <div class="cart-containers">
     </div>
        
-    <script src="menu.js?v=1.3"></script>
+    <script src="menu.js?v=1.5"></script>
+
+    
 </body>
 </html>

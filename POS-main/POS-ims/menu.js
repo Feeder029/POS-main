@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let product_deduction = new Map();
 
     await GetData(); // Ensure GetData completes before proceeding
-    ProductDisplay();
+    ProductDisplay(0);
 
     async function GetData() {
         try {
@@ -19,7 +19,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    function ProductDisplay() {
+
+    // function Bicycle() {
+    //     alert("Bicycle function executed!"); // Debugging output
+    //     ProductDisplay(1);
+    // }
+    
+    // Ensure it's globally accessible
+    window.ProductDisplay = ProductDisplay;
+
+    function ProductDisplay(catID) {
         fetch('api.php')
             .then(response => response.json())
             .then(data => {
@@ -28,14 +37,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 data.forEach(item => {
                     let val = 0;
 
-                    product_deduction.forEach((value, key) => {
-                        // console.log(key + " : " + value);
-                            if(item.ProductName == key && value != null){
-                                val = value;
-                            };
-                    });
-                          
-                    display += `
+
+                    if(item.categoryid==catID||catID==0){
+                        product_deduction.forEach((value, key) => {
+                            // console.log(key + " : " + value);
+                                if(item.ProductName == key && value != null){
+                                    val = value;
+                                };
+                        });
+
+                        display += `
                         <div class="menu">
                             <div class="menu-image"></div>
                             <div class="menu-detail">
@@ -49,6 +60,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <button id="add">+</button>
                             </div>
                         </div>`;
+                    }     
+
                 });
 
                 //Add the display to the HTML
@@ -145,5 +158,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // Call ProductDisplay to fetch and display products
-    ProductDisplay();
+    ProductDisplay(0);
 });
+
+
+function setActive(clickedElement) {
+    // Remove "active" class from all links
+    document.querySelectorAll(".category-label a").forEach(el => {
+        el.classList.remove("active");
+    });
+
+    // Add "active" class to the clicked link
+    clickedElement.classList.add("active");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".category-label a").classList.add("active");
+});
+
