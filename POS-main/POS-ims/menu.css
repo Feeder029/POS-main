@@ -96,7 +96,7 @@ html{
 }
 .menu-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap:wrap;
     width: 100%;
@@ -183,5 +183,159 @@ html{
     .main-container{    
     width: 60%;
 
+    }
+}
+
+/* Portrait-oriented menu items - 4 columns layout */
+.menu {
+    width: calc(20% - 20px);
+    /* Portrait orientation - taller than wide */
+    height: 300px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 10px 16px rgba(123, 123, 123, 0.6);
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-n-cart-container{
+    height: 80%;
+    width: 100%;
+    display: flex;
+}
+
+.menu-image {
+    width: 100%;
+    /* Larger image section for portrait orientation */
+    height: 60%;
+    z-index: 20;
+    background-color: #ccc;
+    border-radius: 5px;
+    object-fit: cover; /* Ensures images maintain aspect ratio */
+}
+
+.menu-detail {
+    color: black;  
+    width: 100%;
+    font-size: small; /* Slightly larger font for details */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    gap: 5px;
+    flex: 1; /* Allows this section to grow */
+    justify-content: center; /* Centers content vertically */
+}
+
+.menu-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 8px 0;
+    margin-top: auto; /* Pushes buttons to bottom */
+}
+
+.menu-btn button {
+    padding: 6px 12px;
+    font-size: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+#add{
+    background-color: green;
+}
+
+#subtract{
+    background-color: #D84040;
+}
+
+.menu-btn input {
+    width: 40px;
+    text-align: center;
+    height: 30px;
+}
+
+/* Large tablets and small desktops */
+@media only screen and (max-width: 1200px) {
+    .menu {
+        width: calc(33.333% - 20px); /* 3 columns for medium screens */
+        height: 280px; /* Slightly shorter on smaller screens */
+    }
+}
+
+/* Small tablets and large phones (landscape) */
+@media only screen and (max-width: 900px) {
+    body {
+        flex-direction: column; /* Stack main content and cart vertically */
+    }
+    
+    .cart-containers {
+        width: 100%;
+        height: auto;
+        min-height: 150px; /* Give some minimum height to cart */
+        padding: 15px;
+    }
+    
+    .main-container {
+        width: 100%;
+        height: auto;
+        min-height: 70vh;
+    }
+    
+    .menu {
+        width: calc(50% - 15px); /* 2 columns for tablets */
+        height: 260px; /* Adjust height for tablet */
+    }
+    
+    .category-label {
+        gap: 20px; /* Reduce gap between category items */
+    }
+}
+
+/* Phones (portrait) */
+@media only screen and (max-width: 600px) {
+    .menu {
+        width: calc(100% - 15px); /* 1 column for mobile */
+        height: 300px; /* Taller on mobile for better visibility */
+        margin-bottom: 15px;
+    }
+    
+    .category-label {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+    
+    .navbar {
+        height: auto;
+        padding: 2vh 1vh;
+    }
+    
+    .product-label h1 {
+        font-size: 1.5rem; /* Smaller heading for mobile */
+    }
+    
+    .menu-container {
+        gap: 15px;
+        padding: 0 1vh;
+    }
+}
+
+/* Very small phones */
+@media only screen and (max-width: 400px) {
+    .category-label {
+        gap: 10px;
+        font-size: 14px;
+    }
+    
+    .menu-detail {
+        font-size: 12px;
     }
 }

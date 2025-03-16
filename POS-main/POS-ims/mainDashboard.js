@@ -500,3 +500,94 @@ function Enter_Customers(event) {
 
     ProductDisplay();
 }
+
+
+// for responsive of side panel
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Create menu toggle button
+    const menuToggle = document.createElement('button');
+    menuToggle.className = 'menu-toggle';
+    menuToggle.innerHTML = '☰';
+    document.body.insertBefore(menuToggle, document.body.firstChild);
+    
+    const sidePanel = document.querySelector('.side-panel');
+    const iframeContainer = document.querySelector('.iframe-container');
+    
+    // Add span elements to menu items for better control
+    const menuLinks = document.querySelectorAll('.side-panel li a');
+    menuLinks.forEach(link => {
+    const parts = link.innerHTML.split('&nbsp;');
+    const icon = parts[0]; // First part is the icon
+    const text = parts[1] || ''; // Second part is the text, default to an empty string if undefined
+    link.innerHTML = icon + '<span>&nbsp;' + text + '</span>';
+});
+
+    
+    // Toggle menu on button click
+    menuToggle.addEventListener('click', function() {
+        sidePanel.classList.toggle('expanded');
+        
+        // Update toggle icon
+        if (sidePanel.classList.contains('expanded')) {
+            menuToggle.innerHTML = '✕';
+        } else {
+            menuToggle.innerHTML = '☰';
+        }
+    });
+    
+    // Close menu when clicking outside on mobile
+    document.addEventListener('click', function(event) {
+        const isClickInsideMenu = sidePanel.contains(event.target);
+        const isClickOnToggle = menuToggle.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickOnToggle && window.innerWidth <= 768 && sidePanel.classList.contains('expanded')) {
+            sidePanel.classList.remove('expanded');
+            menuToggle.innerHTML = '☰';
+        }
+    });
+    
+    // Close menu when menu item is clicked on mobile
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                sidePanel.classList.remove('expanded');
+                menuToggle.innerHTML = '☰';
+            }
+        });
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            sidePanel.classList.remove('expanded');
+            menuToggle.innerHTML = '☰';
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const calculatorIcon = document.getElementById("calculator-icon");
+    const floatPanel = document.querySelector(".float-panel");
+    const confirmOrderBtn = document.getElementById("confirm-order");
+
+    // Toggle float panel visibility when clicking calculator icon
+    calculatorIcon.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent event bubbling
+        floatPanel.classList.toggle("active");
+    });
+
+    // Hide float panel when clicking outside
+    document.addEventListener("click", function (event) {
+        if (!floatPanel.contains(event.target) && event.target !== calculatorIcon) {
+            floatPanel.classList.remove("active");
+        }
+    });
+
+    // Hide float panel after checkout
+    confirmOrderBtn.addEventListener("click", function () {
+        floatPanel.classList.remove("active");
+    });
+});
+

@@ -117,12 +117,16 @@ html{
     width: calc(100% - 200px);
     border: none;
 }
+
+.float-panel h3{
+    text-align: center;
+}
 .float-panel{
     margin: 30px;
     background-color: #ffffff;
     float: right;
-    width: 325px;
-    height: 700px;
+    width: 400px;
+    height: 850px;
     border-radius: 10px;
     z-index: 120;
     position: relative;
@@ -136,16 +140,18 @@ html{
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
 }
 .cart-container {
+    margin: 0 auto; /* Center horizontally */
     margin-top: 20px;
-    padding: 10px;
+    padding: 18px;
     background: #f9f9f9;
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
     overflow-y: scroll;
-    height: 100px;  
-    overflow-y: scroll;
--ms-overflow-style: none;
-scrollbar-width: none;
+    height: 100px; /* Slightly increased height */
+    width: 100%; /* Increased width */
+    max-width: 500px; /* Increased max width */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 .cart-container p {
     padding-top:10px ;
@@ -159,22 +165,26 @@ scrollbar-width: none;
     flex-shrink: 0; 
 }
 .bot-float {
-    
+    width: 300px;
+    flex-shrink: 0;
     text-align: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
+    margin: 0 auto; /* Add this to center horizontally */
+    max-width: 95%; /* Match the cart-container's width */
 }
 .bot-float button {
     width: 50%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 20px;
     margin-bottom: 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
+    
     
 }
 #clear-order {
@@ -205,10 +215,10 @@ scrollbar-width: none;
     display: block;
 }
 
-.float-panel.inactive {
+/* .float-panel.inactive {
     width: 325px;
 
-}
+} */
 .cart-container,
 .bot-float {
     width: 300px; 
@@ -219,7 +229,7 @@ scrollbar-width: none;
 .payment-container {
     width: 100%;
     background: #f9f9f9;
-    padding: 20px;
+    padding: 15px;
     border-radius: 12px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
     display: none;
@@ -245,9 +255,9 @@ scrollbar-width: none;
     margin: 5px 0;
 }
 .num {
-    width: 30%;
-    padding: 15px;
-    font-size: 1.2rem;
+    width: 32%;
+    padding: 18px;
+    font-size: 1.3rem;
     background: #003135;
     color: white;
     border: none;
@@ -273,7 +283,7 @@ scrollbar-width: none;
     display: flex; /* Enable flexbox for centering */
     justify-content: center; /* Center text horizontally */
     align-items: center; /* Center text vertically */
-    padding: 12px 15px;
+    padding: 12px 16px;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: bold;
@@ -376,3 +386,592 @@ scrollbar-width: none;
     }
 }
 
+
+/* Responsive Side Panel Styles */
+.side-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #213555;
+    z-index: 10;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 200;
+    background-color: #213555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    /* Add these properties for visibility */
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-toggle i {
+    font-size: 20px;
+    color: white;
+    display: block;
+}
+
+.menu-toggle:hover {
+    background-color: #3E5879;
+}
+
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Logo icon for collapsed state */
+.side-panel:not(.expanded) .logo img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+/* Text for expanded state */
+.side-panel:not(.expanded) .logo h2 {
+    display: none;
+}
+
+/* Ensure it's visible on mobile */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .side-panel {
+        width: 60px;
+        overflow: hidden;
+    }
+    
+    .side-panel.expanded {
+        width: 200px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .side-panel .logo {
+        margin: 10px 0;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .side-panel .logo h2 {
+        display: none;
+    }
+    
+    .side-panel.expanded .logo h2 {
+        display: block;
+    }
+    
+    .side-panel li a span {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .side-panel.expanded li a span {
+        display: inline;
+        opacity: 1;
+    }
+    
+    .iframe-container iframe {
+        left: 60px;
+        width: calc(100% - 60px);
+        transition: all 0.3s ease;
+    }
+    
+    .side-panel.expanded + .iframe-container iframe {
+        left: 200px;
+        width: calc(100% - 200px);
+    }
+
+    /* Ensure icons remain visible */
+    .side-panel li a i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+
+    /* Center icons when collapsed */
+    .side-panel li a {
+        justify-content: center;
+        padding: 5px;
+    }
+
+    .side-panel.expanded li a {
+        justify-content: flex-start;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .side-panel {
+        width: 0;
+        left: -200px;
+    }
+    
+    .side-panel.expanded {
+        width: 200px;
+        left: 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+        left: 10px;
+        z-index: 100;
+    }
+    
+    .iframe-container iframe {
+        left: 0;
+        width: 100%;
+    }
+    
+    .side-panel.expanded + .iframe-container iframe {
+        left: 0; /* Don't shift iframe on mobile */
+        width: 100%;
+        filter: brightness(0.7); /* Dim the content when menu is open */
+    }
+    
+    /* Ensure text is visible when expanded on mobile */
+    .side-panel li a span {
+        display: inline;
+        opacity: 0;
+    }
+    
+    .side-panel.expanded li a span {
+        opacity: 1;
+    }
+    
+    /* Adjust float panel on mobile */
+    .float-panel {
+        width: 100%;
+        margin: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        border-radius: 15px 15px 0 0;
+        z-index: 5; /* Lower than side panel */
+    }
+
+    /* Add overlay effect when menu is expanded */
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0);
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 5;
+        pointer-events: none;
+    }
+
+    body:has(.side-panel.expanded)::after {
+        visibility: visible;
+        background: rgba(0,0,0,0.5);
+        pointer-events: all;
+    }
+}
+
+/* Customer List Styles */
+#customer_list {
+    width: 100%;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#customer_list h7 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #003135;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#customer_list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#customer_list li {
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: #e0e0e0;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+}
+
+#customer_list li:hover {
+    background: #d0d0d0;
+}
+
+#customer_list li.selected {
+    background: green;
+    color: white;
+}
+
+/* AddCustomers Popover Styles */
+#AddCustomers {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 400px;
+    border: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+#AddCustomers h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #003135;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#AddCustomers input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background: white;
+}
+
+#AddCustomers input:focus {
+    border-color: #003135;
+    outline: none;
+}
+
+#AddCustomers button {
+    width: 48%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+#AddCustomers button[popovertarget] {
+    background-color: #D84040;
+    color: white;
+    float: left;
+}
+
+#AddCustomers button[onclick] {
+    background-color: green;
+    color: white;
+    float: right;
+}
+
+#AddCustomers button:hover {
+    opacity: 0.9;
+}
+
+/* Add customer button style */
+#add-customer-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #003135;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+#add-customer-btn:hover {
+    background-color: #005a5a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #AddCustomers {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    #customer_list {
+        max-height: 150px;
+    }
+}
+
+@media (max-width: 500px) {
+    #AddCustomers button {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    #AddCustomers button[popovertarget] {
+        float: none;
+    }
+    
+    #AddCustomers button[onclick] {
+        float: none;
+    }
+}
+
+/* Customer Dropdown and Add Button Styles */
+#customer_list select {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.95rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    color: #333;
+    margin-top: 6px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+}
+
+#customer_list select:focus {
+    border-color: #003135;
+    outline: none;
+}
+
+#customer_list select option {
+    padding: 8px;
+}
+
+#customer_list button[popovertarget] {
+    width: 100%; 
+    height: 32px; 
+    padding: 0; 
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #003135;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1; /* Better vertical alignment */
+}
+
+#customer_list button[popovertarget]:hover {
+    background-color: #005a5a;
+}
+
+#customer_list h7 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #003135;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Customer container layout */
+#customer_list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.customer-select-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #customer_list select {
+        width: 82%;
+    }
+}
+
+@media (max-width: 500px) {
+    #customer_list select {
+        width: 80%;
+    }
+}
+
+/* Default: Always show float panel on desktop */
+.float-panel {
+    display: none; 
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.float-panel.active {
+    display: block !important;
+}
+
+/* Mobile & Tablet: Hide float panel by default */
+@media screen and (max-width: 1024px) {
+    .float-panel {
+        display: none; 
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 350px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        z-index: 1000;
+        border-radius: 10px;
+    }
+
+    /* Show float panel only when active */
+    .float-panel.active {
+        display: block;
+    }
+
+    /* Show calculator icon on mobile & tablet */
+    #calculator-icon {
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        background: white;
+        padding: 10px;
+        border-radius: 50%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
+    }
+}
+
+/* Hide calculator icon on desktop */
+@media screen and (min-width: 1025px) {
+    #calculator-icon {
+        display: none;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .float-panel {
+        display: none !important; /* Override any previous styles */
+    }
+}
+
+/* Tablet (769px - 1024px) */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .float-panel {
+        width: 90%;
+        max-width: 450px;
+        max-height: 80vh;
+        padding: 18px; 
+        overflow-y: auto;
+    }
+
+    /* Adjust elements inside the popover */
+    .float-panel * {
+        font-size: 15px; 
+    }
+
+    /* Buttons inside popover */
+    .float-panel button {
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    /* Inputs inside popover */
+    .float-panel input, 
+    .float-panel select, 
+    .float-panel textarea {
+        font-size: 14px; 
+        padding: 8px;
+    }
+}
+
+/* Mobile (Up to 768px) */
+@media screen and (max-width: 768px) {
+    .float-panel {
+        width: 95%;
+        max-width: 340px;
+        max-height: 85vh;
+        padding: 16px; 
+        border-radius: 12px;
+        overflow-y: auto;
+    }
+
+    /* Adjust text size */
+    .float-panel * {
+        font-size: 14px; 
+    }
+
+    /* Buttons inside popover */
+    .float-panel button {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Inputs inside popover */
+    .float-panel input, 
+    .float-panel select, 
+    .float-panel textarea {
+        font-size: 13px;
+        padding: 6px;
+    }
+}

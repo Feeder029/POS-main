@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="mainDashboard.css?v=1.2">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css?v=1.2' rel='stylesheet'>
+    <link rel="stylesheet" href="mainDashboard.css?v=1.4">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css?v=1.3' rel='stylesheet'>
     <title>DASHBOARD</title>
 </head>
 <body>
+    <div id="calculator-icon">
+        <i class='bx bx-calculator'></i>
+    </div>
     <div class="side-panel">
        <div class="side-panel-border">
         <div class="logo">
@@ -33,6 +36,7 @@
     </div>
 
    
+    
     <div class="float-panel" >
         <h3>CART</h3>
         <div class="cart-container">
@@ -96,15 +100,15 @@
 
     <div popover id="AddCustomers">
         <h3> ADD CUSTOMERS </h3>
-        <input type="text" name="FN_Txt" id="FN_Txt" placeholder="Input First Name">
-        <input type="text" name="LN_Txt" id="LN_Txt" placeholder="Input Last Name">
-        <input type="email" name="Email_Txt" id="Email_Txt" placeholder="Input Your Email">
-        <input type="tel" name="Phone_Txt" id="Phone_Txt" placeholder="Input Your Phone Number">
+        <input type="text" name="FN_Txt" id="FN_Txt" placeholder="First Name">
+        <input type="text" name="LN_Txt" id="LN_Txt" placeholder="Last Name">
+        <input type="email" name="Email_Txt" id="Email_Txt" placeholder="Email">
+        <input type="tel" name="Phone_Txt" id="Phone_Txt" placeholder="Phone Number">
         <button popovertarget="AddCustomers" popovertargetaction="hide">CLOSE</button>
         <button onclick="Enter_Customers()">SUBMIT</button>
     </div>
 
-    <script src="mainDashboard.js?v=5.3.7"></script>
+    <script src="mainDashboard.js?v=5.3.8"></script>
     <script src="numpad.js?v=1.4"></script>
     <script src="menu.js?v=1.2"></script>
 
