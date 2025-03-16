@@ -41,6 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="qr-code">
                         <img src="../../Reciept_QR/${item.SalesID}.png" alt="Receipt QR Code">
                     </div>
+                    <hr>
+                    <div class="CustomerInfo">
+                    <p><strong>Customer:</strong> ${item.FullName}</p>
+                    <p><strong>Email:</strong> PHP ${item.email}</p>
+                    <p><strong>Phone:</strong> PHP ${item.phone}</p>
+                    </div>
                     <div class="button-container">
                         <button class="print-btn" onclick="printReceipt(${item.SalesID})">Print</button>
                         <button class="close-btn" onclick="hideReceipt(${item.SalesID})">Close</button>

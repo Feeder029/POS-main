@@ -12,14 +12,19 @@
         b.`PaymentMethodID`,
         b.`AmountPaid`,
         b.`ChangeGiven`,
-        e.`MethodName` as PaymentMethod
+        e.`MethodName` as PaymentMethod,
+        CONCAT(f.first_name, ' ', f.last_name) as FullName,
+        f.CustomerID,
+        f.email,
+        f.phone
     FROM `sales` a
     JOIN `payments` b ON a.`SalesID` = b.`SalesID`
     JOIN `orders` c ON a.`SalesID` = c.`SalesID`
     JOIN `products` d ON c.`ProductID` = d.`ProductID`
     JOIN `paymentmethods` e ON e.`PayID` = b.`PaymentMethodID`
+    JOIN  `customers` f ON f.CustomerID = a.CustomerID
     GROUP BY a.`SalesID`, a.`TotalAmount`, a.`Date`, b.`PaymentMethodID`, b.`AmountPaid`, b.`ChangeGiven`
-    ORDER BY a.`Date` DESC");
+    ORDER BY a.`Date` DESC;");
 
 
     $reciept = [];
