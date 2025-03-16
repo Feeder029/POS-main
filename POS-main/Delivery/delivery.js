@@ -202,10 +202,7 @@ function resetScanner() {
     document.querySelector("#container h1").textContent = "";
     document.getElementById("scan-qr").style.visibility = "visible";
     document.getElementById("container").hidePopover();
-    let container = document.getElementById("container");
-    if (container) {
-        container.hidePopover();
-    }
+    document.getElementById("")
 
     // **New Fix: Clear scanned SalesID manually**
     fetch("http://127.0.0.1:5000/api/reset-sales-id", { method: "POST" })
