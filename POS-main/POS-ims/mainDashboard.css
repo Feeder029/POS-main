@@ -145,7 +145,7 @@ html{
     padding: 18px;
     background: #f9f9f9;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);  */
     overflow-y: scroll;
     height: 100px; /* Slightly increased height */
     width: 100%; /* Increased width */
@@ -240,6 +240,13 @@ html{
     color: #003135;
     margin-bottom: 10px;
 }
+
+/* .payment-container h7 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #003135;
+    margin-bottom: 0px;
+} */
 .total {
     width: 100%;
     padding: 10px;
@@ -333,7 +340,7 @@ html{
     }
     
     .cart-container, .bot-float {
-        width: 90%;
+        width: 80%;
         max-width: 400px;
         align-self: center;
     }
@@ -609,7 +616,7 @@ html{
     padding: 15px;
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin-top: 0px;
     max-height: 200px;
     overflow-y: auto;
 }
@@ -619,7 +626,7 @@ html{
     font-weight: bold;
     color: #003135;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 #customer_list ul {
@@ -1000,31 +1007,56 @@ html{
 
 @media (max-width: 1920px) {
     .float-panel {
-        width: 350px;
-        right: 5px;
-        height: 710px;
-    }
-
-    .num {
+        width: 300px;
+        right: 3px;
+        height: 95%; /* Ensures the height is fixed relative to the viewport */
+        overflow-y: auto; /* Enables scrolling inside */
+        overflow-x: hidden; /* Prevents horizontal scrolling */
+        position: fixed; /* Keeps it in place */
         padding: 10px;
-        font-size: 0.9rem;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Custom thin scrollbar */
+    .float-panel::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    .float-panel::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    .float-panel::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 5px;
+        display: none;
+    }
+    
+    .float-panel::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    .num {
+        padding: 8px;
+        font-size: 1rem;
     }
 
     /* payment */
 .payment-container {
-    padding: 10px;
+    padding: 8px;
 }
 .payment-container h6 {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    
 }
 
 .payment-method label {
-    padding: 10px 14px;
-    font-size: 0.8rem;
+    padding: 8px 12px;
+    font-size: 0.7rem;
 }
 
 .total {
-    padding: 5px;
-    font-size: 1.1rem;
+    padding: 8px;
+    font-size: 1rem;
 }
 }

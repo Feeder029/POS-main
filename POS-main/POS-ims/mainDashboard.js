@@ -498,7 +498,7 @@ function Enter_Customers(event) {
         alert("There was an error recording the customer. Please try again.");
     });
 
-    ProductDisplay();
+    CustomerDisplay();
 }
 
 

@@ -23,7 +23,7 @@ document.getElementById('AC').addEventListener('click', () => {
 
 
 //Fetch Customers
-function ProductDisplay() {
+async function CustomerDisplay() {
     fetch('reportsdata.php')
         .then(response => response.json())
         .then(data => {
@@ -50,4 +50,4 @@ function ProductDisplay() {
 }
 
 // Call function when page loads
-document.addEventListener("DOMContentLoaded", ProductDisplay);
+document.addEventListener("DOMContentLoaded", CustomerDisplay);
