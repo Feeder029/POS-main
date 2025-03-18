@@ -40,13 +40,39 @@ html{
     color: white; 
 }
 
+.account{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 150px;
+}
+
+.account i{
+    font-size: 15vh;
+}
+
+.account h2{
+    font-size: 15px;
+}
+
 .side-panel li:hover{
     background-color: #3E5879;
     border-radius: 15px;
-    
+    color: #003135;
 }
+
 #logout {
     background-color: #3E5879;
+    margin-top: 150px;
+}
+
+#logout:hover{
+    background-color: #D84040;
+
+}
+#logout a:hover{
+    color: #000000;
 }
 #logout a{
     margin-left: -10px;
@@ -78,6 +104,11 @@ html{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+}
+
+.side-panel li.active{
+    color: rgb(0, 0, 0);
+    background-color: #176cc6;
 }
 .logo{
     margin: 10px 10px 0 10px;

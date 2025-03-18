@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="back-btn-container">
-                    <button id="back-add-container" onclick="back()">BACK</button>
+                    <button id="back-add-container" onclick="back()">CLOSE</button>
                 </div>
             </div>
         </div>  

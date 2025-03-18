@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="mainDashboard.css?v=1.4">
+    <link rel="stylesheet" href="mainDashboard.css?v=1.6">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css?v=1.3' rel='stylesheet'>
     <title>DASHBOARD</title>
 </head>
@@ -12,22 +12,26 @@
         <i class='bx bx-calculator'></i>
     </div>
     <div class="side-panel">
-       <div class="side-panel-border">
-        <div class="logo">
-            <h2>LOGO</h2>
+        <div class="account">
+            <i class='bx bxs-user-circle' ></i>
+            <h2 id="position">position</h2>
         </div>
-        <ul>
-            <li><a href="http://localhost/POS-main/POS-main/POS-ims/menu.php" target="iframe-dashboard" id="toggleMenu"><i class='bx bxs-component' ></i>&nbsp;Products</a></li>
+       <div class="side-panel-border">
+        <!-- <div class="logo">
+            <h2>LOGO</h2>
+        </div> -->
+        <ul id="nav-list">
+            <li id="menulist"><a href="http://localhost/POS-main/POS-main/POS-ims/menu.php" target="iframe-dashboard" id="toggleMenu"><i class='bx bxs-component' ></i>&nbsp;Products</a></li>
             <!-- <li><a href="menu.html" target="iframe-dashboard"><i class='bx bxs-food-menu'></i>&nbsp;Menu</a></li> -->
             <!-- <li><a href="orders.html" target="iframe-dashboard"><i class='bx bx-list-ul' ></i>&nbsp;Orders</a></li>
             <li><a href="checkout.html" target="iframe-dashboard"><i class='bx bxs-check-square' ></i>&nbsp;Checkout</a></li> -->
             <!-- <li><a href="products.html" target="iframe-dashboard" class="otheroptions"><i class='bx bxs-component' ></i>&nbsp;Products</a></li> -->
             <li><a href="sales.php" target="iframe-dashboard" class="otheroptions"><i class='bx bx-line-chart'></i>&nbsp;Reports</a></li>
             <li><a href="transaction.html?v=1.4" target="iframe-dashboard" class="otheroptions"><i class='bx bxs-receipt'></i>&nbsp;Receipts</a></li>
-            <li><a href="../InAndOut/inventoryInOut.php" target="iframe-dashboard" class="otheroptions"><i class='bx bxs-receipt'></i>&nbsp;In and Out</a></li>
-            <li><a href="../Delivery/delivery.html?v=1.0.5" target="iframe-dashboard" class="otheroptions"><i class='bx bxs-receipt'></i>&nbsp;Delivery</a></li>
+            <li><a href="../InAndOut/inventoryInOut.php" target="iframe-dashboard" class="otheroptions"><i class='bx bxs-package'></i>&nbsp;In and Out</a></li>
+            <li><a href="../Delivery/delivery.html?v=1.0.6" target="iframe-dashboard" class="otheroptions"><i class='bx bxs-truck'></i>&nbsp;Delivery</a></li>
             <li><a href="members.html" target="iframe-dashboard" class="otheroptions"><i class='bx bxs-user-circle'></i>&nbsp;Members</a></li>
-             <li id="logout"><a href="" target="iframe-dashboard">Log Out</a></li>
+            <li id="logout"><a href="" target="iframe-dashboard">Log Out</a></li>
         </ul>
        
            
@@ -108,7 +112,7 @@
         <button onclick="Enter_Customers()">SUBMIT</button>
     </div>
 
-    <script src="mainDashboard.js?v=5.3.9"></script>
+    <script src="mainDashboard.js?v=5.3.11"></script>
     <script src="numpad.js?v=1.6"></script>
     <script src="menu.js?v=1.4"></script>
 

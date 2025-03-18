@@ -141,7 +141,7 @@ document.querySelectorAll(".otheroptions").forEach(function(element) {
 // User role and logout handling...
 document.addEventListener("DOMContentLoaded", function () {
     const userRole = sessionStorage.getItem("userRole");
-
+    document.getElementById("position").innerText  = "ADMINISTRATOR";
     // Redirect to login page if user is not logged in
     if (!userRole) {
         window.location.href = "index.html"; 
@@ -151,19 +151,22 @@ document.addEventListener("DOMContentLoaded", function () {
     if (userRole === "cashier") {
         document.querySelector('a[href="members.html"]')?.closest("li")?.remove();
         document.querySelector('a[href="../Delivery/delivery.html"]')?.closest("li")?.remove();
-        document.querySelector('a[href="../InAndOut/inventoryInOut.php"]')?.closest("li")?.remove();       
+        document.querySelector('a[href="../InAndOut/inventoryInOut.php"]')?.closest("li")?.remove(); 
+        document.getElementById("position").innerText  = "CASHIER";      
     } else if (userRole === "warehouse") {
         document.querySelector('a[href="http://localhost/POS-main/POS-main/POS-ims/menu.php"]')?.closest("li")?.remove();
         document.querySelector('a[href="sales.php"]')?.closest("li")?.remove();
         document.querySelector('a[href="transaction.html?v=1.0.3"]')?.closest("li")?.remove();
         document.querySelector('a[href="../Delivery/delivery.html"]')?.closest("li")?.remove();
         document.querySelector('a[href="members.html"]')?.closest("li")?.remove();
+        document.getElementById("position").innerText  = "STOCKMAN";
     } else if (userRole === "rider") {
         document.querySelector('a[href="http://localhost/POS-main/POS-main/POS-ims/menu.php"]')?.closest("li")?.remove();
         document.querySelector('a[href="sales.php"]')?.closest("li")?.remove();
         document.querySelector('a[href="transaction.html?v=1.0.3"]')?.closest("li")?.remove();
         document.querySelector('a[href="../InAndOut/inventoryInOut.php"]')?.closest("li")?.remove();
         document.querySelector('a[href="members.html"]')?.closest("li")?.remove();
+        document.getElementById("position").innerText  = "RIDER";
     }
 
     // Logout functionality
@@ -591,3 +594,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll("#nav-list li");
+    const defaultActive = document.getElementById("menulist");
+
+    function setActiveLink() {
+        let currentURL = window.location.href;
+        let isActiveSet = false;
+
+        navLinks.forEach(link => {
+            if (currentURL.includes(link.getAttribute("href"))) {
+                link.classList.add("active");
+                isActiveSet = true;
+            } else {
+                link.classList.remove("active");
+            }
+        });
+
+        // If no active link is found, set default active
+        if (!isActiveSet) {
+            defaultActive.classList.add("active");
+        }
+    }
+
+    // Set active link on page load
+    setActiveLink();
+
+    // Update active class on click
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            navLinks.forEach(l => l.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+});

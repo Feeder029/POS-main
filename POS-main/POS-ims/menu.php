@@ -39,7 +39,7 @@
     <div class="cart-containers">
     </div>
        
-    <script src="menu.js?v=1.6"></script>
+    <script src="menu.js?v=1.7"></script>
 
     
 </body>
