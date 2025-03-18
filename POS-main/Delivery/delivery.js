@@ -173,6 +173,7 @@ function confirmDelivery() {
                             body: JSON.stringify({ SalesID: salesID })
                         })
                         .then(() => {
+                            document.getElementById("container").hidePopover();
                             alert("Stock updated successfully!");
                             resetScanner(); // Restart scanning for new sales ID
                         })

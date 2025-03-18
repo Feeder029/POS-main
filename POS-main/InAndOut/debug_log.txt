@@ -1,13 +1,13 @@
 Array
 (
     [category] => 3
-    [brand] => 2
-    [product_name] => Gear Grease
-    [product_model] => Gear Grease
-    [description] => Gear Grease
-    [quantity] => 20
-    [unit] => Nos
-    [base_price] => 350
-    [product_tax] => 10
-    [supplier] => 3
+    [brand] => 3
+    [product_name] => a
+    [product_model] => s
+    [description] => b
+    [quantity] => 1
+    [unit] => Meters
+    [base_price] => 3
+    [product_tax] => 1
+    [supplier] => 2
 )

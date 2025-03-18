@@ -18,7 +18,7 @@
         
         <div class="child-main-container">
             <div id="add-quantity" style="display:none;">
-                <div class="main-add-quatity-container">
+                <div class="main-add-quantity-container">
                     <div class="make-label-center"> 
                         <h1 id="product-name-add">ITEM NAME</h1>
                             <h2>ADD QUANTITY</h2>
@@ -31,7 +31,7 @@
             </div>
 
             <div id="deduct-quantity" style="display:none;">
-                <div class="main-deduct-quatity-container">
+                <div class="main-deduct-quantity-container">
                   <div class="make-label-center">
                     <h1 id="product-name-deduct">ITEM NAME</h1>
                     <h2>DEDUCT QUANTITY</h2>

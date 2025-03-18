@@ -30,7 +30,7 @@ body{
     display: flex;
     flex-direction: column;
 }
-.main-add-quatity-container{
+.main-add-quantity-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
