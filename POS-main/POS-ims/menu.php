@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="menu.css?v=1.0.5">
     <title>Product Menu</title>
-    
-
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="main-container">
@@ -39,7 +37,7 @@
     <div class="cart-containers">
     </div>
        
-    <script src="menu.js?v=1.7"></script>
+    <script src="menu.js?v=1.9"></script>
 
     
 </body>

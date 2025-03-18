@@ -141,7 +141,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                         price: itemPrice
                     }, '*');
                 } else {
-                    alert("Not enough stock available!");
+                    Swal.fire({
+                        title: "Out of Stack!",
+                        text: "Not enough stock available!",
+                        icon: "warning",
+                        confirmButtonText: "OK"
+                    });                    
                 }          
             });
 
@@ -167,7 +172,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                         }, '*');
                     }
                 } else {
-                    alert("Quantity is Zero!"); // Alert user if they try to subtract below 0
+                    Swal.fire({
+                        toast: true,
+                        position: "top-start",
+                        icon: "error",
+                        title: "Quantity is Zero!",
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
                 }
             });
         });

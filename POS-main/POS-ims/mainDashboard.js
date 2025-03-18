@@ -246,7 +246,14 @@ document.getElementById('confirm-order').addEventListener('click', function() {
     });
 
     if (orders.length === 0) {
-        alert("Your cart is empty!");
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "warning",
+            title: "Your cart is empty!",
+            showConfirmButton: false,
+            timer: 3000
+        });
         return;
     }
 
@@ -278,8 +285,23 @@ document.getElementById('confirm-order').addEventListener('click', function() {
                 document.getElementById('confirm-order').innerText = 'Checkout';
                 if (payment >= totalPrice) {
                     const change = payment - totalPrice;
-                    alert(`Your total order price is: ₱${totalPrice}\nYour payment: ₱${payment}\nChange: ₱${change}`);
-
+                    Swal.fire({
+                        title: "Payment Summary",
+                        html: `
+                            <b>Total Order Price:</b> ₱${totalPrice} <br>
+                            <b>Your Payment:</b> ₱${payment} <br>
+                            <b>Change:</b> ₱${change}
+                        `,
+                        icon: "info",
+                        confirmButtonText: "OK"
+                    }).then(() => {
+                        return Swal.fire({
+                            title: "Order Confirmed!",
+                            icon: "success",
+                            text: "QR and Data has been saved to the database.",
+                        });
+                    });
+                    
                     const now = new Date();
                     const formattedTime = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
 
@@ -291,8 +313,7 @@ document.getElementById('confirm-order').addEventListener('click', function() {
                             InsertProduct(item.dataset.name, parseInt(item.dataset.price),item,salesID);
                         });
 
-                        alert("Order confirmed! Stock updated.");
-
+                        
                         // Clear cart
                         document.getElementById('cart-items').innerHTML = '<li>No items in cart</li>';
                         document.getElementById('total-price').innerText = '₱0.00';
@@ -454,7 +475,6 @@ function sendSalesIDToPython(salesID) {
             console.error("Error:", data.error);
         } else {
             console.log("Success:", data.message);
-            alert("QR Code generated: " + data.qr_path);
         }
     })
     .catch(error => console.error('Request Failed:', error));
@@ -469,8 +489,15 @@ function Enter_Customers(event) {
     const Phone = document.getElementById("Phone_Txt").value.trim();
 
     if (First === "" || Last === "" || Email === "" || Phone === "") {
-        alert("Please fill up all the information!");
-        return;  // Stop execution
+        Swal.fire({
+            toast: true,
+            position: "top",
+            icon: "warning",
+            title: "Please fill up all the information!",
+            showConfirmButton: false,
+            timer: 3000
+        });
+                return;  // Stop execution
     }
 
     fetch('fetchapi.php', {
@@ -488,8 +515,15 @@ function Enter_Customers(event) {
     .then(response => response.json())  // Expecting JSON response
     .then(data => {
         console.log(data.message);
-        alert("Customer is Recorded!!");
-
+        Swal.fire({
+            toast: true,
+            position: "top",
+            icon: "success",
+            title: "Customer is recorded!",
+            showConfirmButton: false,
+            timer: 3000
+        });
+        
         // Clear input fields for next entry
         document.getElementById("FN_Txt").value = "";
         document.getElementById("LN_Txt").value = "";
