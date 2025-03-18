@@ -49,9 +49,9 @@
     $stmt->bind_param("iisssdsdii", $categoryid, $brandid, $pname, $model, $description, $quantity, $unit, $base_price, $tax, $supplier);
 
     if ($stmt->execute()) {
-        echo json_encode(["message" => "Product added successfully"]);
+        echo "Product added successfully";
     } else {
-        echo json_encode(["error" => "Database error: " . $stmt->error]);
+        echo "Invalid";
     }
 
     $stmt->close();

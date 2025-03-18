@@ -1,13 +1,13 @@
 Array
 (
-    [category] => 3
-    [brand] => 3
+    [category] => 2
+    [brand] => 1
     [product_name] => a
-    [product_model] => s
-    [description] => b
+    [product_model] => a
+    [description] => a
     [quantity] => 1
-    [unit] => Meters
-    [base_price] => 3
-    [product_tax] => 1
+    [unit] => Rolls
+    [base_price] => 2
+    [product_tax] => 2
     [supplier] => 2
 )
