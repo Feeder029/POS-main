@@ -140,13 +140,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                         name: itemName,
                         price: itemPrice
                     }, '*');
-                } else {
+                } else {                           
                     Swal.fire({
+                        toast: true,
+                        position: "top-start",
                         title: "Out of Stack!",
-                        text: "Not enough stock available!",
                         icon: "warning",
-                        confirmButtonText: "OK"
-                    });                    
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
                 }          
             });
 
