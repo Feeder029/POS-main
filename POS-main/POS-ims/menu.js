@@ -37,6 +37,29 @@ document.addEventListener('DOMContentLoaded', async () => {
                 data.forEach(item => {
                     let val = 0;
 
+                      // Define images for specific products
+                    let productImages = {
+                        "Road Bike": "../img/roadbike.jpg",
+                        "BMX Frame": "../img/bmxframe.jpg",
+                        "City Ride": "../img/citybike.jpg",
+                        "Tour Cycle": "../img/touringbike.jpg",
+                        "MTB Frame": "../img/mtbframe.jpg",
+                        "Bell Horn": "../img/bellhorn.jpg",
+                        "Bike Lock": "../img/bikelock.jpg",
+                        "Rear Rack": "../img/rearrack.jpg",
+                        "Grip Tape": "../img/griptape.jpg",
+                        "Water Cage": "../img/bottlecage.webp",
+                        "Chain Lube": "../img/chainlube.webp",
+                        "Tire Pump": "../img/tirepump.jpg",
+                        "Hex Wrench": "../img/hexwrench.webp",
+                        "Rim Strip": "../img/rim strip.jpg",
+                        "Brake Pads": "../img/brakepads.jpg",
+                        "Gear Grease": "../img/geargrease.jpg",
+                        "brake": "../img/brake.jpg"
+                    };
+
+                    // Assign the image based on product name, or use a default image
+                    let productImage = productImages[item.ProductName] || "default.jpg";
 
                     if(item.categoryid==catID||catID==0){
                         product_deduction.forEach((value, key) => {
@@ -48,7 +71,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                         display += `
                         <div class="menu">
-                            <div class="menu-image"></div>
+                            <div class="menu-image">
+                                <img src="images/${productImage}" alt="${item.ProductName}" />
+                            </div>
                             <div class="menu-detail">
                                 <h3>${item.ProductName}</h3> 
                                 <p>₱${item.ProductPrice}</p>

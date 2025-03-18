@@ -141,4 +141,3 @@
     <script src="inventoryIntOut.js?v=1.2"></script>
 </body>
 </html>
-A

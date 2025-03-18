@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="menu.css?v=1.1">
+    <link rel="stylesheet" href="menu.css?v=1.0.3">
     <title>Product Menu</title>
     
 
@@ -39,7 +39,7 @@
     <div class="cart-containers">
     </div>
        
-    <script src="menu.js?v=1.5"></script>
+    <script src="menu.js?v=1.6"></script>
 
     
 </body>
