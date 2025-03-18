@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 body{
     background-color:#d1adad;
     overflow-x: hidden;
@@ -5,20 +6,23 @@ body{
 html{
     overflow-x: hidden;
 }
+
 *{
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 .side-panel ul{
-    height: 700px;  
+    height: 100%;  
 }
 .side-panel a{
     text-decoration: none;
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: rgb(255, 255, 255);
     width: 100%;
     padding: 5px;
@@ -45,7 +49,7 @@ html{
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-top: 150px;
+    margin-top: -50px;
 }
 
 .account i{
@@ -75,7 +79,7 @@ html{
     color: #000000;
 }
 #logout a{
-    margin-left: -10px;
+    
     justify-content: center;
 }
 .side-panel-border{

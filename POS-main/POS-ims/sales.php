@@ -46,7 +46,7 @@ if ($result2->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SALES</title>
-    <link rel="stylesheet" href="sales.css?v=1.3">
+    <link rel="stylesheet" href="sales.css?v=1.4">
     
 </head>
 <body>
@@ -82,7 +82,7 @@ if ($result2->num_rows > 0) {
     <div class="box-container">
             <div class="box">
                 <label for="">Total Sales of the Month</label>
-                <p><?php echo $sales ?></p>
+                <p>₱ <?php echo $sales ?></p>
 
             </div>
             <div class="box">

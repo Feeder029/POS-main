@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 body{
     background-color: #EEEDED;
     overflow-x: hidden;
@@ -14,6 +15,10 @@ html{
 }
 
 *{
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+
+    font-style: normal;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -26,9 +31,8 @@ html{
 .main-container{
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 80%;
     height: 100vh;
-   
 }
 .navbar {
     width: 100%;
@@ -39,13 +43,11 @@ html{
     padding: 2vh;
     justify-content: space-between;
     
-    
 }
 .product-label{
     display: flex;
     justify-content: left;
-    font-size: larger;
-    
+   
 }
 
 .category-container{
@@ -103,7 +105,7 @@ html{
     height: 100%;
     gap: 20px;
  
-    padding: 0 2vh 0 2vh;
+    padding: 0 0 0 2vh;
     
 }
 
@@ -362,7 +364,7 @@ html{
 }
 
 .category-label a.active {
-    color: #D84040; /* Change color for active category */
+    color: #003170; /* Change color for active category */
     font-weight: bold;
 }
 
@@ -373,7 +375,7 @@ html{
     height: 3px;
     bottom: -2px;
     left: 0;
-    background-color: #D84040;
+    background-color: #003170;
     transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.3s ease-in-out;
