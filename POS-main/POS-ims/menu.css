@@ -211,11 +211,11 @@ html{
 .menu-image {
     width: 100%;
     /* Larger image section for portrait orientation */
+    height: 60%;
     height: 50%;
     z-index: 20;
     background-color: #ccc;
     border-radius: 5px;
-    object-fit: cover; /* Ensures images maintain aspect ratio */
 }
 
 .menu-detail {
