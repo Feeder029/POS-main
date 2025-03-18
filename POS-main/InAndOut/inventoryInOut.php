@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INVENTORY IN & OUT</title>
-    <link rel="stylesheet" href="inventoryInOut.css?v=1.0.5">
+    <link rel="stylesheet" href="inventoryInOut.css?v=1.0.6">
 </head>
 <body>
     <div class="main-container">
         <nav>
-            <button id="add-product-main" popovertarget="add-container" type="button">ADD PRODUCT</button>
-            <button id="deduct-product-main" popovertarget="deduct-product" type="button">DEDUCT PRODUCT</button>
+            <h1>IN AND OUT</h1>
+            <div class="nav-btn">
+                <button id="add-product-main" popovertarget="add-container" type="button">ADD PRODUCT</button>
+                <button id="deduct-product-main" popovertarget="deduct-product" type="button">DEDUCT PRODUCT</button>
+            </div>
         </nav>
         
         <div class="child-main-container">

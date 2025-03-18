@@ -70,10 +70,13 @@ body{
     width: 80%;
     border-radius: 5px;
     border: none;
-    background-color: #0D92F4;
+    background-color: #213555;
     color: aliceblue;
     padding: 5px;
     cursor: pointer;
+}
+#start-scan:hover{
+    background-color: #0056b3;
 }
 #container{
     background-color: #f3f3f3;
@@ -133,4 +136,15 @@ border: none;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+
+#title h1{
+    font-size: 4rem;
+    text-align: center;
+}
+
+#title{
+    top: 15px;
+    position: fixed;
 }

@@ -62,7 +62,7 @@ h1 {
 }
 
 .transaction button {
-    background-color: #007bff;
+    background-color:  #213555;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -79,11 +79,12 @@ h1 {
 
 .receipt-container {
     flex: 0 1 300px;
-    background: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
     overflow-y: auto;
+    margin-top: -80px;
+    margin-bottom: 70px;
 }
 
 
@@ -146,11 +147,11 @@ h1 {
 
 /* Ensure Print button is blue */
 .receipt .print-btn {
-    background-color: #007bff !important; 
+    background-color:   green !important; 
 }
 
 .receipt .print-btn:hover {
-    background-color: #0056b3 !important; 
+    background-color:  rgb(18, 94, 18) !important; 
 }
 
 
