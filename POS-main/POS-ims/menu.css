@@ -130,7 +130,7 @@ html{
     width: 100%;
     height: 100%;
     z-index: 20;
-    border: rgb(71, 71, 71) 0.2px solid;
+    border: rgb(204, 197, 197) 0.2px solid;
     background-color: #ccc;
     border-radius: 5px;
 }
