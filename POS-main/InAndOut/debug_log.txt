@@ -1,13 +1,13 @@
 Array
 (
-    [category] => 2
+    [category] => 1
     [brand] => 1
-    [product_name] => a
-    [product_model] => a
-    [description] => a
-    [quantity] => 1
-    [unit] => Rolls
-    [base_price] => 2
-    [product_tax] => 2
-    [supplier] => 2
+    [product_name] => test4
+    [product_model] => ghhb
+    [description] =>  v
+    [quantity] => 100
+    [unit] => Gallons
+    [base_price] => 100
+    [product_tax] => 1
+    [supplier] => 1
 )
