@@ -149,23 +149,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (userRole === "cashier") {
-        document.querySelector('a[href="members.html"]')?.closest("li")?.remove();
-        document.querySelector('a[href="../Delivery/delivery.html"]')?.closest("li")?.remove();
-        document.querySelector('a[href="../InAndOut/inventoryInOut.php"]')?.closest("li")?.remove(); 
+        document.getElementById('inoutlist').remove();
+        document.getElementById('saleslist').remove();
+        document.getElementById('deliverylist').remove();
+        document.getElementById('memberslist')?.closest("li")?.remove();
         document.getElementById("position").innerText  = "CASHIER";      
-    } else if (userRole === "warehouse") {
-        document.querySelector('a[href="http://localhost/POS-main/POS-main/POS-ims/menu.php"]')?.closest("li")?.remove();
-        document.querySelector('a[href="sales.php"]')?.closest("li")?.remove();
-        document.querySelector('a[href="transaction.html?v=1.0.3"]')?.closest("li")?.remove();
-        document.querySelector('a[href="../Delivery/delivery.html"]')?.closest("li")?.remove();
-        document.querySelector('a[href="members.html"]')?.closest("li")?.remove();
+    } else if (userRole === "stockman") {
+        document.getElementById('transactionlist').remove();
+        document.getElementById('menulist').remove();
+        document.getElementById('saleslist').remove();
+        document.getElementById('deliverylist').remove();
+        document.getElementById('memberslist')?.closest("li")?.remove();
         document.getElementById("position").innerText  = "STOCKMAN";
     } else if (userRole === "rider") {
-        document.querySelector('a[href="http://localhost/POS-main/POS-main/POS-ims/menu.php"]')?.closest("li")?.remove();
-        document.querySelector('a[href="sales.php"]')?.closest("li")?.remove();
-        document.querySelector('a[href="transaction.html?v=1.0.3"]')?.closest("li")?.remove();
-        document.querySelector('a[href="../InAndOut/inventoryInOut.php"]')?.closest("li")?.remove();
-        document.querySelector('a[href="members.html"]')?.closest("li")?.remove();
+        document.getElementById('transactionlist').remove();
+        document.getElementById('menulist').remove();
+        document.getElementById('saleslist').remove();
+        document.getElementById('inoutlist').remove();
+        document.getElementById('memberslist')?.closest("li")?.remove();
         document.getElementById("position").innerText  = "RIDER";
     }
 

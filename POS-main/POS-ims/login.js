@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", function() {
             sessionStorage.setItem('userRole', 'rider');
             alert('Login successfully!');
             window.location.href = "mainDashboard.html";
-        } else if (username === 'warehouse' && password === 'warehouse123') {
-            sessionStorage.setItem('userRole', 'warehouse');
+        } else if (username === 'stockman' && password === 'stockman123') {
+            sessionStorage.setItem('userRole', 'stockman');
             alert('Login successfully!');
             window.location.href = "mainDashboard.html";
         } else if (username === 'cashier' && password === 'cashier123') {
