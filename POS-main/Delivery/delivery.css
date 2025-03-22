@@ -41,7 +41,7 @@ body{
     border: none;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
 }
 .close-btn{
     display: flex;
@@ -88,7 +88,7 @@ body{
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
 }
 .child-container{
 
@@ -135,7 +135,7 @@ border: none;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -199,7 +199,7 @@ border: none;
     z-index: 2;
 }
 
-/* Alternating row colors */
+
 .delivered-list tr:nth-child(even) {
     background-color: #f2f2f2;
 }
@@ -208,7 +208,7 @@ border: none;
     background-color: #ddd;
 }
 
-/* Responsive adjustments */
+
 @media screen and (max-width: 768px) {
     .main-container {
         flex-direction: column;

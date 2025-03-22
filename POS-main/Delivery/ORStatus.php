@@ -6,11 +6,11 @@
     }
 
     if (($handle = fopen($csvFile, "r")) !== FALSE) {
-        fgetcsv($handle); // Skip header row
+        fgetcsv($handle); 
         while (($row = fgetcsv($handle)) !== FALSE) {
             echo "<tr>";
-            echo "<td>{$row[0]}</td>"; // SalesID
-            echo "<td>{$row[1]}</td>"; // Status
+            echo "<td>{$row[0]}</td>"; 
+            echo "<td>{$row[1]}</td>";
             echo "</tr>";
         }
         fclose($handle);

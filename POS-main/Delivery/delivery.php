@@ -25,7 +25,7 @@
         </div>
 
         <div class="delivered-list">
-            <div class="table-container">  <!-- Added div for scrolling -->
+            <div class="table-container">  
                 <table>
                     <thead>
                         <tr>
