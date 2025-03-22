@@ -5,7 +5,7 @@
     padding: 0;
     font-family: "Roboto Mono", monospace;
     font-optical-sizing: auto;
-
+    overflow: hidden ;
     font-style: normal;
     
 }
@@ -17,7 +17,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #EEEDED;
-    overflow: hidden;
+
 }
 .main-container{ 
     width: 100%;
@@ -157,7 +157,7 @@ nav button{
 }
 
 #add-container{
-    background-color: #ffffff;
+    background-color: #fafafa;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -166,7 +166,7 @@ nav button{
     width: 400px;
     height: 250px;
     display: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
 }
 .semi-add-container{
     width: 100%;

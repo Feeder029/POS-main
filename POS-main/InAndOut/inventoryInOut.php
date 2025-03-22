@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INVENTORY IN & OUT</title>
-    <link rel="stylesheet" href="inventoryInOut.css?v=1.0.6">
+    <link rel="stylesheet" href="inventoryInOut.css?v=1.0.7">
 </head>
 <body>
     <div class="main-container">
@@ -15,6 +15,10 @@
                 <button id="deduct-product-main" popovertarget="deduct-product" type="button">DEDUCT PRODUCT</button>
             </div>
         </nav>
+   
+        <div class="item-folder">
+            <?php include "../InAndOut/qrlist.php"; ?>
+        </div>
         
         <div class="child-main-container">
             <div id="add-quantity" style="display:none;">
@@ -140,6 +144,7 @@
             <button class="form-close-btn" popovertarget="add-new-container" popovertargetaction="hide">CLOSE</button>
         </div>
     </div>
+
 
     <script src="inventoryIntOut.js?v=1.2"></script>
 </body>
