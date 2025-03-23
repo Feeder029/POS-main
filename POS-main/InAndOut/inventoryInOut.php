@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INVENTORY IN & OUT</title>
-    <link rel="stylesheet" href="inventoryInOut.css?v=1.0.8">
+    <link rel="stylesheet" href="inventoryInOut.css?v=1.0.9">
 </head>
 <body>
     <div class="main-container">
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div id="deduct-quantity" style="display:none;">
+            <div id="deduct-quantity" style="display:block;">
                 <div class="main-deduct-quantity-container">
                   <div class="make-label-center">
                     <h1 id="product-name-deduct">ITEM NAME</h1>
