@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div id="deduct-quantity" style="display:block;">
+            <div id="deduct-quantity" style="display:none;">
                 <div class="main-deduct-quantity-container">
                   <div class="make-label-center">
                     <h1 id="product-name-deduct">ITEM NAME</h1>
