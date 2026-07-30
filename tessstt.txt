@@ -17,3 +17,5 @@ if (isset($data['TotalAmount'], $data['Date'],$data['CUS_ID'])) {
 } else {
     $response['sales'] = ['status' => 'error', 'message' => 'Invalid sales data provided'];
 }
+
+test
